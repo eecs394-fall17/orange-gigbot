@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { MediaPlugin } from 'ionic-native';
+import { Media, MediaObject} from '@ionic-native/media';
 import { Injectable } from '@angular/core';
 
 @Component({
@@ -11,13 +12,18 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class HomePage {
 
-  media: MediaPlugin;
+  media : any; 
 
   ionViewLoaded() {
-    this.media = new MediaPlugin('../Library/NoCloud/recording.wav')
+
   }
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
+
+    var src = 'cdvfile://localhost/temporary/recording.mp3';
+    this.media = new MediaPlugin("test.mp3");
+
+
   }
 
 startRecording() {
