@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, Platform } from 'ionic-angular';
 import { MediaPlugin } from 'ionic-native';
 import { Media, MediaObject} from '@ionic-native/media';
+import { File } from '@ionic-native/file';
 import { Injectable } from '@angular/core';
 
 @Component({
@@ -12,23 +13,36 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class HomePage {
 
-  media : any; 
+  mediaPlugin: MediaPlugin = null;
 
-  ionViewLoaded() {
+  file : File;
 
-  }
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
+  ionViewDidEnter() {
 
-    var src = 'cdvfile://localhost/temporary/recording.mp3';
-    this.media = new MediaPlugin("test.mp3");
-
+     console.log('ionViewDidLoad AudioRecording');
 
   }
+
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController,
+      public platform: Platform) {
+
+      }
+
+  get MediaPlugin(): MediaPlugin {
+  if (this.mediaPlugin == null) {
+    this.mediaPlugin = new MediaPlugin('recording.wav');
+  }
+  return this.mediaPlugin;
+}
+
+
 
 startRecording() {
   try {
-    this.media.startRecord();
+      this.MediaPlugin.startRecord();
+    //this.file.startRecord();
+    //this.media.startRecord();
   }
   catch (e) {
     this.showAlert((<Error>e).message);
@@ -37,7 +51,7 @@ startRecording() {
 
 stopRecording() {
   try {
-    this.media.stopRecord();
+    this.MediaPlugin.stopRecord();
   }
   catch (e) {
     this.showAlert((<Error>e).message)
@@ -46,7 +60,7 @@ stopRecording() {
 
 startPlayback() {
   try {
-    this.media.play();
+    this.MediaPlugin.play();
   }
   catch (e) {
     this.showAlert((<Error>e).message);
@@ -55,7 +69,7 @@ startPlayback() {
 
 stopPlayback() {
   try {
-    this.media.stop();
+    this.MediaPlugin.stop();
   }
   catch (e) {
     this.showAlert((<Error>e).message);

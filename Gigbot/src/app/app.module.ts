@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Media, MediaObject} from '@ionic-native/media';
+import { File } from '@ionic-native/file';
 import { MediaPlugin } from 'ionic-native';
 
 import { MyApp } from './app.component';
@@ -27,6 +28,7 @@ import { HomePage } from '../pages/home/home';
     StatusBar,
     SplashScreen,
     Media,
+    File, 
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
