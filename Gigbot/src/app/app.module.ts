@@ -46,7 +46,7 @@ export const firebaseConfig = {
     StatusBar,
     SplashScreen,
     Media,
-    File, 
+    File,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

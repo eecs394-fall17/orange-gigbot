@@ -7,6 +7,13 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 
+export enum AudioRecorderState {
+    Ready,
+    Recording,
+    Recorded,
+    Playing
+}
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -18,6 +25,7 @@ export class HomePage {
   mediaPlugin: MediaPlugin = null;
   questions: Observable<any[]>
   recorded: boolean;
+  state : AudioRecorderState;
 
   ionViewDidEnter() {
 
@@ -30,7 +38,6 @@ export class HomePage {
 
         this.questions = db.list("/Questions").valueChanges();
         console.log(this.questions);
-
         this.recorded = false;
       }
 
@@ -41,14 +48,11 @@ export class HomePage {
   return this.mediaPlugin;
 }
 
-
-
 startRecording() {
   try {
       this.MediaPlugin.startRecord();
+      this.state = AudioRecorderState.Recording;
       console.log("success startRecording");
-    //this.file.startRecord();
-    //this.media.startRecord();
   }
   catch (e) {
     this.showAlert((<Error>e).message);
@@ -58,6 +62,7 @@ startRecording() {
 stopRecording() {
   try {
     this.MediaPlugin.stopRecord();
+    this.state = AudioRecorderState.Recorded;
     this.recorded = true;
     console.log("success stopRecording");
   }
@@ -69,6 +74,7 @@ stopRecording() {
 playRecording() {
   try {
     this.MediaPlugin.play();
+    this.state = AudioRecorderState.Playing;
     console.log("success playRecording");
   }
   catch (e) {
@@ -79,6 +85,7 @@ playRecording() {
 stopRecordingPlay() {
   try {
     this.MediaPlugin.stop();
+    this.state = AudioRecorderState.Ready;
     console.log("success stopRecordingPlay");
   }
   catch (e) {
