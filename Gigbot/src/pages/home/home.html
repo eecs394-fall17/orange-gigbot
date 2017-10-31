@@ -1,30 +1,35 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Audio Recording : w Media Object
       Gigbot
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+
+  <ion-list>
+    <ion-item text-wrap class="text" *ngFor="let question of questions | async">
+      {{question}}
+    </ion-item>
+  </ion-list>
+
   <p>
   <button ion-button full (click)="startRecording()">Start recording</button>
 </p>
 <p>
   <button ion-button full (click)="stopRecording()">Stop recording</button>
 </p>
-<p>
-  <button ion-button full (click)="startPlayback()">Start playback</button>
-</p>
-<p>
-  <button ion-button full (click)="stopPlayback()">Stop playback</button>
-</p>
-</ion-content>
-  Welcome to Gigbot!
-    <ion-list>
-      <ion-item class="text" *ngFor="let question of questions | async">
-        {{question}}
-      </ion-item>
-    </ion-list>
+
+
+<div *ngIf = "recorded">
+            <button ion-button (click)="playRecording()">
+             Start playback
+            </button>
+            <button ion-button (click)="stopRecordingPlay()">
+             Stop playback
+            </button>
+</div>
+
+
 </ion-content>

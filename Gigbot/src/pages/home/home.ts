@@ -4,7 +4,6 @@ import { MediaPlugin } from 'ionic-native';
 import { Media, MediaObject} from '@ionic-native/media';
 import { File } from '@ionic-native/file';
 import { Injectable } from '@angular/core';
-import { NavController } from 'ionic-angular';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 
@@ -17,9 +16,8 @@ import { Observable } from 'rxjs/Observable';
 export class HomePage {
 
   mediaPlugin: MediaPlugin = null;
-
-  file : File;
-
+  questions: Observable<any[]>
+  recorded: boolean;
 
   ionViewDidEnter() {
 
@@ -28,8 +26,12 @@ export class HomePage {
   }
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController,
-      public platform: Platform) {
+      public platform: Platform, db:AngularFireDatabase) {
 
+        this.questions = db.list("/Questions").valueChanges();
+        console.log(this.questions);
+
+        this.recorded = false;
       }
 
   get MediaPlugin(): MediaPlugin {
@@ -44,6 +46,7 @@ export class HomePage {
 startRecording() {
   try {
       this.MediaPlugin.startRecord();
+      console.log("success startRecording");
     //this.file.startRecord();
     //this.media.startRecord();
   }
@@ -55,24 +58,28 @@ startRecording() {
 stopRecording() {
   try {
     this.MediaPlugin.stopRecord();
+    this.recorded = true;
+    console.log("success stopRecording");
   }
   catch (e) {
     this.showAlert((<Error>e).message)
   }
 }
 
-startPlayback() {
+playRecording() {
   try {
     this.MediaPlugin.play();
+    console.log("success playRecording");
   }
   catch (e) {
     this.showAlert((<Error>e).message);
   }
 }
 
-stopPlayback() {
+stopRecordingPlay() {
   try {
     this.MediaPlugin.stop();
+    console.log("success stopRecordingPlay");
   }
   catch (e) {
     this.showAlert((<Error>e).message);
@@ -88,10 +95,5 @@ showAlert(message) {
   alert.present();
 }
 
-  questions: Observable<any[]>
 
-  constructor(public navCtrl: NavController, db:AngularFireDatabase) {
-    this.questions = db.list("/Questions").valueChanges();
-    console.log(this.questions);
-  }
 }
