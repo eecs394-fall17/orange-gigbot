@@ -23,14 +23,14 @@ export enum AudioRecorderState {
 export class HomePage {
 
   mediaPlugin: MediaPlugin = null;
-  questions: Observable<any[]>
+  questions: Observable<any[]>;
   recorded: boolean;
   state : AudioRecorderState;
 
   ionViewDidEnter() {
 
      console.log('ionViewDidLoad AudioRecording');
-
+    
   }
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController,
@@ -101,6 +101,4 @@ showAlert(message) {
   });
   alert.present();
 }
-
-
 }

@@ -1,19 +1,18 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Gigbot
+      Welcome to Gigbot!
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
-  <ion-list>
-    <ion-item text-wrap class="text" *ngFor="let question of questions | async">
-      {{question}}
-    </ion-item>
-  </ion-list>
-
+    <ion-list>
+      <ion-item class="text" *ngFor="let question of questions | async">
+        {{question}}
+      </ion-item>
+    </ion-list>
+  
   <p>
   <button ion-button full (click)="startRecording()">
       Start recording</button>
@@ -33,6 +32,4 @@
              Stop playback
             </button>
 </div>
-
-
 </ion-content>
