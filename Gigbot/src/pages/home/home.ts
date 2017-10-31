@@ -4,6 +4,9 @@ import { MediaPlugin } from 'ionic-native';
 import { Media, MediaObject} from '@ionic-native/media';
 import { File } from '@ionic-native/file';
 import { Injectable } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'page-home',
@@ -85,4 +88,10 @@ showAlert(message) {
   alert.present();
 }
 
+  questions: Observable<any[]>
+
+  constructor(public navCtrl: NavController, db:AngularFireDatabase) {
+    this.questions = db.list("/Questions").valueChanges();
+    console.log(this.questions);
+  }
 }

@@ -37,6 +37,8 @@
     "cordova-plugin-splashscreen": "^4.0.3",
     "cordova-plugin-statusbar": "^2.2.3",
     "cordova-plugin-whitelist": "^1.3.2",
+    "angularfire2": "^5.0.0-rc.3",
+    "firebase": "^4.6.0",
     "ionic-angular": "3.8.0",
     "ionic-native": "^2.9.0",
     "ionic-plugin-keyboard": "^2.2.1",

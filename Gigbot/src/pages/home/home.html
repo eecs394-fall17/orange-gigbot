@@ -2,6 +2,7 @@
   <ion-navbar>
     <ion-title>
       Ionic Audio Recording : w Media Object
+      Gigbot
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -19,4 +20,11 @@
 <p>
   <button ion-button full (click)="stopPlayback()">Stop playback</button>
 </p>
+</ion-content>
+  Welcome to Gigbot!
+    <ion-list>
+      <ion-item class="text" *ngFor="let question of questions | async">
+        {{question}}
+      </ion-item>
+    </ion-list>
 </ion-content>
