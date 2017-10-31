@@ -51,7 +51,6 @@ export class HomePage {
 startRecording() {
   try {
       this.MediaPlugin.startRecord();
-      this.recorded = true;
       this.state = AudioRecorderState.Recording;
       console.log("success startRecording");
   }
