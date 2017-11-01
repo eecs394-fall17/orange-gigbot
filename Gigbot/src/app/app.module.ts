@@ -21,17 +21,14 @@ import { ChatPage } from '../pages/chat/chat';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    ChatPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ],
-  entryComponents: [
-    MyApp,
-    HomePage,
-    ChatPage    
-  ]
+
 })
 export class AppModule {}
