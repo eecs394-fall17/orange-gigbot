@@ -17,12 +17,12 @@
 <img src="../../assets/imgs/interviewer.jpg" alt="Interviewer">
 
 <p>
-  <button ion-button full (click)="startRecording()">
+    <button ion-button full (click)="startRecording()" [disabled]="state != 'ready'">
       Start recording</button>
 </p>
 
 <p>
-  <button ion-button full (click)="stopRecording()">
+  <button ion-button full (click)="stopRecording()" [disabled]="state != 'recording'">
     Stop recording</button>
 </p>
 
@@ -31,9 +31,12 @@
             <button ion-button (click)="playRecording()">
              Start playback
             </button>
+
+            <!--
             <button ion-button (click)="stopRecordingPlay()">
              Stop playback
             </button>
+          -->
 </div>
 
 </ion-content>
