@@ -14,12 +14,6 @@ import { Injectable } from '@angular/core';
  * Ionic pages and navigation.
  */
 
- export enum AudioRecorderState {
-     Ready,
-     Recording,
-     Recorded,
-     Playing
- }
 
 @IonicPage()
 @Component({
@@ -32,10 +26,14 @@ export class PracticePage {
 
   mediaPlugin: MediaPlugin = null;
   recorded: boolean;
-  state : AudioRecorderState;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,  public alertCtrl: AlertController, public platform: Platform) {
+  state : String;
+  //state : AudioRecorderState = AudioRecorderState.Ready;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public alertCtrl: AlertController, public platform: Platform) {
       this.recorded = false;
+      this.state = 'ready';
   }
 
   get MediaPlugin(): MediaPlugin {
@@ -52,7 +50,8 @@ export class PracticePage {
   startRecording() {
     try {
         this.MediaPlugin.startRecord();
-        this.state = AudioRecorderState.Recording;
+        //this.state = AudioRecorderState.Recording;
+        this.state = 'recording';
         console.log("success startRecording");
     }
     catch (e) {
@@ -63,7 +62,8 @@ export class PracticePage {
   stopRecording() {
     try {
       this.MediaPlugin.stopRecord();
-      this.state = AudioRecorderState.Recorded;
+      //this.state = AudioRecorderState.Recorded;
+      this.state = 'recorded';
       this.recorded = true;
       console.log("success stopRecording");
     }
@@ -75,7 +75,8 @@ export class PracticePage {
   playRecording() {
     try {
       this.MediaPlugin.play();
-      this.state = AudioRecorderState.Playing;
+      //this.state = AudioRecorderState.Playing;
+      this.state = 'playing';
       console.log("success playRecording");
     }
     catch (e) {
@@ -86,7 +87,8 @@ export class PracticePage {
   stopRecordingPlay(){
     try {
       this.MediaPlugin.stop();
-      this.state = AudioRecorderState.Ready;
+      //this.state = AudioRecorderState.Ready;
+      this.state = 'ready';
       console.log("success stopRecordingPlay");
     }
     catch (e) {
