@@ -1,18 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, Platform } from 'ionic-angular';
+import { NavController, AlertController, Platform, ViewController } from 'ionic-angular';
+import { MainPage } from '../main/main';
 import { MediaPlugin } from 'ionic-native';
 import { Media, MediaObject} from '@ionic-native/media';
 import { File } from '@ionic-native/file';
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
-
-export enum AudioRecorderState {
-    Ready,
-    Recording,
-    Recorded,
-    Playing
-}
 
 @Component({
   selector: 'page-home',
@@ -21,64 +13,24 @@ export enum AudioRecorderState {
 
 @Injectable()
 export class HomePage {
-
-  mediaPlugin: MediaPlugin = null;
-  questions: Observable<any[]>;
-  recorded: boolean;
-  state : AudioRecorderState;
+  username = '';
+  password = '';
+  idInterview = '';
 
   ionViewDidEnter() {
 
-     console.log('ionViewDidLoad AudioRecording');
-    
+     console.log('ionViewDidLoad HomePage');
+
   }
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController,
-      public platform: Platform, db:AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public platform: Platform) {
 
-        this.questions = db.list("/Questions").valueChanges();
-        console.log(this.questions);
-        this.recorded = false;
-      }
+    }
 
-  get MediaPlugin(): MediaPlugin {
-  if (this.mediaPlugin == null) {
-    this.mediaPlugin = new MediaPlugin('recording.wav');
-  }
-  return this.mediaPlugin;
-}
+  navigate(){
+        //console.log('navigate!!!, idInterview',id);
+        this.navCtrl.push(MainPage);//,{idInterview: id,});
 
-startRecording() {
-  try {
-      this.MediaPlugin.startRecord();
-      this.state = AudioRecorderState.Recording;
-      console.log("success startRecording");
-  }
-  catch (e) {
-    this.showAlert((<Error>e).message);
-  }
-}
-
-stopRecording() {
-  try {
-    this.MediaPlugin.stopRecord();
-    this.state = AudioRecorderState.Recorded;
-    this.recorded = true;
-    console.log("success stopRecording");
-  }
-  catch (e) {
-    this.showAlert((<Error>e).message)
-  }
-}
-
-playRecording() {
-  try {
-    this.MediaPlugin.play();
-    this.state = AudioRecorderState.Playing;
-    console.log("success playRecording");
-  }
-  catch (e) {
-    this.showAlert((<Error>e).message);
   }
 }
 
@@ -93,12 +45,4 @@ stopRecordingPlay() {
   }
 }
 
-showAlert(message) {
-  let alert = this.alertCtrl.create({
-    title: 'Error',
-    subTitle: message,
-    buttons: ['OK']
-  });
-  alert.present();
-}
 }
