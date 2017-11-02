@@ -7,12 +7,21 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ChatPage } from '../pages/chat/chat';
+import { MainPage } from '../pages/main/main';
+import { LibraryPage } from '../pages/library/library';
+import { NetworkPage } from '../pages/network/network';
+import { PracticePage } from '../pages/practice/practice';
+
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ChatPage
+    ChatPage,
+    MainPage,
+    LibraryPage,
+    NetworkPage,
+    PracticePage
   ],
   imports: [
     BrowserModule,
@@ -22,7 +31,11 @@ import { ChatPage } from '../pages/chat/chat';
   entryComponents: [
     MyApp,
     HomePage,
-    ChatPage
+    ChatPage,
+    MainPage,
+    LibraryPage,
+    NetworkPage,
+    PracticePage
   ],
   providers: [
     StatusBar,

@@ -29,7 +29,7 @@ export class ChatPage {
   }
 
   send() {
-    console.log(this.newmessage + ', '+this.username);
+    //console.log(this.newmessage + ', '+this.username);
   }
 
 }
