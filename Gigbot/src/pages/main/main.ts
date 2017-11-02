@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ionicBootstrap } from 'ionic-angular';
 
 /**
  * Generated class for the MainPage page.
@@ -40,3 +40,4 @@ export class MainPage {
       this.navCtrl.push(NetworkPage);
   }
 }
+
