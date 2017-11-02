@@ -5,8 +5,6 @@ import { MediaPlugin } from 'ionic-native';
 import { Media, MediaObject} from '@ionic-native/media';
 import { File } from '@ionic-native/file';
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
 
 export enum AudioRecorderState {
     Ready,
@@ -27,7 +25,6 @@ export class HomePage {
   idInterview = '';
 
   mediaPlugin: MediaPlugin = null;
-  questions: Observable<any[]>;
   recorded: boolean;
   state : AudioRecorderState;
 
@@ -37,11 +34,7 @@ export class HomePage {
 
   }
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController,
-      public platform: Platform, db:AngularFireDatabase) {
-
-        this.questions = db.list("/Questions").valueChanges();
-        console.log(this.questions);
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public platform: Platform) {
         this.recorded = false;
       }
 
