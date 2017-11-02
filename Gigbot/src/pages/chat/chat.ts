@@ -10,7 +10,7 @@ import { BrowserModule } from '@angular/platform-browser';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
- 
+
 @IonicPage()
 
 @Component({
@@ -19,6 +19,8 @@ import { BrowserModule } from '@angular/platform-browser';
 })
 export class ChatPage {
   public idInterview;
+  public newmessage;
+  public username; 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.idInterview = navParams.get("idInterview");
     console.log("idInterview: "+this.idInterview);
