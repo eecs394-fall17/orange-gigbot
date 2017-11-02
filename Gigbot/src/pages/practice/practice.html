@@ -15,6 +15,7 @@
 <ion-content padding>
 
 <img src="../../assets/imgs/interviewer.jpg" alt="Interviewer">
+<p>{{ questionsArray[questionIndex] }}</p>
 
 <p>
     <button ion-button full (click)="startRecording()" [disabled]="state != 'ready'">
@@ -24,6 +25,12 @@
 <p>
   <button ion-button full (click)="stopRecording()" [disabled]="state != 'recording'">
     Stop recording</button>
+</p>
+
+<p>
+  <button ion-button full (click)="newQuestion()">
+    New Question
+  </button>
 </p>
 
 

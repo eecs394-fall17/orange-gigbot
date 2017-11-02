@@ -5,7 +5,8 @@ import { MediaPlugin } from 'ionic-native';
 import { Media, MediaObject} from '@ionic-native/media';
 import { File } from '@ionic-native/file';
 import { Injectable } from '@angular/core';
-
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * Generated class for the PracticePage page.
@@ -13,7 +14,6 @@ import { Injectable } from '@angular/core';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
 
 @IonicPage()
 @Component({
@@ -26,14 +26,21 @@ export class PracticePage {
 
   mediaPlugin: MediaPlugin = null;
   recorded: boolean;
+  questions: Observable<any[]>;
+  questionsArray: any = [];
+  questionIndex: number = 0;
 
   state : String;
   //state : AudioRecorderState = AudioRecorderState.Ready;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public alertCtrl: AlertController, public platform: Platform) {
+    public alertCtrl: AlertController, public platform: Platform, db:AngularFireDatabase) {
       this.recorded = false;
       this.state = 'ready';
+      this.questions = db.list("/Questions").valueChanges();
+      this.questions.subscribe(questions => {
+        this.questionsArray = questions;
+        console.log(this.questionsArray);});
   }
 
   get MediaPlugin(): MediaPlugin {
@@ -70,6 +77,10 @@ export class PracticePage {
     catch (e) {
       this.showAlert((<Error>e).message)
     }
+  }
+
+  newQuestion() {
+    this.questionIndex = (this.questionIndex + 1) % this.questionsArray.length;
   }
 
   playRecording() {
