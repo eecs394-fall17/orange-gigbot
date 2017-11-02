@@ -30,8 +30,19 @@ export class HomePage {
   navigate(){
         //console.log('navigate!!!, idInterview',id);
         this.navCtrl.push(MainPage);//,{idInterview: id,});
+
   }
+}
 
-
+stopRecordingPlay() {
+  try {
+    this.MediaPlugin.stop();
+    this.state = AudioRecorderState.Ready;
+    console.log("success stopRecordingPlay");
+  }
+  catch (e) {
+    this.showAlert((<Error>e).message);
+  }
+}
 
 }
