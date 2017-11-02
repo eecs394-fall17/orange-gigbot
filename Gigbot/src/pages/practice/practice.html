@@ -7,12 +7,31 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>practice</ion-title>
+    <ion-title>Practice</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
+
+  <p>
+  <button ion-button full (click)="startRecording()">
+      Start recording</button>
+</p>
+
+<p>
+  <button ion-button full (click)="stopRecording()">
+    Stop recording</button>
+</p>
+
+
+<div *ngIf = "recorded">
+            <button ion-button (click)="playRecording()">
+             Start playback
+            </button>
+            <button ion-button (click)="stopRecordingPlay()">
+             Stop playback
+            </button>
+</div>
 
 </ion-content>

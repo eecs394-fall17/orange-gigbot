@@ -39,29 +39,6 @@
     <button ion-button (click)="navigate()">Login</button>
 
   </ion-card-content>
-    <ion-list>
-      <ion-item text-wrap class="text" *ngFor="let question of questions | async">
-        {{question}}
-      </ion-item>
-    </ion-list>
-
-  <p>
-  <button ion-button full (click)="startRecording()">
-      Start recording</button>
-</p>
-
-<p>
-  <button ion-button full (click)="stopRecording()">
-    Stop recording</button>
-</p>
 
 
-<div *ngIf = "recorded">
-            <button ion-button (click)="playRecording()">
-             Start playback
-            </button>
-            <button ion-button (click)="stopRecordingPlay()">
-             Stop playback
-            </button>
-</div>
 </ion-content>
