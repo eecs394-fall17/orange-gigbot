@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
 /**
  * Generated class for the MainPage page.
  *
@@ -35,9 +34,8 @@ export class MainPage {
   }
   navpracticepage(){
       this.navCtrl.push(PracticePage);
-  }  
+  }
   navnetworkpage(){
       this.navCtrl.push(NetworkPage);
   }
 }
-
