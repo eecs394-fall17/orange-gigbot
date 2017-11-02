@@ -35,15 +35,13 @@
 
 
 <div *ngIf = "recorded">
-            <button ion-button (click)="playRecording()">
+            <button ion-button (click)="playRecording()" [disabled]="state != 'recorded'">
              Start playback
             </button>
 
-            <!--
-            <button ion-button (click)="stopRecordingPlay()">
+            <button ion-button (click)="stopRecordingPlay()" [disabled]= "state != 'playing'">
              Stop playback
             </button>
-          -->
 </div>
 
 </ion-content>
