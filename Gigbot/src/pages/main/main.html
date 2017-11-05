@@ -1,62 +1,51 @@
-<!--
-  Generated template for the MainPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Menu</ion-title>
+    <ion-title>
+      <div>WELCOME TO</div>
+      <div>GIG<b>BOT</b></div>
+    </ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-    <!--ion-content class="card-background-page"-->
+<ion-content padding class=main-content>
 
-          <ion-list>
+  <img src="../../assets/imgs/GIGBOT_RedordVideo.png" alt="Gigbot" width=60%>
+  <p style="color:black"><b>What would you like to do?</b></p>
 
-              <ion-item>
-                  <ion-thumbnail item-start>
-                    <img src="../../assets/imgs/microphone.png">
-                  </ion-thumbnail>
-                  <h2>Practice Interview</h2>
-                  <p>Train recording an interview with sample questions</p>
-                  <button ion-button clear item-end (click)="navpracticepage()">Go</button>
-              </ion-item>
+  <ion-list>
 
-              <ion-item>
-                  <ion-thumbnail item-start>
-                    <img src="../../assets/imgs/tablet.png">
-                  </ion-thumbnail>
-                  <h2>Question Library</h2>
-                  <p>Industry specific mock interview question library</p>
-                  <button ion-button clear item-end (click)="navlibrarypage()">Go</button>
-              </ion-item>
+    <ion-item class=main-button (click)="navpracticepage()">
+        <ion-thumbnail item-start>
+          <img src="../../assets/imgs/GIGBOT_FeatureIcon_RecordSession.png">
+        </ion-thumbnail>
+        <p>Record Mock Interview</p>
+    </ion-item>
 
-              <ion-item>
-                  <ion-thumbnail item-start>
-                    <img src="../../assets/imgs/businessman.png">
-                  </ion-thumbnail>
-                  <h2>Resumé Feedback</h2>
-                  <p>Resumé feedback from industry experts</p>
-                  <button ion-button clear item-end (click)='navchatpage()'>Go</button>
-              </ion-item>
+    <ion-item class=main-button (click)="navlibrarypage()">
+        <ion-thumbnail item-start>
+          <img src="../../assets/imgs/GIGBOT_FeatureIcon_QALibrary.png">
+        </ion-thumbnail>
+        <p>Browse Mock Questions</p>
+    </ion-item>
 
-              <ion-item>
-                <ion-thumbnail item-start>
-                  <img src="../../assets/imgs/team.png">
-                </ion-thumbnail>
-                <h2>Networking</h2>
-                <p>Networking opportunity</p>
-                <button ion-button clear item-end (click)="navnetworkpage()">Go</button>
-              </ion-item>
+    <ion-item class=main-button (click)='navchatpage()'>
+        <ion-thumbnail item-start>
+          <img src="../../assets/imgs/GIGBOT_FeatureIcon_ResumeHelper.png">
+        </ion-thumbnail>
+        <p>Resumé Helper</p>
+    </ion-item>
 
-            </ion-list>
+    <ion-item class=main-button (click)="navnetworkpage()">
+      <ion-thumbnail item-start>
+        <img src="../../assets/imgs/GIGBOT_FeatureIcon_Networking.png">
+      </ion-thumbnail>
+      <p>Search GIGBOT Network</p>
+    </ion-item>
 
-
-        <!--/ion-content-->
+  </ion-list>
 
 </ion-content>

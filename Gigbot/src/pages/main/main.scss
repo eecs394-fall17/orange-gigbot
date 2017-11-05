@@ -1,3 +1,12 @@
 page-main {
 
+    .main-content {
+        background-color: color($colors, gigbot-light-gray, base);
+        text-align: center;
+    }
+
+    .main-button {
+        color: color($colors, gigbot-dark-gray, base);
+    }
+
 }

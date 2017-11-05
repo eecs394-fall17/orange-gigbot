@@ -1,7 +1,12 @@
 <!--ion-header>
   <ion-navbar color="dark">
     <ion-title>
-      Welcome to Gigbot!
+      <div>
+        <h1>MEET</h1>
+      </div>
+      <div>
+        <h1>GIG<b>BOT</b></h1>
+      </div>
     </ion-title>
   </ion-navbar>
 </ion-header-->
@@ -37,6 +42,8 @@
       <ion-card-content>user: {{ username || 'None' }}, ID Chat: {{ idInterview || '-' }}</ion-card-content>
     </ion-card-->
 
+    <div><h4>YOUR SMART INTERVIEW</h4></div>
+    <div><h4>PREP ASSITANT</h4></div>
 
     <!--button ion-button [navPush]="ChatPage">Go To Chat</button-->
     <button class="width280" ion-button (click)="navigate()" round>LOG IN</button>
@@ -44,5 +51,6 @@
     <button class="width280" ion-button (click)="navigate()" round>SIGN UP</button>
   </ion-card-content>
 
+  </ion-card-content>
 
 </ion-content>
