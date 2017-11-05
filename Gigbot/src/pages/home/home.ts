@@ -28,10 +28,11 @@ export class HomePage {
     }
 
   navlogin(){
-        //console.log('navigate!!!, idInterview',id);
+        console.log('navigate!!!');//, idInterview',id);
         this.navCtrl.push(MainPage);//,{idInterview: id,});
   }
   navsignup(){
+        console.log('navsignup');
         //this.navCtrl.push();//,{idInterview: id,});
   }
 
