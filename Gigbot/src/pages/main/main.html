@@ -1,51 +1,66 @@
+<ion-header class=" background-sp">
 
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>
-      <div>WELCOME TO</div>
-      <div>GIG<b>BOT</b></div>
-    </ion-title>
+  <ion-navbar >
+      <button ion-button icon-only menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    
+        <ion-title>
+        </ion-title>
+    
+        <ion-buttons end>
+          <button ion-button icon-only (click)="logout()" color="light">
+            LOG OUT
+          </button>
+        </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
+<ion-content padding class="background-sp" text-center>
+    <div padding class="gigbot-sp">
+        <span class="upper1-sp">WELCOME TO</span><br/>
+        <span class="upper2-sp">GIG<b>BOT</b></span>
+    </div>
+    <!--ion-content class="card-background-page"-->
+    <img class="resize" src="../assets/imgs/GIGBOT_RedordVideo.png" alt="GigBot">
+    <br/><span color="dark" class="upper3-sp">
+      What would you like to do?<br/>
+    </span>
+    <button class="width280" ion-button round>CREATE / EDIT PROFILE</button>
+<ion-grid>
+  <ion-row>
+    <ion-col col-1></ion-col>
+    <ion-col col-4>
+      <button ion-button icon-left class="rec" (click)="navpracticepage()">
+          <!--img src="../../assets/imgs/GIGBOT_FeatureIcon_RecordSession.png"-->
+      </button>
+      Record Mock Interview
+    </ion-col>
+    <ion-col col-2></ion-col>
+    <ion-col col-4>
+      <button ion-button icon-right class="qa" (click)="navlibrarypage()">
+      </button>
+      Q&A Library
+    </ion-col>
+    <ion-col col-1></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-1></ion-col>
+    <ion-col col-4>
+      <button ion-button icon-left class="cv" (click)='navchatpage()'>
+      </button>
+      Resume Helper
+    </ion-col>
+    <ion-col col-2></ion-col>
+    <ion-col col-4>
+      <button ion-button icon-right class="net" (click)="navnetworkpage()">
+      </button>
+      Search GIGBOT Network
+    </ion-col>
+    <ion-col col-1></ion-col>
+  </ion-row>
 
-<ion-content padding class=main-content>
-
-  <img src="../../assets/imgs/GIGBOT_RedordVideo.png" alt="Gigbot" width=60%>
-  <p style="color:black"><b>What would you like to do?</b></p>
-
-  <ion-list>
-
-    <ion-item class=main-button (click)="navpracticepage()">
-        <ion-thumbnail item-start>
-          <img src="../../assets/imgs/GIGBOT_FeatureIcon_RecordSession.png">
-        </ion-thumbnail>
-        <p>Record Mock Interview</p>
-    </ion-item>
-
-    <ion-item class=main-button (click)="navlibrarypage()">
-        <ion-thumbnail item-start>
-          <img src="../../assets/imgs/GIGBOT_FeatureIcon_QALibrary.png">
-        </ion-thumbnail>
-        <p>Browse Mock Questions</p>
-    </ion-item>
-
-    <ion-item class=main-button (click)='navchatpage()'>
-        <ion-thumbnail item-start>
-          <img src="../../assets/imgs/GIGBOT_FeatureIcon_ResumeHelper.png">
-        </ion-thumbnail>
-        <p>Resumé Helper</p>
-    </ion-item>
-
-    <ion-item class=main-button (click)="navnetworkpage()">
-      <ion-thumbnail item-start>
-        <img src="../../assets/imgs/GIGBOT_FeatureIcon_Networking.png">
-      </ion-thumbnail>
-      <p>Search GIGBOT Network</p>
-    </ion-item>
-
-  </ion-list>
-
+</ion-grid>
+<button class="width280" ion-button round>MY LIBRARY</button>
 </ion-content>

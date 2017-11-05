@@ -1,4 +1,62 @@
 page-main {
+    .background-sp {
+        background: #cccccc;
+      }
+    .upper1-sp{
+      font-size: 27px;
+      }
+    .upper2-sp{
+      font-size: 50px;
+      } 
+    .upper3-sp{
+      font-size: 22px;
+      margin-bottom: 10px;
+      }
+    .gigbot-sp {
+        text-align: center;
+        color: white;
+        background: #29abe2;
+        margin: -16px -16px 0 -16px;
+      }
+    .bg-blue{
+        background-color: #29abe2;
+    }
+    .toolbar-background {
+        
+        background-color: #29abe2;
+      }
+      img.resize {
+        width: 137px;
+        margin: 0 auto;
+      }
+    .rec {
+        background: url("../assets/imgs/GIGBOT_FeatureIcon_RecordSession.png") no-repeat; 
+        background-size: cover;
+        width: 100px;
+        height: 100px;
+      }
+    .qa {
+        background: url("../assets/imgs/GIGBOT_FeatureIcon_QALibrary.png") no-repeat; 
+        background-size: cover;
+        width: 100px;
+        height: 100px;
+    }
+    .cv {
+        background: url("../assets/imgs/GIGBOT_FeatureIcon_ResumeHelper.png") no-repeat; 
+        background-size: cover;
+        width: 100px;
+        height: 100px;
+    }
+    .net {
+        background: url("../assets/imgs/GIGBOT_FeatureIcon_Networking.png") no-repeat; 
+        background-size: cover;
+        width: 100px;
+        height: 100px;
+    }
+    .width280{
+        width: 280px;
+        background-color: #29abe1;
+      }
 
     .main-content {
         background-color: color($colors, gigbot-light-gray, base);

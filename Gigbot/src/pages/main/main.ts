@@ -38,4 +38,7 @@ export class MainPage {
   navnetworkpage(){
       this.navCtrl.push(NetworkPage);
   }
+  logout(){
+    
+  }
 }
