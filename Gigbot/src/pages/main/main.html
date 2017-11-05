@@ -1,62 +1,66 @@
-<!--
-  Generated template for the MainPage page.
+<ion-header class=" background-sp">
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>Menu</ion-title>
+  <ion-navbar >
+      <button ion-button icon-only menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    
+        <ion-title>
+        </ion-title>
+    
+        <ion-buttons end>
+          <button ion-button icon-only (click)="logout()" color="light">
+            LOG OUT
+          </button>
+        </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
-
-<ion-content padding>
+<ion-content padding class="background-sp" text-center>
+    <div padding class="gigbot-sp">
+        <span class="upper1-sp">WELCOME TO</span><br/>
+        <span class="upper2-sp">GIG<b>BOT</b></span>
+    </div>
     <!--ion-content class="card-background-page"-->
+    <img class="resize" src="../assets/imgs/GIGBOT_RedordVideo.png" alt="GigBot">
+    <br/><span color="dark" class="upper3-sp">
+      What would you like to do?<br/>
+    </span>
 
-          <ion-list>
+<ion-grid>
+  <ion-row>
+    <ion-col col-1></ion-col>
+    <ion-col col-4>
+      <button ion-button icon-left class="rec">
+          <!--img src="../../assets/imgs/GIGBOT_FeatureIcon_RecordSession.png"-->
+      </button>
+      Record Mock Interview
+    </ion-col>
+    <ion-col col-2></ion-col>
+    <ion-col col-4>
+      <button ion-button icon-right class="qa">
+      </button>
+      Q&A Library
+    </ion-col>
+    <ion-col col-1></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-1></ion-col>
+    <ion-col col-4>
+      <button ion-button icon-left class="cv">
+      </button>
+      Resume Helper
+    </ion-col>
+    <ion-col col-2></ion-col>
+    <ion-col col-4>
+      <button ion-button icon-right class="net">
+      </button>
+      Search GIGBOT Network
+    </ion-col>
+    <ion-col col-1></ion-col>
+  </ion-row>
 
-              <ion-item>
-                  <ion-thumbnail item-start>
-                    <img src="../../assets/imgs/microphone.png">
-                  </ion-thumbnail>
-                  <h2>Practice Interview</h2>
-                  <p>Train recording an interview with sample questions</p>
-                  <button ion-button clear item-end (click)="navpracticepage()">Go</button>
-              </ion-item>
-
-              <ion-item>
-                  <ion-thumbnail item-start>
-                    <img src="../../assets/imgs/tablet.png">
-                  </ion-thumbnail>
-                  <h2>Question Library</h2>
-                  <p>Industry specific mock interview question library</p>
-                  <button ion-button clear item-end (click)="navlibrarypage()">Go</button>
-              </ion-item>
-
-              <ion-item>
-                  <ion-thumbnail item-start>
-                    <img src="../../assets/imgs/businessman.png">
-                  </ion-thumbnail>
-                  <h2>Resumé Feedback</h2>
-                  <p>Resumé feedback from industry experts</p>
-                  <button ion-button clear item-end (click)='navchatpage()'>Go</button>
-              </ion-item>
-
-              <ion-item>
-                <ion-thumbnail item-start>
-                  <img src="../../assets/imgs/team.png">
-                </ion-thumbnail>
-                <h2>Networking</h2>
-                <p>Networking opportunity</p>
-                <button ion-button clear item-end (click)="navnetworkpage()">Go</button>
-              </ion-item>
-
-            </ion-list>
-
-
-        <!--/ion-content-->
+</ion-grid>
 
 </ion-content>

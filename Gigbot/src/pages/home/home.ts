@@ -27,11 +27,13 @@ export class HomePage {
 
     }
 
-  navigate(){
+  navlogin(){
         //console.log('navigate!!!, idInterview',id);
         this.navCtrl.push(MainPage);//,{idInterview: id,});
   }
-
+  navsignup(){
+        //this.navCtrl.push();//,{idInterview: id,});
+  }
 
 
 }
