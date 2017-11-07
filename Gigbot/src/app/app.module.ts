@@ -6,6 +6,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { Media, MediaObject} from '@ionic-native/media';
 import { File } from '@ionic-native/file';
 import { MediaPlugin } from 'ionic-native';
+import { MediaCapture } from 'ionic-native';
+import { Camera } from '@ionic-native/camera';
+import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
+
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -63,6 +67,9 @@ export const firebaseConfig = {
     SplashScreen,
     Media,
     File,
+    MediaCapture,
+    Camera,
+    CameraPreview,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ],
 
