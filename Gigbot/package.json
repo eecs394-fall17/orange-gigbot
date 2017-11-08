@@ -73,7 +73,6 @@
       "ionic-plugin-keyboard": {},
       "cordova-plugin-media": {
         "MICROPHONE_USAGE_DESCRIPTION": " "
-<<<<<<< HEAD
       },
       "cordova-plugin-ionic": {
         "APP_ID": "680317dc",
@@ -93,16 +92,9 @@
         "PHOTOLIBRARY_USAGE_DESCRIPTION": " "
       },
       "cordova-plugin-camera-preview": {}
-=======
-      }
->>>>>>> master
     },
     "platforms": [
       "ios"
     ]
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> master
