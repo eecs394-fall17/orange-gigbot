@@ -4,4 +4,25 @@ page-home {
     text-align: center;
   }
 
+  .home-content {
+    background-image: url("../../assets/imgs/GIGBOT_LaunchScreen_Background.jpg");
+    text-align: center;
+    color: white;
+  }
+
+  .login-input {
+    text-align: center;
+    background: white;
+    width: 100%;
+    //height: 50px;
+    border-radius: 50px;
+    margin-top: 10px;
+    color: color($colors, gigbot-light-gray, base);
+  }
+
+  #login-button {
+    background: color($colors, gigbot-blue, base);
+    color: white;
+  }
+
 }

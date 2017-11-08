@@ -76,6 +76,7 @@ $colors: (
 // then be future customized. This import comes last
 // so that the above variables are used and Ionic's
 // default are overridden.
+$toolbar-background: color($colors, gigbot-blue, base);
 
 @import "ionic.theme.default";
 
