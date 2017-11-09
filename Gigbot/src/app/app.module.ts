@@ -18,6 +18,7 @@ import { MainPage } from '../pages/main/main';
 import { LibraryPage } from '../pages/library/library';
 import { NetworkPage } from '../pages/network/network';
 import { PracticePage } from '../pages/practice/practice';
+import { PracticeStart } from '../pages/practicestart/practicestart';
 
 
 import { AngularFireModule } from 'angularfire2';
@@ -44,7 +45,8 @@ export const firebaseConfig = {
     MainPage,
     LibraryPage,
     NetworkPage,
-    PracticePage
+    PracticePage,
+    PracticeStart,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,8 @@ export const firebaseConfig = {
     MainPage,
     LibraryPage,
     NetworkPage,
-    PracticePage
+    PracticePage,
+    PracticeStart,
   ],
   providers: [
     StatusBar,

@@ -1,6 +1,6 @@
 import { Component, ViewChild} from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, Platform, ViewController } from 'ionic-angular';
-//import { MainPage } from '../main/main';
+//import { MainPage } from '../main/main'; 
 import { MediaPlugin, MediaCapture, Camera} from 'ionic-native';
 import { Media, MediaObject} from '@ionic-native/media';
 import { File } from '@ionic-native/file';
@@ -9,8 +9,9 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
+import { PracticeStart } from '../practicestart/practicestart';
 
-
+//import { PracticeStart } from '../practicestart/practicestart';
 /**
  * Generated class for the PracticePage page.
  *
@@ -47,7 +48,6 @@ export class PracticePage {
       this.questions.subscribe(questions => {
         this.questionsArray = questions;
         console.log(this.questionsArray);});
-
   }
 
   options = {
@@ -87,6 +87,7 @@ startVideoRecording(){
 
 
   startAudioRecording() {
+    
     try {
         this.MediaPlugin.startRecord();
         //this.state = AudioRecorderState.Recording;
@@ -147,5 +148,21 @@ startVideoRecording(){
     });
     alert.present();
   }
+//
+  startRecordingAudio(){
+    console.log('startRecordingAudio');
+    this.navCtrl.push(PracticeStart);
+    //return 1;
+      
+  }
+  startRecordingVideo(){
+    console.log('startRecordingVideo');
+    this.navCtrl.push(PracticeStart);
+    //return 2; 
+  }
 
+    
+  
 }
+
+
