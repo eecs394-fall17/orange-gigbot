@@ -18,6 +18,8 @@ import { MainPage } from '../pages/main/main';
 import { LibraryPage } from '../pages/library/library';
 import { NetworkPage } from '../pages/network/network';
 import { PracticePage } from '../pages/practice/practice';
+import { CountdownPage } from '../pages/countdown/countdown';
+import { RecordPage } from '../pages/record/record';
 
 
 import { AngularFireModule } from 'angularfire2';
@@ -44,7 +46,9 @@ export const firebaseConfig = {
     MainPage,
     LibraryPage,
     NetworkPage,
-    PracticePage
+    PracticePage,
+    CountdownPage,
+    RecordPage
   ],
   imports: [
     BrowserModule,
@@ -61,7 +65,9 @@ export const firebaseConfig = {
     MainPage,
     LibraryPage,
     NetworkPage,
-    PracticePage
+    PracticePage,
+    CountdownPage,
+    RecordPage
   ],
   providers: [
     StatusBar,

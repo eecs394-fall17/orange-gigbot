@@ -1,12 +1,12 @@
 import { Component, ViewChild} from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, Platform, ViewController } from 'ionic-angular';
-//import { MainPage } from '../main/main';
 import { MediaPlugin, MediaCapture, Camera} from 'ionic-native';
 import { Media, MediaObject} from '@ionic-native/media';
 import { File } from '@ionic-native/file';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
+import { CountdownPage } from '../countdown/countdown';
 
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
 
@@ -61,6 +61,10 @@ export class PracticePage {
     tapFocus: false,
     previewDrag: false
   };
+
+  navcountdownpage() {
+    this.navCtrl.push(CountdownPage);
+  }
 
   get MediaPlugin(): MediaPlugin {
   if (this.mediaPlugin == null) {
