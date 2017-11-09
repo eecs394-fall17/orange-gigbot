@@ -22,4 +22,8 @@ export class CountdownPage {
     console.log('ionViewDidLoad CountdownPage');
   }
 
+  navpracticepage() {
+    this.navCtrl.pop();
+  }
+
 }
