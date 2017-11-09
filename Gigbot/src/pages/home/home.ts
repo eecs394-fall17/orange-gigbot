@@ -28,12 +28,12 @@ export class HomePage {
     }
 
   navlogin(){
-        console.log('navlogin');//, idInterview',id);
-        this.navCtrl.push(MainPage);//,{idInterview: id,});
+    console.log('navlogin');//, idInterview',id);
+    this.navCtrl.push(MainPage);//,{idInterview: id,});
   }
   navsignup(){
-        console.log('navsignup');
-        //this.navCtrl.push();//,{idInterview: id,});
+    console.log('navsignup');
+    //this.navCtrl.push();//,{idInterview: id,});
   }
 
 
