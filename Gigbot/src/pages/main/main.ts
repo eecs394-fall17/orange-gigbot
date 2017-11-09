@@ -10,8 +10,9 @@ import { ChatPage } from '../chat/chat';
 import { LibraryPage } from '../library/library';
 import { PracticePage } from '../practice/practice';
 import { NetworkPage } from '../network/network';
+import {HomePage} from '../home/home'; 
 
-// 
+//
 
 @IonicPage()
 @Component({
@@ -39,6 +40,6 @@ export class MainPage {
       this.navCtrl.push(NetworkPage);
   }
   logout(){
-    
+    this.navCtrl.push(HomePage);
   }
 }

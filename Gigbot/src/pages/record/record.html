@@ -7,7 +7,8 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title text wrap><div class=dark-blue-text>Recording Audio Session...</div></ion-title>
+    <ion-title><div class=dark-blue-text>RECORDING</div>
+      <div>SESSION</div></ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -49,6 +50,7 @@
               <button  class=practice-button id=start-playback-button ion-button (click)="playAudioPlayback()" [disabled]="state != 'recorded'">
                START PLAYBACK
               </button>
+              
 
               <button  class=practice-button id=stop-playback-button ion-button (click)="stopAudioPlayback()" [disabled]= "state != 'playing'">
                STOP PLAYBACK
