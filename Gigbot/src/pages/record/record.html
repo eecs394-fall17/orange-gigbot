@@ -19,22 +19,22 @@
   <p>{{ questionsArray[questionIndex] }}</p>
 
   <p>
-      <button class=practice-button id=start-record-button ion-button full (click)="startRecording()" [disabled]="state != 'ready'">
+      <button class=practice-button id=start-record-button ion-button full (click)="startAudioRecording()" [disabled]="state != 'ready'">
       START RECORDING</button>
   </p>
 
   <p>
-      <button class=practice-button id=pause-record-button ion-button full (click)="pauseRecording()" [disabled]="state != 'recording'">
+      <button class=practice-button id=pause-record-button ion-button full (click)="pauseAudioRecording()" [disabled]="state != 'recording'">
         PAUSE RECORDING</button>
   </p>
 
   <p>
-      <button  class=practice-button id=resume-record-button ion-button full (click)="resumeRecording()" [disabled]="state != 'paused'">
+      <button  class=practice-button id=resume-record-button ion-button full (click)="resumeAudioRecording()" [disabled]="state != 'paused'">
         RESUME RECORDING</button>
   </p>
 
   <p>
-    <button  class=practice-button id=stop-record-button ion-button full (click)="stopRecording()" [disabled]="state != 'recording'">
+    <button  class=practice-button id=stop-record-button ion-button full (click)="stopAudioRecording()" [disabled]="state != 'recording'">
       STOP RECORDING</button>
   </p>
 
@@ -46,11 +46,11 @@
 
 
   <div *ngIf = "recorded">
-              <button  class=practice-button id=start-playback-button ion-button (click)="playRecording()" [disabled]="state != 'recorded'">
+              <button  class=practice-button id=start-playback-button ion-button (click)="playAudioPlayback()" [disabled]="state != 'recorded'">
                START PLAYBACK
               </button>
 
-              <button  class=practice-button id=stop-playback-button ion-button (click)="stopRecordingPlay()" [disabled]= "state != 'playing'">
+              <button  class=practice-button id=stop-playback-button ion-button (click)="stopAudioPlayback()" [disabled]= "state != 'playing'">
                STOP PLAYBACK
               </button>
   </div>

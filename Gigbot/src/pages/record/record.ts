@@ -84,7 +84,6 @@ startVideoRecording(){
 
 }
 
-
   startAudioRecording() {
     try {
         this.MediaPlugin.startRecord();
@@ -97,7 +96,33 @@ startVideoRecording(){
     }
   }
 
-  stopRecording() {
+
+ pauseAudioRecording() {
+   try {
+    this.MediaPlugin.pauseRecord();
+    //this.state = AudioRecorderState.Recording;
+    this.state = 'paused';
+    console.log("success pauseRecording");
+  }
+  catch (e) {
+      this.showAlert((<Error>e).message);
+    }
+  }
+
+
+  resumeAudioRecording() {
+    try {
+        this.MediaPlugin.resumeRecord();
+        //this.state = AudioRecorderState.Recording;
+        this.state = 'recording';
+        console.log("success resumeRecording");
+    }
+    catch (e) {
+      this.showAlert((<Error>e).message);
+    }
+  }
+
+  stopAudioRecording() {
     try {
       this.MediaPlugin.stopRecord();
       //this.state = AudioRecorderState.Recorded;
@@ -114,7 +139,7 @@ startVideoRecording(){
     this.questionIndex = (this.questionIndex + 1) % this.questionsArray.length;
   }
 
-  playRecording() {
+  playAudioPlayback() {
     try {
       this.MediaPlugin.play();
       //this.state = AudioRecorderState.Playing;
@@ -126,7 +151,7 @@ startVideoRecording(){
     }
   }
 
-  stopRecordingPlay(){
+  stopAudioPlayback(){
     try {
       this.MediaPlugin.stop();
       //this.state = AudioRecorderState.Ready;
