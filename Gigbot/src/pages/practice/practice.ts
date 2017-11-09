@@ -86,7 +86,7 @@ startVideoRecording(){
 }
 
 
-  startRecording() {
+  startAudioRecording() {
     try {
         this.MediaPlugin.startRecord();
         //this.state = AudioRecorderState.Recording;
