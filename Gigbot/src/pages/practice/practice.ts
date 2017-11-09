@@ -7,6 +7,7 @@ import { File } from '@ionic-native/file';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
+import { CountdownPage } from '../countdown/countdown';
 
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
 import { PracticeStart } from '../practicestart/practicestart';
@@ -61,6 +62,10 @@ export class PracticePage {
     tapFocus: false,
     previewDrag: false
   };
+
+  navcountdownpage() {
+    this.navCtrl.push(CountdownPage);
+  }
 
   get MediaPlugin(): MediaPlugin {
   if (this.mediaPlugin == null) {

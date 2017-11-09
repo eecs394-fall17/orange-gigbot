@@ -8,6 +8,10 @@ ion-navbar {
   height: 70px !important;
 }
 
+.dark-blue-text {
+  color: color($colors, gigbot-dark-blue, base);
+}
+
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These

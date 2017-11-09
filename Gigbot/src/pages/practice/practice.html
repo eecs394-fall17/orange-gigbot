@@ -1,7 +1,6 @@
 <ion-header> 
   <ion-navbar>
-    <ion-title><div>MOCK</div><div>INTERVIEW</div></ion-title>
-    <ion-buttons end>
+<ion-title><div class=dark-blue-text>MOCK</div><div>INTERVIEW</div></ion-title>    <ion-buttons end>
       <button ion-button icon-only (click)="navtologin()" color="light">
         HOME
       </button>
@@ -29,15 +28,15 @@
 <!-- <p>{{ questionsArray[questionIndex] }}</p> -->
 
 <p>
-    <button class=practice-button id=record-audio-button ion-button full (click)="startRecordingAudio()" [disabled]="state != 'ready'">
-      START RECORDING AUDIO
-    </button>
+  <button class=practice-button id=record-audio-button ion-button full (click)="navcountdownpage()" [disabled]="state != 'ready'">
+    START RECORDING AUDIO
+  </button>
 </p>
 
 <p>
-    <button class=practice-button id=record-video-button ion-button full (click)="startRecordingVideo()" [disabled]="state != 'ready'">
-      START RECORDING VIDEO
-    </button>
+  <button class=practice-button id=record-video-button ion-button full (click)="navcountdownpage()" [disabled]="state != 'ready'">
+    START RECORDING VIDEO
+  </button>
 </p>
 
 <!--
