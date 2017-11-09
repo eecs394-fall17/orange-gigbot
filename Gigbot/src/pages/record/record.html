@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title><div class=dark-blue-text>Recording Session...</div></ion-title>
+    <ion-title text wrap><div class=dark-blue-text>Recording Audio Session...</div></ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -19,39 +19,39 @@
   <p>{{ questionsArray[questionIndex] }}</p>
 
   <p>
-      <button ion-button full (click)="startRecording()" [disabled]="state != 'ready'">
-        Start recording</button>
+      <button class=practice-button id=start-record-button ion-button full (click)="startRecording()" [disabled]="state != 'ready'">
+      START RECORDING</button>
   </p>
 
   <p>
-      <button ion-button full (click)="pauseRecording()" [disabled]="state != 'recording'">
-        Pause recording</button>
+      <button class=practice-button id=pause-record-button ion-button full (click)="pauseRecording()" [disabled]="state != 'recording'">
+        PAUSE RECORDING</button>
   </p>
 
   <p>
-      <button ion-button full (click)="resumeRecording()" [disabled]="state != 'paused'">
-        Resume recording</button>
+      <button  class=practice-button id=resume-record-button ion-button full (click)="resumeRecording()" [disabled]="state != 'paused'">
+        RESUME RECORDING</button>
   </p>
 
   <p>
-    <button ion-button full (click)="stopRecording()" [disabled]="state != 'recording'">
-      Stop recording</button>
+    <button  class=practice-button id=stop-record-button ion-button full (click)="stopRecording()" [disabled]="state != 'recording'">
+      STOP RECORDING</button>
   </p>
 
   <p>
-    <button ion-button full (click)="newQuestion()">
-      New Question
+    <button  class=practice-button id=new-button ion-button full (click)="newQuestion()">
+      NEW QUESTION
     </button>
   </p>
 
 
   <div *ngIf = "recorded">
-              <button ion-button (click)="playRecording()" [disabled]="state != 'recorded'">
-               Start playback
+              <button  class=practice-button id=start-playback-button ion-button (click)="playRecording()" [disabled]="state != 'recorded'">
+               START PLAYBACK
               </button>
 
-              <button ion-button (click)="stopRecordingPlay()" [disabled]= "state != 'playing'">
-               Stop playback
+              <button  class=practice-button id=stop-playback-button ion-button (click)="stopRecordingPlay()" [disabled]= "state != 'playing'">
+               STOP PLAYBACK
               </button>
   </div>
 

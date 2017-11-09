@@ -16,12 +16,28 @@ page-record {
       margin: 0 auto;
   }
 
-  #record-audio-button {
-      background-color: color($colors, gigbot-citrus, base);
+  #start-record-button {
+      background-color: color($colors, gigbot-green, base);
   }
 
-  #record-video-button {
-      background-color: color($colors, gigbot-red, base);
+  #pause-record-button{
+    background-color: color($colors, gigbot-citrus, base);
   }
+  #resume-record-button{
+    background-color: color($colors, gigbot-blue, base);
+  }
+  #stop-record-button{
+    background-color: color($colors, gigbot-red, base);
+  }
+  #new-button{
+    background-color: color($colors, gigbot-light-gray, base);
+  }
+  #start-playback-button{
+    background-color: color($colors, gigbot-green, base);
+  }
+  #stop-playback-button{
+    background-color: color($colors, gigbot-red, base);
+  }
+
 
 }
