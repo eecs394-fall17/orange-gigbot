@@ -18,6 +18,7 @@ import { MainPage } from '../pages/main/main';
 import { LibraryPage } from '../pages/library/library';
 import { NetworkPage } from '../pages/network/network';
 import { PracticePage } from '../pages/practice/practice';
+import { PracticeStart } from '../pages/practicestart/practicestart';
 import { CountdownPage } from '../pages/countdown/countdown';
 import { RecordPage } from '../pages/record/record';
 
