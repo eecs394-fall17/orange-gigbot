@@ -1,15 +1,15 @@
 import { Component, ViewChild} from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, Platform, ViewController } from 'ionic-angular';
-//import { MainPage } from '../main/main';
-import { MediaPlugin, MediaCapture, Camera} from 'ionic-native';
 import { Media, MediaObject} from '@ionic-native/media';
+import { Camera, MediaPlugin, MediaCapture } from 'ionic-native';
 import { File } from '@ionic-native/file';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 
-import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
 
+import { CaptureVideoOptions, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture';
+import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
 
 /**
  * Generated class for the PracticePage page.
@@ -34,12 +34,14 @@ export class PracticePage {
   questionIndex: number = 0;
 
   state : String;
-  //state : AudioRecorderState = AudioRecorderState.Ready;
+
+ @ViewChild('myvideo') myVideo: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
   public alertCtrl: AlertController,
   public platform: Platform, db:AngularFireDatabase,
-  private cameraPreview: CameraPreview) {
+  private cameraPreview: CameraPreview,
+  private mediaCapture: MediaCapture) {
 
       this.recorded = false;
       this.state = 'ready';
@@ -47,7 +49,6 @@ export class PracticePage {
       this.questions.subscribe(questions => {
         this.questionsArray = questions;
         console.log(this.questionsArray);});
-
   }
 
   options = {
@@ -62,41 +63,82 @@ export class PracticePage {
     previewDrag: false
   };
 
-  get MediaPlugin(): MediaPlugin {
+  startvideorecording() {
+
+    console.log('StartVideoRecording');
+
+    let options: CaptureVideoOptions = { };
+    MediaCapture.captureVideo((videodata) => {
+      alert(JSON.stringify(videodata));
+     })
+
+  }
+
+  selectvideo() {
+    let video = this.myVideo.nativeElement;
+    var options = {
+      sourceType: 2,
+      mediaType: 1
+    };
+
+    Camera.getPicture(options).then((data) => {
+      let imageURL = 'data:image/jpeg;base64,' + data;
+      video.src = data;
+      video.play();
+    })
+  }
+
+
+get MediaPlugin(): MediaPlugin {
   if (this.mediaPlugin == null) {
     this.mediaPlugin = new MediaPlugin('recording.wav');
   }
-  return this.mediaPlugin;
-}
+    return this.mediaPlugin;
+  }
 
 ionViewDidLoad() {
   console.log('ionViewDidLoad PracticePage');
 }
 
-startVideoRecording(){
-  console.log('StartVideoRecording');
-  this.cameraPreview.startCamera(this.options).then(
-  (res) => {
-    console.log(res)
-  },
-  (err) => {
-    console.log(err)
-  });;
-
-}
-
 
   startRecording() {
     try {
+      
         this.MediaPlugin.startRecord();
         //this.state = AudioRecorderState.Recording;
         this.state = 'recording';
+        this.recorded = false;
         console.log("success startRecording");
     }
     catch (e) {
       this.showAlert((<Error>e).message);
     }
   }
+
+  pauseRecording() {
+    try {
+        this.MediaPlugin.pauseRecord();
+        //this.state = AudioRecorderState.Recording;
+        this.state = 'paused';
+        console.log("success pauseRecording");
+    }
+    catch (e) {
+      this.showAlert((<Error>e).message);
+    }
+  }
+
+  resumeRecording() {
+    try {
+        this.MediaPlugin.resumeRecord();
+        //this.state = AudioRecorderState.Recording;
+        this.state = 'recording';
+        console.log("success resumeRecording");
+    }
+    catch (e) {
+      this.showAlert((<Error>e).message);
+    }
+  }
+
 
   stopRecording() {
     try {

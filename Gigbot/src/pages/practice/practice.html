@@ -14,12 +14,12 @@
 
 <ion-content padding>
 
-  <!--
-<p>
-  <button ion-button (click)="startVideoRecording()">
-    Start Video Recording</button>
-</p>
---> 
+<!--
+  <button ion-button (click)="startvideorecording()">Start</button>
+  <button ion-button (click)="selectvideo()">Select</button>
+  <video #myvideo height="300" width="300" controls></video>
+-->
+
 
 <img src="../../assets/imgs/interviewer.jpg" alt="Interviewer">
 <p>{{ questionsArray[questionIndex] }}</p>
@@ -27,6 +27,16 @@
 <p>
     <button ion-button full (click)="startRecording()" [disabled]="state != 'ready'">
       Start recording</button>
+</p>
+
+<p>
+    <button ion-button full (click)="pauseRecording()" [disabled]="state != 'recording'">
+      Pause recording</button>
+</p>
+
+<p>
+    <button ion-button full (click)="resumeRecording()" [disabled]="state != 'paused'">
+      Resume recording</button>
 </p>
 
 <p>
