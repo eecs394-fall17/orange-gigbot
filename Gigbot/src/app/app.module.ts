@@ -9,6 +9,27 @@ import { MediaPlugin } from 'ionic-native';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { ChatPage } from '../pages/chat/chat';
+import { MainPage } from '../pages/main/main';
+import { LibraryPage } from '../pages/library/library';
+import { NetworkPage } from '../pages/network/network';
+import { PracticePage } from '../pages/practice/practice';
+
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database'
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireAuth } from 'angularfire2/auth';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyAi43bPQCzb9g2EXzk32oqPuVJwyj_wHhs",
+  authDomain: "orange-394-gigbot.firebaseapp.com",
+  databaseURL: "https://orange-394-gigbot.firebaseio.com",
+  projectId: "orange-394-gigbot",
+  storageBucket: "orange-394-gigbot.appspot.com",
+  messagingSenderId: "1029482160421"
+};
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -28,7 +49,12 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    ChatPage,
+    MainPage,
+    LibraryPage,
+    NetworkPage,
+    PracticePage
   ],
   imports: [
     BrowserModule,
@@ -40,7 +66,12 @@ export const firebaseConfig = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    ChatPage,
+    MainPage,
+    LibraryPage,
+    NetworkPage,
+    PracticePage
   ],
   providers: [
     StatusBar,
@@ -48,6 +79,7 @@ export const firebaseConfig = {
     Media,
     File,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
-  ]
+  ],
+
 })
 export class AppModule {}

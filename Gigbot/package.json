@@ -26,7 +26,13 @@
     "@ionic-native/splash-screen": "4.3.2",
     "@ionic-native/status-bar": "4.3.2",
     "@ionic/storage": "2.0.1",
+<<<<<<< HEAD
     "cordova-ios": "^4.4.0",
+=======
+    "angularfire2": "^5.0.0-rc.3",
+    "cordova-ios": "^4.4.0",
+    "cordova-plugin-add-swift-support": "^1.7.0",
+>>>>>>> origin/master
     "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-console": "^1.1.0",
     "cordova-plugin-device": "^1.1.6",
@@ -37,7 +43,10 @@
     "cordova-plugin-splashscreen": "^4.0.3",
     "cordova-plugin-statusbar": "^2.2.3",
     "cordova-plugin-whitelist": "^1.3.2",
+<<<<<<< HEAD
     "angularfire2": "^5.0.0-rc.3",
+=======
+>>>>>>> origin/master
     "firebase": "^4.6.0",
     "ionic-angular": "3.8.0",
     "ionic-native": "^2.9.0",
@@ -48,7 +57,7 @@
     "zone.js": "0.8.18"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "3.0.1",
+    "@ionic/app-scripts": "^3.0.1",
     "typescript": "2.3.4"
   },
   "description": "An Ionic project",
@@ -62,6 +71,16 @@
       "ionic-plugin-keyboard": {},
       "cordova-plugin-media": {
         "MICROPHONE_USAGE_DESCRIPTION": " "
+<<<<<<< HEAD
+=======
+      },
+      "cordova-plugin-ionic": {
+        "APP_ID": "680317dc",
+        "CHANNEL_NAME": "Production",
+        "UPDATE_METHOD": "background",
+        "UPDATE_API": "https://api.ionicjs.com",
+        "MAX_STORE": "2"
+>>>>>>> origin/master
       }
     },
     "platforms": [

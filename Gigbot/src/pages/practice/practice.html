@@ -1,0 +1,63 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title><div class=dark-blue-text>MOCK</div><div>INTERVIEW</div></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding class=practice-content>
+
+<img src="../../assets/imgs/GIGBOT_Main.png" alt="Gigbot" width=40%>
+
+<div>
+  <p>Welcome to your recorded mock interview session. Press the button below to begin.</p>
+</div>
+
+<div>
+  <p>When you're ready for a new question, tap NEXT.</p>
+</div>
+
+<div>
+  <p>When you're ready to stop and review, tap END.</p>
+</div>
+
+<!-- <p>{{ questionsArray[questionIndex] }}</p> -->
+
+<p>
+  <button class=practice-button id=record-audio-button ion-button full (click)="navcountdownpage()" [disabled]="state != 'ready'">
+    START RECORDING AUDIO
+  </button>
+</p>
+
+<p>
+  <button class=practice-button id=record-video-button ion-button full (click)="navcountdownpage()" [disabled]="state != 'ready'">
+    START RECORDING VIDEO
+  </button>
+</p>
+
+<!--
+<p>
+  <button ion-button full (click)="stopRecording()" [disabled]="state != 'recording'">
+    Stop recording</button>
+</p>
+
+<p>
+  <button ion-button full (click)="newQuestion()">
+    New Question
+  </button>
+</p>
+
+
+<div *ngIf = "recorded">
+            <button ion-button (click)="playRecording()" [disabled]="state != 'recorded'">
+             Start playback
+            </button>
+
+            <button ion-button (click)="stopRecordingPlay()" [disabled]= "state != 'playing'">
+             Stop playback
+            </button>
+</div>
+-->
+</ion-content>

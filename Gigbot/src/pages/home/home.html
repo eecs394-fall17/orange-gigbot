@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="dark">
     <ion-title>
       Welcome to Gigbot!
     </ion-title>
@@ -7,6 +7,7 @@
 </ion-header>
 
 <ion-content padding>
+<<<<<<< HEAD
     <ion-list>
       <ion-item text-wrap class="text" *ngFor="let question of questions | async">
         {{question}}
@@ -32,4 +33,40 @@
              Stop playback
             </button>
 </div>
+=======
+<!--
+  The world is your oyster.
+  <p>
+    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
+  </p>
+-->
+  <ion-card-content>
+
+    <ion-list>
+        <ion-item>
+          <ion-label floating>Username</ion-label>
+          <ion-input type="text" [(ngModel)]="username"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input type="password" [(ngModel)]="password"></ion-input>
+        </ion-item>
+        <!--ion-item>
+          <ion-label floating>ID Interview</ion-label>
+          <ion-input type="text" [(ngModel)]="idInterview"></ion-input>
+        </ion-item-->
+    </ion-list>
+    <!--ion-card>
+      <ion-card-header>Variables:</ion-card-header>
+      <ion-card-content>user: {{ username || 'None' }}, ID Chat: {{ idInterview || '-' }}</ion-card-content>
+    </ion-card-->
+
+
+    <!--button ion-button [navPush]="ChatPage">Go To Chat</button-->
+    <button ion-button (click)="navigate()">Login</button>
+
+  </ion-card-content>
+
+
+>>>>>>> origin/master
 </ion-content>

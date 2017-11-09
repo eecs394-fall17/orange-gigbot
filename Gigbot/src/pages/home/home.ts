@@ -1,9 +1,15 @@
 import { Component } from '@angular/core';
+<<<<<<< HEAD
 import { NavController, AlertController, Platform } from 'ionic-angular';
+=======
+import { NavController, AlertController, Platform, ViewController } from 'ionic-angular';
+import { MainPage } from '../main/main';
+>>>>>>> origin/master
 import { MediaPlugin } from 'ionic-native';
 import { Media, MediaObject} from '@ionic-native/media';
 import { File } from '@ionic-native/file';
 import { Injectable } from '@angular/core';
+<<<<<<< HEAD
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 
@@ -13,6 +19,8 @@ export enum AudioRecorderState {
     Recorded,
     Playing
 }
+=======
+>>>>>>> origin/master
 
 @Component({
   selector: 'page-home',
@@ -21,7 +29,19 @@ export enum AudioRecorderState {
 
 @Injectable()
 export class HomePage {
+  username = '';
+  password = '';
+  idInterview = '';
 
+  ionViewDidEnter() {
+
+     console.log('ionViewDidLoad HomePage');
+
+  }
+
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public platform: Platform) {
+
+<<<<<<< HEAD
   mediaPlugin: MediaPlugin = null;
   questions: Observable<any[]>;
   recorded: boolean;
@@ -79,6 +99,13 @@ playRecording() {
   }
   catch (e) {
     this.showAlert((<Error>e).message);
+=======
+    }
+
+  navigate(){
+        //console.log('navigate!!!, idInterview',id);
+        this.navCtrl.push(MainPage);//,{idInterview: id,});
+>>>>>>> origin/master
   }
 }
 
@@ -93,6 +120,7 @@ stopRecordingPlay() {
   }
 }
 
+<<<<<<< HEAD
 showAlert(message) {
   let alert = this.alertCtrl.create({
     title: 'Error',
@@ -101,4 +129,8 @@ showAlert(message) {
   });
   alert.present();
 }
+=======
+
+
+>>>>>>> origin/master
 }
