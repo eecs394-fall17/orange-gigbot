@@ -20,7 +20,7 @@
 
 </ion-header>
 
-<ion-content padding class="background-sp" text-center>
+<ion-content padding class="background-sp align-center" text-center>
   <!--
     <div padding class="gigbot-sp">
         <span class="upper1-sp">WELCOME TO</span><br/>
@@ -37,14 +37,13 @@
   <ion-row>
     <ion-col col-1></ion-col>
     <ion-col col-4>
-      <button ion-button icon-left class="rec" (click)="navpracticepage()">
-          <!--img src="../../assets/imgs/GIGBOT_FeatureIcon_RecordSession.png"-->
+      <button ion-button icon-left id="rec" class="main-button" (click)="navpracticepage()">
       </button>
       Record Mock Interview
     </ion-col>
     <ion-col col-2></ion-col>
-    <ion-col col-4>
-      <button ion-button icon-right class="qa" (click)="navlibrarypage()">
+    <ion-col col-4 >
+      <button ion-button icon-right id="qa" class="main-button" (click)="navlibrarypage()">
       </button>
       Q&A Library
     </ion-col>
@@ -53,13 +52,13 @@
   <ion-row>
     <ion-col col-1></ion-col>
     <ion-col col-4>
-      <button ion-button icon-left class="cv" (click)='navchatpage()'>
+      <button ion-button icon-left id="cv" class="main-button" (click)='navchatpage()'>
       </button>
-      Resume Helper
+      Resumé Helper
     </ion-col>
     <ion-col col-2></ion-col>
     <ion-col col-4>
-      <button ion-button icon-right class="net" (click)="navnetworkpage()">
+      <button ion-button icon-right id="net" class="main-button" (click)="navnetworkpage()">
       </button>
       Search GIGBOT Network
     </ion-col>
