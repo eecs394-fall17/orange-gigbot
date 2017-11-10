@@ -1,14 +1,16 @@
-
 <ion-header>
-
   <ion-navbar>
-    <ion-title><div class=dark-blue-text>MOCK</div><div>INTERVIEW</div></ion-title>
+<ion-title><div class=dark-blue-text>MOCK</div><div>INTERVIEW</div></ion-title>    <ion-buttons end>
+      <button ion-button icon-only (click)="navtologin()" color="light">
+        HOME
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding class=practice-content>
-
+{{ counter }}
 <img src="../../assets/imgs/GIGBOT_Main.png" alt="Gigbot" width=40%>
 
 <div>
@@ -26,38 +28,25 @@
 <!-- <p>{{ questionsArray[questionIndex] }}</p> -->
 
 <p>
-  <button class=practice-button id=record-audio-button ion-button full (click)="navcountdownpage()" [disabled]="state != 'ready'">
+  <button class=practice-button id=record-audio-button ion-button full (click)="navrecordpage()">
     START RECORDING AUDIO
-  </button>
-</p>
-
-<p>
-  <button class=practice-button id=record-video-button ion-button full (click)="navcountdownpage()" [disabled]="state != 'ready'">
-    START RECORDING VIDEO
   </button>
 </p>
 
 <!--
 <p>
-  <button ion-button full (click)="stopRecording()" [disabled]="state != 'recording'">
-    Stop recording</button>
-</p>
-
-<p>
-  <button ion-button full (click)="newQuestion()">
-    New Question
+  <button class=practice-button id=record-video-button ion-button full (click)="navcountdownpage()" [disabled] = "true">
+    START RECORDING VIDEO
   </button>
 </p>
+-->
 
-
-<div *ngIf = "recorded">
-            <button ion-button (click)="playRecording()" [disabled]="state != 'recorded'">
-             Start playback
-            </button>
-
-            <button ion-button (click)="stopRecordingPlay()" [disabled]= "state != 'playing'">
-             Stop playback
-            </button>
-</div>
+<!--
+<p>
+  <button class=practice-button id=record-page-button ion-button full (click) = "navrecordpage()"> test record
+  </button>
+</p>
+-->
+<!--
 -->
 </ion-content>

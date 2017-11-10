@@ -6,6 +6,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { Media, MediaObject} from '@ionic-native/media';
 import { File } from '@ionic-native/file';
 import { MediaPlugin } from 'ionic-native';
+import { MediaCapture } from 'ionic-native';
+import { Camera } from '@ionic-native/camera';
+import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
+
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -14,6 +18,9 @@ import { MainPage } from '../pages/main/main';
 import { LibraryPage } from '../pages/library/library';
 import { NetworkPage } from '../pages/network/network';
 import { PracticePage } from '../pages/practice/practice';
+import { PracticeStart } from '../pages/practicestart/practicestart';
+import { CountdownPage } from '../pages/countdown/countdown';
+import { RecordPage } from '../pages/record/record';
 
 
 import { AngularFireModule } from 'angularfire2';
@@ -31,20 +38,6 @@ export const firebaseConfig = {
   messagingSenderId: "1029482160421"
 };
 
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireDatabase } from 'angularfire2/database'
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireAuth } from 'angularfire2/auth';
-
-export const firebaseConfig = {
-  apiKey: "AIzaSyAi43bPQCzb9g2EXzk32oqPuVJwyj_wHhs",
-  authDomain: "orange-394-gigbot.firebaseapp.com",
-  databaseURL: "https://orange-394-gigbot.firebaseio.com",
-  projectId: "orange-394-gigbot",
-  storageBucket: "orange-394-gigbot.appspot.com",
-  messagingSenderId: "1029482160421"
-};
 
 @NgModule({
   declarations: [
@@ -54,7 +47,9 @@ export const firebaseConfig = {
     MainPage,
     LibraryPage,
     NetworkPage,
-    PracticePage
+    PracticePage,
+    CountdownPage,
+    RecordPage
   ],
   imports: [
     BrowserModule,
@@ -71,13 +66,18 @@ export const firebaseConfig = {
     MainPage,
     LibraryPage,
     NetworkPage,
-    PracticePage
+    PracticePage,
+    CountdownPage,
+    RecordPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Media,
     File,
+    MediaCapture,
+    Camera,
+    CameraPreview,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ],
 

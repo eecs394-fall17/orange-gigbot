@@ -1,5 +1,16 @@
 // http://ionicframework.com/docs/theming/
 
+html, body, ion-app, ion-content, ion-page, .nav-decor {
+  background-color: transparent;
+}
+
+ion-navbar {
+  height: 70px !important;
+}
+
+.dark-blue-text {
+  color: color($colors, gigbot-dark-blue, base);
+}
 
 // App Global Sass
 // --------------------------------------------------
@@ -14,3 +25,10 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Raleway'), local('Raleway-Regular'), url("../assets/fonts/Raleway-Regular.ttf") format('woff2');
+}

@@ -1,11 +1,9 @@
-page-practice {
-
+page-practicestart {
     .practice-content {
         color: black;
         text-align: center;
         background-color: color($colors, gigbot-light-gray, base);
     }
-
     .practice-button {
         width: 80%;
         height: 30px;
@@ -15,16 +13,7 @@ page-practice {
         margin-top: 10px;
         margin: 0 auto;
     }
-
-    #record-audio-button {
-        background-color: color($colors, gigbot-citrus, base);
-    }
-
     #record-video-button {
         background-color: color($colors, gigbot-red, base);
-    }
-    #record-page-button{
-          background-color: color($colors, gigbot-red, base);
-    }
-
+    }    
 }

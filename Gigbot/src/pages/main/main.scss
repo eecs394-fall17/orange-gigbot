@@ -1,3 +1,67 @@
 page-main {
+    .background-sp {
+        background: color($colors, gigbot-light-gray, base);
+      }
+    .upper1-sp{
+      font-size: 27px;
+      }
+    .upper2-sp{
+      font-size: 50px;
+      }
+    .upper3-sp{
+      font-size: 22px;
+      margin-bottom: 10px;
+      }
+    .gigbot-sp {
+        text-align: center;
+        color: white;
+        background: color($colors, gigbot-blue, base);
+        margin: -16px -16px 0 -16px;
+      }
+    .bg-blue{
+        background: color($colors, gigbot-blue, base);
+    }
+    .toolbar-background {
+        background: color($colors, gigbot-blue, base);
+    }
+    img.resize {
+      width: 137px;
+      margin: 0 auto;
+    }
+    .main-button {
+      width: 100px;
+      height: 100px;
+      color: color($colors, gigbot-dark-gray, base);
+    }
+    #rec {
+      background: url("../assets/imgs/GIGBOT_FeatureIcon_RecordSession.png") no-repeat;
+      background-size: cover;
+    }
+    #qa {
+      background: url("../assets/imgs/GIGBOT_FeatureIcon_QALibrary.png") no-repeat;
+      background-size: cover;
+    }
+    #cv {
+      background: url("../assets/imgs/GIGBOT_FeatureIcon_ResumeHelper.png") no-repeat;
+      background-size: cover;
+    }
+    #net {
+      background: url("../assets/imgs/GIGBOT_FeatureIcon_Networking.png") no-repeat;
+      background-size: cover;
+    }
+    .width280{
+      width: 280px;
+      background: color($colors, gigbot-blue, base);
+      border: 2px solid white;
+    }
+    .width280-lib{
+      width: 280px;
+      background: color($colors, gigbot-dark-gray, base);
+      border: 2px solid white;
+    }
+
+    ion-col {
+      justify-content: middle;
+    }
 
 }

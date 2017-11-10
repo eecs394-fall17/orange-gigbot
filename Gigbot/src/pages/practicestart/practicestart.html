@@ -1,0 +1,36 @@
+<ion-header> 
+    <ion-navbar>
+      <ion-title><div>Starting in...</div></ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="navtologin()" color="light">
+          HOME
+        </button>
+      </ion-buttons> 
+    </ion-navbar>
+  
+  </ion-header>
+  
+  <ion-content padding class=practice-content>
+
+  <!--img src="../../assets/imgs/GIGBOT_Main.png" alt="Gigbot" width=40%-->
+  
+  <div>
+    <p>Welcome to your recorded mock interview session. Press the button below to begin.</p>
+  </div>
+  
+  <div>
+    <p>When you're ready for a new question, tap NEXT.</p>
+  </div>
+  
+  <div>
+    <p>When you're ready to stop and review, tap END.</p>
+  </div>
+  
+  <p>
+      <button class=practice-button id=record-video-button ion-button full (click)="startRecordingVideo()" >
+          CANCEL
+        </button>
+  </p>
+  
+
+  </ion-content>
