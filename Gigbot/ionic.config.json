@@ -1,10 +1,6 @@
 {
   "name": "Gigbot",
-<<<<<<< HEAD
   "app_id": "680317dc",
-=======
-  "app_id": "f87df247",
->>>>>>> e43f00f548461e8ce1732a930dab70150d6b8aac
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
