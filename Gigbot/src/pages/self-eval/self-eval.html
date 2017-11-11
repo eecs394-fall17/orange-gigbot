@@ -18,7 +18,7 @@
         HOME
       </button-->
     </ion-buttons>
-  </ion-navbar>
+  </ion-navbar> 
 
 </ion-header>
 
@@ -28,7 +28,7 @@
   </span>
 
 <div>
-  <p>Good answer would contain:</p>
+  <p><b>Good answer would contain:</b></p>
 </div>
 
 <!--1st question-->
@@ -43,7 +43,7 @@
     </p>
   <ion-item>
     <ion-range min="0" max="100" [(ngModel)]="attr11" pin="true"><!-- (tap)="slider1()"-->
-      <ion-label range-left>Attributte 1</ion-label>
+      <ion-label range-left class="range-left-attr">Attributte 1</ion-label>
       <ion-label range-right>{{ attr11 }}</ion-label>
     </ion-range>
   </ion-item>
@@ -54,7 +54,7 @@
   </p>
   <ion-item>
     <ion-range min="0" max="100" [(ngModel)]="attr12" pin="true"><!-- (ionChange)="slider2()"-->
-      <ion-label range-left>Attributte 2</ion-label>
+      <ion-label range-left class="range-left-attr">Attributte 2</ion-label>
       <ion-label range-right>{{ attr12 }}</ion-label>
     </ion-range> 
   </ion-item>
@@ -64,7 +64,7 @@
   </p>
   <ion-item>
     <ion-range min="0" max="100" [(ngModel)]="attr13" pin="true"><!-- (ionChange)="slider3()"-->
-      <ion-label range-left>Attributte 3</ion-label>
+      <ion-label range-left class="range-left-attr">Attributte 3</ion-label>
       <ion-label range-right>{{ attr13 }}</ion-label>
     </ion-range> 
   </ion-item>
