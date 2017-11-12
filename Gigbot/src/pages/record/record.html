@@ -17,27 +17,36 @@
 <ion-content padding class=practice-content>
 
   <img src="../../assets/imgs/GIGBOT_RedordVideo.png" alt="Gigbot" width=50%>
-  <p>{{ questionsArray[questionIndex] }}</p>
+  <p>{{ questions_array[questionIndex] }}</p>
 
-  <p>
-      <button class=practice-button id=start-record-button ion-button full (click)="startAudioRecording()" [disabled]="state != 'ready'">
-      START RECORDING</button>
-  </p>
+  <div *ngIf = "state == 'ready'">
+    <p>
+        <button class=practice-button id=start-record-button ion-button full (click)="startAudioRecording()" [disabled]="state != 'ready'">
+        BEGIN RECORDING</button>
+    </p>
+  </div>
 
-  <p>
-      <button class=practice-button id=pause-record-button ion-button full (click)="pauseAudioRecording()" [disabled]="state != 'recording'">
-        PAUSE RECORDING</button>
-  </p>
+  <div *ngIf = "state == 'recording' || state == 'paused'">
+    <p>
+      <button  class=practice-button id=stop-record-button ion-button full (click)="stopAudioRecording()" [disabled]="state == 'paused'">
+        END INTERVIEW</button>
+    </p>
+  </div>
 
-  <p>
-      <button  class=practice-button id=resume-record-button ion-button full (click)="resumeAudioRecording()" [disabled]="state != 'paused'">
-        RESUME RECORDING</button>
-  </p>
+  <div *ngIf = "state == 'recording'">
+    <p>
+        <button class=practice-button id=pause-record-button ion-button full (click)="pauseAudioRecording()">
+          PAUSE RECORDING</button>
+    </p>
+    </div>
 
-  <p>
-    <button  class=practice-button id=stop-record-button ion-button full (click)="stopAudioRecording()" [disabled]="state != 'recording'">
-      STOP RECORDING</button>
-  </p>
+  <div *ngIf = "state == 'paused'">
+    <p>
+        <button  class=practice-button id=resume-record-button ion-button full (click)="resumeAudioRecording()">
+          RESUME RECORDING</button>
+    </p>
+  </div>
+
 
   <p>
     <button  class=practice-button id=new-button ion-button full (click)="newQuestion()">

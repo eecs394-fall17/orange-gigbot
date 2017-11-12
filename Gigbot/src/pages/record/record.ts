@@ -28,8 +28,9 @@ export class RecordPage {
 
   mediaPlugin: MediaPlugin = null;
   recorded: boolean;
-  questions: Observable<any[]>;
-  questionsArray: any = [];
+  questions_db: Observable<any[]>;
+  questions_db_array: any = [];
+  questions_array: any = [];
   questionIndex: number = 0;
 
   state : String;
@@ -39,14 +40,15 @@ export class RecordPage {
   public alertCtrl: AlertController,
   public platform: Platform, db:AngularFireDatabase,
   private cameraPreview: CameraPreview) {
-
-      this.recorded = false;
-      this.state = 'ready';
-      this.questions = db.list("/Questions").valueChanges();
-      this.questions.subscribe(questions => {
-        this.questionsArray = questions;
-        console.log(this.questionsArray);});
-
+    this.recorded = false;
+    this.state = 'ready';
+    this.questions_db = db.list("/Question-database").valueChanges();
+    this.questions_db.subscribe(questions_db => {
+      this.questions_db_array = questions_db;
+      this.questions_array = this.questions_db_array.map(q => q.Question);
+      console.log(this.questions_db_array);
+      console.log(this.questions_array);
+    });
   }
 
   options = {
@@ -62,27 +64,31 @@ export class RecordPage {
   };
 
   get MediaPlugin(): MediaPlugin {
-  if (this.mediaPlugin == null) {
-    this.mediaPlugin = new MediaPlugin('recording.wav');
+    if (this.mediaPlugin == null) {
+      this.mediaPlugin = new MediaPlugin('recording.wav');
+    }
+    return this.mediaPlugin;
   }
-  return this.mediaPlugin;
-}
 
-ionViewDidLoad() {
-  console.log('ionViewDidLoad PracticePage');
-}
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad PracticePage');
+  }
 
-startVideoRecording(){
-  console.log('StartVideoRecording');
-  this.cameraPreview.startCamera(this.options).then(
-  (res) => {
-    console.log(res)
-  },
-  (err) => {
-    console.log(err)
-  });;
+  newQuestion() {
+    this.questionIndex = (this.questionIndex + 1) % this.questions_array.length;
+  }
 
-}
+  startVideoRecording(){
+    console.log('StartVideoRecording');
+    this.cameraPreview.startCamera(this.options).then(
+    (res) => {
+      console.log(res)
+    },
+    (err) => {
+      console.log(err)
+    });;
+
+  }
 
   startAudioRecording() {
     try {
@@ -96,9 +102,8 @@ startVideoRecording(){
     }
   }
 
-
- pauseAudioRecording() {
-   try {
+  pauseAudioRecording() {
+    try {
     this.MediaPlugin.pauseRecord();
     //this.state = AudioRecorderState.Recording;
     this.state = 'paused';
@@ -133,10 +138,6 @@ startVideoRecording(){
     catch (e) {
       this.showAlert((<Error>e).message)
     }
-  }
-
-  newQuestion() {
-    this.questionIndex = (this.questionIndex + 1) % this.questionsArray.length;
   }
 
   playAudioPlayback() {
