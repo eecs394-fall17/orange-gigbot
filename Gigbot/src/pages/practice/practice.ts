@@ -11,15 +11,6 @@ import { CountdownPage } from '../countdown/countdown';
 import { RecordPage } from '../record/record';
 
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
-import { PracticeStart } from '../practicestart/practicestart';
-
-//import { PracticeStart } from '../practicestart/practicestart';
-/**
- * Generated class for the PracticePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
