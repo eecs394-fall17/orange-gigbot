@@ -11,6 +11,7 @@ import{ MediaCapture} from'ionic-native';
 import { Camera } from '@ionic-native/camera';
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
 
+import { IonicAudioModule, AudioProvider, WebAudioProvider, CordovaMediaProvider, defaultAudioProviderFactory } from 'ionic-audio';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -39,6 +40,9 @@ export const firebaseConfig = {
   messagingSenderId: "1029482160421"
 };
 
+export function myCustomAudioProviderFactory() {
+  return (window.hasOwnProperty('cordova')) ? new CordovaMediaProvider() : new WebAudioProvider();
+}
 
 @NgModule({
   declarations: [
@@ -58,7 +62,8 @@ export const firebaseConfig = {
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig, 'gigbot'),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    IonicAudioModule.forRoot(myCustomAudioProviderFactory)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -81,6 +86,7 @@ export const firebaseConfig = {
     MediaCapture,
     Camera,
     CameraPreview,
+    IonicAudioModule,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ],
 

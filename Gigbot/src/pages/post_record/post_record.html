@@ -20,11 +20,20 @@
 
   <div *ngIf = "startedplayback">
 
-              <button  class=post-record-button id=question-playback-button
-                        ion-button *ngFor="let recording of recordings_array">
-                        {{recording}}
-               START PLAYBACK
-              </button>
+    <ion-list>
+      <button  class=post-record-button id=question-playback-button
+                ion-button *ngFor="let recording of myRecordings">
+                {{recording}}
+       START PLAYBACK
+      </button>
+
+       <audio-track #audio *ngFor="let track of myRecordings" [track]="track">
+
+       </audio-track>
+
+    </ion-list>
+
+
   </div>
 
   <p>
