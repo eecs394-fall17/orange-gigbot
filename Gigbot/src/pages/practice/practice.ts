@@ -9,6 +9,7 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { CountdownPage } from '../countdown/countdown';
 import { RecordPage } from '../record/record';
+import { PostRecordPage } from '../post_record/post_record'; 
 
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
 //import { PracticeStart } from '../practicestart/practicestart';
@@ -58,6 +59,11 @@ ionViewDidLoad() {
     this.navCtrl.push(RecordPage);
   }
 
+
+navpostrecordpage(){
+  this.navCtrl.push(PostRecordPage);
+
+}
 
 
 }

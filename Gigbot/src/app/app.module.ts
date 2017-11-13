@@ -21,6 +21,7 @@ import { NetworkPage } from '../pages/network/network';
 import { PracticePage } from '../pages/practice/practice';
 import { CountdownPage } from '../pages/countdown/countdown';
 import { RecordPage } from '../pages/record/record';
+import {PostRecordPage} from '../pages/post_record/post_record';
 
 
 import { AngularFireModule } from 'angularfire2';
@@ -49,7 +50,8 @@ export const firebaseConfig = {
     NetworkPage,
     PracticePage,
     CountdownPage,
-    RecordPage
+    RecordPage,
+    PostRecordPage
   ],
   imports: [
     BrowserModule,
@@ -68,7 +70,8 @@ export const firebaseConfig = {
     NetworkPage,
     PracticePage,
     CountdownPage,
-    RecordPage
+    RecordPage,
+    PostRecordPage
   ],
   providers: [
     StatusBar,
