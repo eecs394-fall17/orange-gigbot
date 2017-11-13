@@ -3,13 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 
-/**
- * Generated class for the LibraryPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-library',
@@ -17,11 +10,16 @@ import { Observable } from 'rxjs/Observable';
 })
 export class LibraryPage {
 
-  questions: Observable<any[]>;
+  questions_db: Observable<any[]>;
+  questions_db_array: any = [];
+  questions_array: any = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, db:AngularFireDatabase) {
-    this.questions = db.list("/Questions").valueChanges();
-    console.log(this.questions);
+    this.questions_db = db.list("/Question-database").valueChanges();
+    this.questions_db.subscribe(questions_db => {
+      this.questions_db_array = questions_db;
+      this.questions_array = this.questions_db_array.map(q => q.Question);
+    });
   }
 
   ionViewDidLoad() {

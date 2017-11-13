@@ -1,16 +1,20 @@
 
 <ion-header>
   <ion-navbar>
-    <ion-title><div>Q&A</div><div>LIBRARY</div></ion-title> 
+    <ion-title><div class=dark-blue-text>Q&A</div><div>LIBRARY</div></ion-title> 
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding class=library-content>
   <ion-list>
-    <ion-item text-wrap class=question *ngFor="let question of questions | async">
-      {{question}}
-    </ion-item>
+    <ol>
+      <li *ngFor="let question of questions_array">
+          {{ question }}
+      </li>
+      quest
+
+    </ol>
   </ion-list>
 
 </ion-content>

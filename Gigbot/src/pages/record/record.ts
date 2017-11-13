@@ -10,13 +10,6 @@ import { CountdownPage } from '../countdown/countdown';
 
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
 
-/**
- * Generated class for the RecordPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-record',
@@ -32,6 +25,7 @@ export class RecordPage {
   questions_db_array: any = [];
   questions_array: any = [];
   questionIndex: number = 0;
+  responses: any = [];
 
   state : String;
   //state : AudioRecorderState = AudioRecorderState.Ready;
