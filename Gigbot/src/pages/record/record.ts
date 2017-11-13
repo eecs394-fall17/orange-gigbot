@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/Observable';
 import { CountdownPage } from '../countdown/countdown';
 
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
+import { PostRecordPage } from '../post_record/post_record';
 
 @IonicPage()
 @Component({
@@ -19,21 +20,20 @@ import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, Camer
 @Injectable()
 export class RecordPage {
 
-  mediaPlugin: MediaPlugin = null;
-  recorded: boolean;
+  currMedia: MediaPlugin = null;
+  currMediaPath: string = null;
+  currMediaIndex: number = 0;
   questions_db: Observable<any[]>;
   questions_db_array: any = [];
   questions_array: any = [];
   questionIndex: number = 0;
-  responses: any = [];
+  responses: string[] = [];
 
   state : String;
-  //state : AudioRecorderState = AudioRecorderState.Ready;
   constructor(public navCtrl: NavController, public navParams: NavParams,
   public alertCtrl: AlertController,
   public platform: Platform, db:AngularFireDatabase,
   private cameraPreview: CameraPreview) {
-    this.recorded = false;
     this.state = 'ready';
     this.questions_db = db.list("/Question-database").valueChanges();
     this.questions_db.subscribe(questions_db => {
@@ -56,11 +56,12 @@ export class RecordPage {
     previewDrag: false
   };
 
-  get MediaPlugin(): MediaPlugin {
-    if (this.mediaPlugin == null) {
-      this.mediaPlugin = new MediaPlugin('recording.wav');
+  get CurrMedia(): MediaPlugin {
+    if (this.currMedia == null) {
+      this.currMediaPath = '../../assets/localaudio/response-' + this.currMediaIndex + '.wav';
+      this.currMedia = new MediaPlugin(this.currMediaPath);
     }
-    return this.mediaPlugin;
+    return this.currMedia;
   }
 
   ionViewDidLoad() {
@@ -68,6 +69,19 @@ export class RecordPage {
   }
 
   newQuestion() {
+    try {
+      this.CurrMedia.stopRecord()
+      this.responses.push(this.currMediaPath);
+      this.state = 'recording';
+
+      this.currMediaIndex++;
+      this.currMediaPath = '../../assets/localaudio/response-' + this.currMediaIndex + '.wav';
+      this.currMedia =  new MediaPlugin(this.currMediaPath);
+    }
+    catch (e) {
+      this.showAlert((<Error>e).message)
+    } 
+
     this.questionIndex = (this.questionIndex + 1) % this.questions_array.length;
   }
 
@@ -85,8 +99,7 @@ export class RecordPage {
 
   startAudioRecording() {
     try {
-        this.MediaPlugin.startRecord();
-        //this.state = AudioRecorderState.Recording;
+        this.CurrMedia.startRecord();
         this.state = 'recording';
         console.log("success startRecording");
     }
@@ -97,8 +110,7 @@ export class RecordPage {
 
   pauseAudioRecording() {
     try {
-    this.MediaPlugin.pauseRecord();
-    //this.state = AudioRecorderState.Recording;
+    this.CurrMedia.pauseRecord();
     this.state = 'paused';
     console.log("success pauseRecording");
   }
@@ -107,11 +119,9 @@ export class RecordPage {
     }
   }
 
-
   resumeAudioRecording() {
     try {
-        this.MediaPlugin.resumeRecord();
-        //this.state = AudioRecorderState.Recording;
+        this.CurrMedia.resumeRecord();
         this.state = 'recording';
         console.log("success resumeRecording");
     }
@@ -122,38 +132,14 @@ export class RecordPage {
 
   stopAudioRecording() {
     try {
-      this.MediaPlugin.stopRecord();
-      //this.state = AudioRecorderState.Recorded;
+      this.CurrMedia.stopRecord();
+      this.responses.push(this.currMediaPath);
       this.state = 'recorded';
-      this.recorded = true;
       console.log("success stopRecording");
+      this.navCtrl.push(PostRecordPage, {'responsePaths': this.responses});
     }
     catch (e) {
       this.showAlert((<Error>e).message)
-    }
-  }
-
-  playAudioPlayback() {
-    try {
-      this.MediaPlugin.play();
-      //this.state = AudioRecorderState.Playing;
-      this.state = 'playing';
-      console.log("success playRecording");
-    }
-    catch (e) {
-      this.showAlert((<Error>e).message);
-    }
-  }
-
-  stopAudioPlayback(){
-    try {
-      this.MediaPlugin.stop();
-      //this.state = AudioRecorderState.Ready;
-      this.state = 'ready';
-      console.log("success stopRecordingPlay");
-    }
-    catch (e) {
-      this.showAlert((<Error>e).message);
     }
   }
 

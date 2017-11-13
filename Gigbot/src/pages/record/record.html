@@ -44,21 +44,9 @@
 
   <p>
     <button  class=practice-button id=new-button ion-button full (click)="newQuestion()">
-      NEW QUESTION
+      NEXT QUESTION
     </button>
   </p>
-
-
-  <div *ngIf = "recorded">
-              <button  class=practice-button id=start-playback-button ion-button (click)="playAudioPlayback()" [disabled]="state != 'recorded'">
-               START PLAYBACK
-              </button>
-
-
-              <button  class=practice-button id=stop-playback-button ion-button (click)="stopAudioPlayback()" [disabled]= "state != 'playing'">
-               STOP PLAYBACK
-              </button>
-  </div>
 
 
 </ion-content>
