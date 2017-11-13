@@ -11,5 +11,24 @@ import { IonicPage, NavController, NavParams, AlertController, Platform, ViewCon
 @Injectable()
 export class PostRecordPage {
 
-  
+  startedplayback:boolean;
+  recordings_array : any = [];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+  public alertCtrl: AlertController,
+  public platform: Platform) {
+
+      this.recordings_array = [1, 2, 3]; 
+  }
+
+  playback(){
+
+    this.startedplayback = true;
+
+  }
+
+  feedbackandscore(){
+    //this.navCtrl.push(FeedbackPage);
+  }
+
 }

@@ -9,6 +9,29 @@
 
 <ion-content padding class=post-record-content>
 
-  
+  <img src="../../assets/imgs/GIGBOT_Main.png" alt="Gigbot" width=15%>
+
+
+  <p>
+    <button class=post-record-button id=playback-button ion-button full (click)="playback()">
+      PLAYBACK SESSION
+    </button>
+  </p>
+
+  <div *ngIf = "startedplayback">
+
+              <button  class=post-record-button id=question-playback-button
+                        ion-button *ngFor="let recording of recordings_array">
+                        {{recording}}
+               START PLAYBACK
+              </button>
+  </div>
+
+  <p>
+    <button class=post-record-button id=feedback-score-button ion-button full (click)="feedbackandscore()">
+      REVIEW FEEDBACK AND SCORE
+    </button>
+  </p>
+
 
 </ion-content>

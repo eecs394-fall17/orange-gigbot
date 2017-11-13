@@ -18,4 +18,15 @@ page-post-record{
       margin: 0 auto;
   }
 
+  #playback-button {
+      background-color: color($colors, gigbot-dark-gray, base);
+  }
+
+  #feedback-score-button {
+      background-color: color($colors, gigbot-dark-gray, base);
+  }
+
+  #question-playback-button{
+    background-color: color($colors, gigbot-light-gray, base);
+  }
 }
