@@ -29,7 +29,6 @@ export class RecordPage {
 
   state : String;
   //state : AudioRecorderState = AudioRecorderState.Ready;
-
   constructor(public navCtrl: NavController, public navParams: NavParams,
   public alertCtrl: AlertController,
   public platform: Platform, db:AngularFireDatabase,
