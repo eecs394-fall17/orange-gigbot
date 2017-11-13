@@ -1,0 +1,44 @@
+page-record {
+
+  .practice-content {
+      color: black;
+      text-align: center;
+      background-color: color($colors, gigbot-light-gray, base);
+  }
+
+  .practice-button {
+      width: 80%;
+      height: 30px;
+      border: 2px solid white;
+      border-radius: 50px;
+      outline-color: white;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      margin: 0 auto;
+  }
+
+  #start-record-button {
+      background-color: color($colors, gigbot-green, base);
+  }
+
+  #pause-record-button{
+    background-color: color($colors, gigbot-citrus, base);
+  }
+  #resume-record-button{
+    background-color: color($colors, gigbot-green, base);
+  }
+  #stop-record-button{
+    background-color: color($colors, gigbot-red, base);
+  }
+  #new-button{
+    background-color: color($colors, gigbot-blue, base);
+  }
+  #start-playback-button{
+    background-color: color($colors, gigbot-green, base);
+  }
+  #stop-playback-button{
+    background-color: color($colors, gigbot-red, base);
+  }
+
+
+}

@@ -1,64 +1,69 @@
 <!--
-  Generated template for the PracticePage page.
-
+  Generated template for the RecordPage page.
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Interview Practice</ion-title>
+    <ion-title><div class=dark-blue-text>RECORDING</div>
+      <div>SESSION</div></ion-title>
   </ion-navbar>
 
 </ion-header>
 
-<ion-content padding>
 
-<!--
-  <button ion-button (click)="startvideorecording()">Start</button>
-  <button ion-button (click)="selectvideo()">Select</button>
-  <video #myvideo height="300" width="300" controls></video>
--->
+<ion-content padding class=practice-content>
 
+  <img src="../../assets/imgs/GIGBOT_RedordVideo.png" alt="Gigbot" width=50%>
+  <p>{{ questions_array[questionIndex] }}</p>
 
-<img src="../../assets/imgs/interviewer.jpg" alt="Interviewer">
-<p>{{ questionsArray[questionIndex] }}</p>
+  <div *ngIf = "state == 'ready'">
+    <p>
+        <button class=practice-button id=start-record-button ion-button full (click)="startAudioRecording()" [disabled]="state != 'ready'">
+        BEGIN RECORDING</button>
+    </p>
+  </div>
 
-<p>
-    <button ion-button full (click)="startRecording()" [disabled]="state != 'ready'">
-      Start recording</button>
-</p>
+  <div *ngIf = "state == 'recording' || state == 'paused'">
+    <p>
+      <button  class=practice-button id=stop-record-button ion-button full (click)="stopAudioRecording()" [disabled]="state == 'paused'">
+        END INTERVIEW</button>
+    </p>
+  </div>
 
-<p>
-    <button ion-button full (click)="pauseRecording()" [disabled]="state != 'recording'">
-      Pause recording</button>
-</p>
+  <div *ngIf = "state == 'recording'">
+    <p>
+        <button class=practice-button id=pause-record-button ion-button full (click)="pauseAudioRecording()">
+          PAUSE RECORDING</button>
+    </p>
+    </div>
 
-<p>
-    <button ion-button full (click)="resumeRecording()" [disabled]="state != 'paused'">
-      Resume recording</button>
-</p>
-
-<p>
-  <button ion-button full (click)="stopRecording()" [disabled]="state != 'recording'">
-    Stop recording</button>
-</p>
-
-<p>
-  <button ion-button full (click)="newQuestion()">
-    New Question
-  </button>
-</p>
+  <div *ngIf = "state == 'paused'">
+    <p>
+        <button  class=practice-button id=resume-record-button ion-button full (click)="resumeAudioRecording()">
+          RESUME RECORDING</button>
+    </p>
+  </div>
 
 
-<div *ngIf = "recorded">
-            <button ion-button (click)="playRecording()" [disabled]="state != 'recorded'">
-             Start playback
-            </button>
+  <p>
+    <button  class=practice-button id=new-button ion-button full (click)="newQuestion()">
+      NEW QUESTION
+    </button>
+  </p>
 
-            <button ion-button (click)="stopRecordingPlay()" [disabled]= "state != 'playing'">
-             Stop playback
-            </button>
-</div>
+
+  <div *ngIf = "recorded">
+              <button  class=practice-button id=start-playback-button ion-button (click)="playAudioPlayback()" [disabled]="state != 'recorded'">
+               START PLAYBACK
+              </button>
+
+
+              <button  class=practice-button id=stop-playback-button ion-button (click)="stopAudioPlayback()" [disabled]= "state != 'playing'">
+               STOP PLAYBACK
+              </button>
+  </div>
+
 
 </ion-content>

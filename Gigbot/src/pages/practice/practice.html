@@ -1,17 +1,15 @@
-<!--
-  Generated template for the PracticePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>Interview Practice</ion-title>
+<ion-title><div class=dark-blue-text>MOCK</div><div>INTERVIEW</div></ion-title>    <ion-buttons end>
+      <button ion-button icon-only (click)="navtologin()" color="light">
+        HOME
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
+<<<<<<< HEAD
 <ion-content padding>
 
 <!--
@@ -20,45 +18,26 @@
   <video #myvideo height="300" width="300" controls></video>
 -->
 
+<ion-content padding class=practice-content>
+{{ counter }}
+<img src="../../assets/imgs/GIGBOT_Main.png" alt="Gigbot" width=40%>
 
-<img src="../../assets/imgs/interviewer.jpg" alt="Interviewer">
-<p>{{ questionsArray[questionIndex] }}</p>
+<div>
+  <p>Welcome to your recorded mock interview session. Press the button below to begin.</p>
+</div>
 
-<p>
-    <button ion-button full (click)="startRecording()" [disabled]="state != 'ready'">
-      Start recording</button>
-</p>
+<div>
+  <p>When you're ready for a new question, tap NEXT.</p>
+</div>
 
-<p>
-    <button ion-button full (click)="pauseRecording()" [disabled]="state != 'recording'">
-      Pause recording</button>
-</p>
-
-<p>
-    <button ion-button full (click)="resumeRecording()" [disabled]="state != 'paused'">
-      Resume recording</button>
-</p>
+<div>
+  <p>When you're ready to stop and review, tap END.</p>
+</div>
 
 <p>
-  <button ion-button full (click)="stopRecording()" [disabled]="state != 'recording'">
-    Stop recording</button>
-</p>
-
-<p>
-  <button ion-button full (click)="newQuestion()">
-    New Question
+  <button class=practice-button id=record-audio-button ion-button full (click)="navrecordpage()">
+    BEGIN MOCK INTERVIEW
   </button>
 </p>
-
-
-<div *ngIf = "recorded">
-            <button ion-button (click)="playRecording()" [disabled]="state != 'recorded'">
-             Start playback
-            </button>
-
-            <button ion-button (click)="stopRecordingPlay()" [disabled]= "state != 'playing'">
-             Stop playback
-            </button>
-</div>
 
 </ion-content>

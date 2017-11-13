@@ -1,8 +1,6 @@
-page-practice {
+page-countdown {
 
-    .practice-content {
-        color: black;
-        text-align: center;
+    .countdown-content {
         background-color: color($colors, gigbot-light-gray, base);
     }
 
@@ -13,18 +11,17 @@ page-practice {
         border-radius: 50px;
         outline-color: white;
         margin-top: 10px;
+        margin-bottom: 10px;
         margin: 0 auto;
     }
 
-    #record-audio-button {
+
+    #cancel-record-button {
         background-color: color($colors, gigbot-red, base);
     }
 
-    #record-video-button {
-        background-color: color($colors, gigbot-red, base);
-    }
-    #record-page-button{
-          background-color: color($colors, gigbot-red, base);
+    #countdown {
+        background-color: color($colors, gigbot-blue, base);
     }
 
 }

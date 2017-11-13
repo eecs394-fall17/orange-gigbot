@@ -3,5 +3,54 @@ page-home {
   ion-title{
     text-align: center;
   }
+  .center{
+    text-align: center;
+  }
+  .background-sp {
+    background: url("../assets/imgs/GIGBOT_LaunchScreen_Background.jpg") no-repeat; 
+    background-size: cover;
+  }
+  .gigbot-sp {
+    text-align: center;
+    color: white;
+  }
+  img.resize {
+    width: 200px;
+    margin: 0 auto;
+  }
+  .rounded {
+    width: 100%;
+    height: 50px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    border: 2px solid white;
+    margin-bottom: 10px;
+  }
+  .full-width{
+    width: 100%;
+  }
+  .align {
+    padding: 0px 30px;
+  }
+  .upper1-sp{
+    font-size: 27px;
+  }
+  .upper2-sp{
+    font-size: 50px;
+  }
+  .upper3-sp{
+    font-size: 22px;
+  }
+
+  #login-button {
+    background: color($colors, gigbot-blue, base);
+    color: white;
+  }
+
+  #signup-button {
+    background: color($colors, gigbot-dark-blue, base);
+    color: white;
+  }
 
 }
