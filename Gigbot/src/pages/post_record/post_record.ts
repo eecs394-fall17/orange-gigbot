@@ -13,6 +13,7 @@ import { AudioProvider, IAudioTrack, ITrackConstraint} from 'ionic-audio';
 export class PostRecordPage {
 
   startedplayback:boolean;
+  responsePaths: string[];
   myRecordings : any = [];
   allRecordings: any = [];
   selectedRecording: any;
@@ -20,21 +21,15 @@ export class PostRecordPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
      private _audioProvider: AudioProvider) {
 
-      this.myRecordings = [{
-      src: 'https://archive.org/download/JM2013-10-05.flac16/V0/jm2013-10-05-t12-MP3-V0.mp3',
-      artist: 'John Mayer',
-      title: 'Why Georgia',
-      art: 'img/johnmayer.jpg',
-      preload: 'metadata' // tell the plugin to preload metadata such as duration for this track, set to 'none' to turn off
-    },
-    {
-      src: 'https://archive.org/download/JM2013-10-05.flac16/V0/jm2013-10-05-t30-MP3-V0.mp3',
-      artist: 'John Mayer',
-      title: 'Who Says',
-      art: 'img/johnmayer.jpg',
-      preload: 'metadata' // tell the plugin to preload metadata such as duration for this track,  set to 'none' to turn off
-    }];
+      this.responsePaths = this.navParams.get('responsePaths');
+      console.log(this.responsePaths);
 
+      this.myRecordings = this.responsePaths.map(path => {
+        var jsonStr = '{"src": "' + path + '", "preload": "metadata"}';
+        console.log(jsonStr);
+        return JSON.parse(jsonStr);
+      });
+      console.log(this.myRecordings);
   }
 
  playback(){

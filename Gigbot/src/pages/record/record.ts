@@ -21,8 +21,8 @@ import { PostRecordPage } from '../post_record/post_record';
 export class RecordPage {
 
   currMedia: MediaPlugin = null;
-  currMediaPath: string = null;
   currMediaIndex: number = 0;
+  currMediaPath = 'response-' + this.currMediaIndex + '.wav';
   questions_db: Observable<any[]>;
   questions_db_array: any = [];
   questions_array: any = [];
@@ -58,7 +58,8 @@ export class RecordPage {
 
   get CurrMedia(): MediaPlugin {
     if (this.currMedia == null) {
-      this.currMediaPath = '../../assets/localaudio/response-' + this.currMediaIndex + '.wav';
+      //this.currMediaPath = '../../assets/localaudio/response-' + this.currMediaIndex + '.wav';
+      this.currMediaPath = 'response-' + this.currMediaIndex + '.wav';
       this.currMedia = new MediaPlugin(this.currMediaPath);
     }
     return this.currMedia;
@@ -72,10 +73,11 @@ export class RecordPage {
     try {
       this.CurrMedia.stopRecord()
       this.responses.push(this.currMediaPath);
-      this.state = 'recording';
+      this.state = 'ready';
 
       this.currMediaIndex++;
-      this.currMediaPath = '../../assets/localaudio/response-' + this.currMediaIndex + '.wav';
+      this.currMediaPath = 'response-' + this.currMediaIndex + '.wav';
+      //this.currMediaPath = '../../assets/localaudio/response-' + this.currMediaIndex + '.wav';
       this.currMedia =  new MediaPlugin(this.currMediaPath);
     }
     catch (e) {

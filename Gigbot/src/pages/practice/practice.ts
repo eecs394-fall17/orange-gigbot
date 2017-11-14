@@ -12,15 +12,6 @@ import { RecordPage } from '../record/record';
 import { PostRecordPage } from '../post_record/post_record';
 
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
-//import { PracticeStart } from '../practicestart/practicestart';
-
-//import { PracticeStart } from '../practicestart/practicestart';
-/**
- * Generated class for the PracticePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -58,12 +49,5 @@ ionViewDidLoad() {
   navrecordpage() {
     this.navCtrl.push(RecordPage);
   }
-
-
-navpostrecordpage(){
-  this.navCtrl.push(PostRecordPage);
-
-}
-
 
 }

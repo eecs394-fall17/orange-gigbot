@@ -16,7 +16,7 @@
   <div *ngIf = "state == 'ready'">
     <p>
         <button class=practice-button id=start-record-button ion-button full (click)="startAudioRecording()" [disabled]="state != 'ready'">
-        BEGIN RECORDING</button>
+        RECORD RESPONSE</button>
     </p>
   </div>
 
@@ -26,6 +26,12 @@
         END INTERVIEW</button>
     </p>
   </div>
+
+  <p>
+      <button  class=practice-button id=new-button ion-button full (click)="newQuestion()">
+        NEXT QUESTION
+      </button>
+  </p>
 
   <div *ngIf = "state == 'recording'">
     <p>
@@ -40,13 +46,5 @@
           RESUME RECORDING</button>
     </p>
   </div>
-
-
-  <p>
-    <button  class=practice-button id=new-button ion-button full (click)="newQuestion()">
-      NEXT QUESTION
-    </button>
-  </p>
-
 
 </ion-content>
