@@ -14,10 +14,11 @@ export class PostRecordPage {
 
   startedplayback:boolean;
   myRecordings : any = [];
+  allRecordings: any = [];
+  selectedRecording: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-  public alertCtrl: AlertController,
-  public platform: Platform, private _audioProvider: AudioProvider) {
+     private _audioProvider: AudioProvider) {
 
       this.myRecordings = [{
       src: 'https://archive.org/download/JM2013-10-05.flac16/V0/jm2013-10-05-t12-MP3-V0.mp3',
@@ -38,17 +39,17 @@ export class PostRecordPage {
 
   ngAfterContentInit() {
     // get all tracks managed by AudioProvider so we can control playback via the API
-    //this.recordings_array = this._audioProvider.tracks;
+    this.allRecordings = this._audioProvider.tracks;
   }
 
-  playSelectedTrack() {
+  playSelectedRecording() {
     // use AudioProvider to control selected track
-    //this._audioProvider.play(this.selectedTrack);
+    this._audioProvider.play(this.selectedRecording);
   }
 
-  pauseSelectedTrack() {
+  pauseSelectedRecording() {
      // use AudioProvider to control selected track
-     //this._audioProvider.pause(this.selectedTrack);
+     this._audioProvider.pause(this.selectedRecording);
   }
 
   onTrackFinished(track: any) {

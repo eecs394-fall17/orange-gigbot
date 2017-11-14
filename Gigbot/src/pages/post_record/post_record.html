@@ -21,20 +21,43 @@
   <div *ngIf = "startedplayback">
 
     <ion-list>
-      <button  class=post-record-button id=question-playback-button
-                ion-button *ngFor="let recording of myRecordings">
-                {{recording}}
-       START PLAYBACK
-      </button>
 
-       <audio-track #audio *ngFor="let track of myRecordings" [track]="track">
+     <audio-track #audio *ngFor="let track of myRecordings" [track]="track">
 
-       </audio-track>
+        <ion-item>
+
+          <audio-track-play item-left [audioTrack]="audio">
+            <ion-spinner></ion-spinner>
+          </audio-track-play>
+
+         <div item-content style="width:100%">
+          <p><strong>Recording {{audio.id + 1}}</strong></p>
+          <audio-track-progress-bar duration progress [audioTrack]="audio"></audio-track-progress-bar>
+        </div>
+       </ion-item>
+     </audio-track>
 
     </ion-list>
 
+<!--
+
+
+      <button  class=post-record-button id=question-playback-button
+                ion-button *ngFor="let recording of myRecordings">
+                {{recording.title}}
+       START PLAYBACK
+     </button>
+
+<button ion-button class=post-record-button id=question-playback-button
+              (click)="playSelectedRecording()">Play</button>
+
+<button ion-button class=post-record-button id=question-playback-button
+            (click)="pauseSelectedRecording()">Pause</button>
+-->
+
 
   </div>
+
 
   <p>
     <button class=post-record-button id=feedback-score-button ion-button full (click)="feedbackandscore()">
