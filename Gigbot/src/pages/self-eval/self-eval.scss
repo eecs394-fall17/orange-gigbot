@@ -1,0 +1,30 @@
+page-self-eval {
+    .practice-content {
+        color: black;
+        text-align: center;
+        background-color: color($colors, gigbot-light-gray, base);
+    }
+
+    .practice-button {
+        width: 80%;
+        height: 30px;
+        border: 2px solid white; 
+        border-radius: 50px;
+        outline-color: white;
+        margin-top: 10px;
+        margin: 0 auto;
+    }
+
+    #record-audio-button {
+        background-color: color($colors, gigbot-red, base);
+    }
+
+    #record-video-button {
+        background-color: color($colors, gigbot-red, base);
+    }
+    #record-page-button{
+          background-color: color($colors, gigbot-red, base);
+    }
+
+}
+ 

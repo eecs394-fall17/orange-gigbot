@@ -23,6 +23,7 @@ import { PracticePage } from '../pages/practice/practice';
 import { CountdownPage } from '../pages/countdown/countdown';
 import { RecordPage } from '../pages/record/record';
 import {PostRecordPage} from '../pages/post_record/post_record';
+import { SelfEval } from '../pages/self-eval/self-eval';
 
 
 import { AngularFireModule } from 'angularfire2';
@@ -55,7 +56,8 @@ export function myCustomAudioProviderFactory() {
     PracticePage,
     CountdownPage,
     RecordPage,
-    PostRecordPage
+    PostRecordPage,
+    SelfEval
   ],
   imports: [
     BrowserModule,
@@ -77,7 +79,8 @@ export function myCustomAudioProviderFactory() {
     PracticePage,
     CountdownPage,
     RecordPage,
-    PostRecordPage
+    PostRecordPage,
+    SelfEval
   ],
   providers: [
     StatusBar,
