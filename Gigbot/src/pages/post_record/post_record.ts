@@ -37,26 +37,7 @@ export class PostRecordPage {
 
   }
 
-  ngAfterContentInit() {
-    // get all tracks managed by AudioProvider so we can control playback via the API
-    this.allRecordings = this._audioProvider.tracks;
-  }
-
-  playSelectedRecording() {
-    // use AudioProvider to control selected track
-    this._audioProvider.play(this.selectedRecording);
-  }
-
-  pauseSelectedRecording() {
-     // use AudioProvider to control selected track
-     this._audioProvider.pause(this.selectedRecording);
-  }
-
-  onTrackFinished(track: any) {
-    console.log('Track finished', track)
-  }
-
-  playback(){
+ playback(){
 
     this.startedplayback = true;
 

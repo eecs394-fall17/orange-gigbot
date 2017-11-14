@@ -25,18 +25,16 @@
      <audio-track #audio *ngFor="let track of myRecordings" [track]="track">
 
         <ion-item>
-
-          <audio-track-play item-left [audioTrack]="audio">
+          <audio-track-play dark item-left [audioTrack]="audio">
             <ion-spinner></ion-spinner>
           </audio-track-play>
 
          <div item-content style="width:100%">
           <p><strong>Recording {{audio.id + 1}}</strong></p>
-          <audio-track-progress-bar duration progress [audioTrack]="audio"></audio-track-progress-bar>
+          <audio-track-progress-bar dark duration progress [audioTrack]="audio"></audio-track-progress-bar>
         </div>
        </ion-item>
      </audio-track>
-
     </ion-list>
 
 <!--
