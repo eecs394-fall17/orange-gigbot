@@ -64,6 +64,7 @@ export function myCustomAudioProviderFactory() {
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     IonicAudioModule.forRoot(myCustomAudioProviderFactory)
+    //IonicAudioModule.forRoot(AudioProvider)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
