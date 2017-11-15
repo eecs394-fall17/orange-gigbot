@@ -15,6 +15,7 @@ export class PostRecordPage {
 
   startedplayback:boolean;
   responsePaths: string[];
+  questionIndexes: number[];
   myRecordings : any = [];
   allRecordings: any = [];
   selectedRecording: any;
@@ -23,6 +24,7 @@ export class PostRecordPage {
      private _audioProvider: AudioProvider) {
 
       this.responsePaths = this.navParams.get('responsePaths');
+      this.questionIndexes = this.navParams.get('questionIndexes');
       console.log(this.responsePaths);
 
       this.myRecordings = this.responsePaths.map(path => {
@@ -38,7 +40,7 @@ export class PostRecordPage {
   }
 
   navselfeval(){
-    this.navCtrl.push(SelfEvalPage, {'responsePaths': this.responsePaths});
+    this.navCtrl.push(SelfEvalPage, {'responsePaths': this.responsePaths, 'questionIndexes': this.questionIndexes});
   }
 
 }

@@ -15,62 +15,64 @@
 
 <ion-content padding class=self-eval-content align="center">
 
-  <span *ngIf = "state == 'done'">
-      <img src="../../assets/imgs/GIGBOT_Main.png" alt="Gigbot" width=50%>      
-  </span>
+  <div *ngIf = "state == 'evaluating'">
+    <h4> 
+      Question {{dbIndex+1}}: {{questionText}}
+    </h4>
 
-  <h4> 
-    Question {{questionIndex+1}}: {{questionText}}
-  </h4> 
-  <p>
-    PLAY RESPONSE AUDIO
-  </p>
+    <audio-track #audio [track]="myRecordings[dbIndex]">
+      <ion-item>
+        <audio-track-play dark item-left [audioTrack]="audio">
+          <ion-spinner></ion-spinner>
+        </audio-track-play>
 
-<div>
-  <h6>Good answer would contain:</h6>
-</div>
-
-  <div *ngIf = "state != 'done'">
-
+        <div item-content style="width:100%">
+          <p><strong>Your Response</strong></p>
+          <audio-track-progress-bar dark duration progress [audioTrack]="audio"></audio-track-progress-bar>
+        </div>
+      </ion-item>
+    </audio-track>
+    <div>
+      <h6>Good answer would contain:</h6>
+    </div>
     <p>
         {{attribute1}}
     </p>
-  <ion-item>
-    <ion-range min="0" max="100" [(ngModel)]="attribute1Score" pin="true">
-      <ion-label range-left>Failed It!</ion-label>
-      <ion-label range-right>Nailed It!</ion-label>
-    </ion-range>
-  </ion-item>
+    <ion-item>
+      <ion-range min="0" max="100" [(ngModel)]="attribute1Score" pin="true">
+        <ion-label range-left>Failed It!</ion-label>
+        <ion-label range-right>Nailed It!</ion-label>
+      </ion-range>
+    </ion-item>
 
-  <p>
-      {{attribute2}}
-  </p>
-  <ion-item>
-    <ion-range min="0" max="100" [(ngModel)]="attribute2Score" pin="true">
-      <ion-label range-left>Failed It!</ion-label>
-      <ion-label range-right>Nailed It!</ion-label>
-    </ion-range> 
-  </ion-item>
+    <p>
+        {{attribute2}}
+    </p>
+    <ion-item>
+      <ion-range min="0" max="100" [(ngModel)]="attribute2Score" pin="true">
+        <ion-label range-left>Failed It!</ion-label>
+        <ion-label range-right>Nailed It!</ion-label>
+      </ion-range> 
+    </ion-item>
 
-  <p>
-      {{attribute3}}
-  </p>
-  <ion-item>
-    <ion-range min="0" max="100" [(ngModel)]="attribute3Score" pin="true">
-      <ion-label range-left>Failed It!</ion-label>
-      <ion-label range-right>Nailed It!</ion-label>
-    </ion-range> 
-  </ion-item>
-</div>
+    <p>
+        {{attribute3}}
+    </p>
+    <ion-item>
+      <ion-range min="0" max="100" [(ngModel)]="attribute3Score" pin="true">
+        <ion-label range-left>Failed It!</ion-label>
+        <ion-label range-right>Nailed It!</ion-label>
+      </ion-range> 
+    </ion-item>
 
-<div *ngIf = "state == 'done'">
-  Results
-  Q1: {{score1 | number: 0 }} 
-  Q2: {{score2 | number: 0 }}
-</div>
+    <button class=self-eval-button id=next-question-button ion-button full (click)="nextquestion()">
+      NEXT QUESTION
+    </button>
+  </div>
 
-<button class=self-eval-button id=next-question-button ion-button full (click)="nextquestion()">
-  NEXT QUESTION
-</button>
+  <div *ngIf = "state == 'done'">
+      <img src="../../assets/imgs/GIGBOT_Main.png" alt="Gigbot" width=50%> 
+      RESULTS
+  </div>
 
 </ion-content>

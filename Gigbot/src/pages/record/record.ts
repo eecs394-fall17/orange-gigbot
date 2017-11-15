@@ -28,6 +28,8 @@ export class RecordPage {
   questions_array: any = [];
   questionIndex: number = 0;
   responses: string[] = [];
+  question_indexes: number[] = [];
+  question_count = 1;
 
   state : String;
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -41,6 +43,7 @@ export class RecordPage {
       this.questions_array = this.questions_db_array.map(q => q.Question);
       console.log(this.questions_db_array);
       console.log(this.questions_array);
+      this.newQuestionIndex();
     });
   }
 
@@ -69,10 +72,18 @@ export class RecordPage {
     console.log('ionViewDidLoad PracticePage');
   }
 
+  newQuestionIndex() {
+    do {
+      var newQuestionIndex = Math.floor(Math.random() * this.questions_array.length);
+    }
+    while (newQuestionIndex == this.questionIndex);
+    this.questionIndex = newQuestionIndex;
+    console.log(this.questionIndex);
+  }
+
   newQuestion() {
     try {
-      //this.CurrMedia.stopRecord()
-      this.responses.push(this.currMediaPath);
+      this.CurrMedia.stopRecord()
       this.state = 'ready';
 
       this.currMediaIndex++;
@@ -83,8 +94,8 @@ export class RecordPage {
     catch (e) {
       this.showAlert((<Error>e).message)
     } 
-
-    this.questionIndex = (this.questionIndex + 1) % this.questions_array.length;
+    this.newQuestionIndex();
+    this.question_count++;
   }
 
   startVideoRecording(){
@@ -101,9 +112,11 @@ export class RecordPage {
 
   startAudioRecording() {
     try {
-        //this.CurrMedia.startRecord();
-        this.state = 'recording';
-        console.log("success startRecording");
+      this.CurrMedia.startRecord();
+      this.state = 'recording';
+      this.responses.push(this.currMediaPath);
+      this.question_indexes.push(this.questionIndex);
+      console.log("success startRecording");
     }
     catch (e) {
       this.showAlert((<Error>e).message);
@@ -123,9 +136,9 @@ export class RecordPage {
 
   resumeAudioRecording() {
     try {
-        this.CurrMedia.resumeRecord();
-        this.state = 'recording';
-        console.log("success resumeRecording");
+      this.CurrMedia.resumeRecord();
+      this.state = 'recording';
+      console.log("success resumeRecording");
     }
     catch (e) {
       this.showAlert((<Error>e).message);
@@ -134,11 +147,10 @@ export class RecordPage {
 
   stopAudioRecording() {
     try {
-      //this.CurrMedia.stopRecord();
-      this.responses.push(this.currMediaPath);
+      this.CurrMedia.stopRecord();
       this.state = 'recorded';
       console.log("success stopRecording");
-      this.navCtrl.push(PostRecordPage, {'responsePaths': this.responses});
+      this.navCtrl.push(PostRecordPage, {'responsePaths': this.responses, 'questionIndexes': this.question_indexes});
     }
     catch (e) {
       this.showAlert((<Error>e).message)
