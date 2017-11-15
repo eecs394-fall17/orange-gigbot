@@ -1,11 +1,12 @@
 page-self-eval {
-    .practice-content {
+
+    .self-eval-content {
         color: black;
         text-align: center;
         background-color: color($colors, gigbot-light-gray, base);
     }
 
-    .practice-button {
+    .self-eval-button {
         width: 80%;
         height: 30px;
         border: 2px solid white; 
@@ -15,15 +16,8 @@ page-self-eval {
         margin: 0 auto;
     }
 
-    #record-audio-button {
-        background-color: color($colors, gigbot-red, base);
-    }
-
-    #record-video-button {
-        background-color: color($colors, gigbot-red, base);
-    }
-    #record-page-button{
-          background-color: color($colors, gigbot-red, base);
+    #next-question-button {
+        background-color: color($colors, gigbot-blue, base);
     }
 
 }

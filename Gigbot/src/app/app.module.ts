@@ -22,8 +22,8 @@ import { NetworkPage } from '../pages/network/network';
 import { PracticePage } from '../pages/practice/practice';
 import { CountdownPage } from '../pages/countdown/countdown';
 import { RecordPage } from '../pages/record/record';
-import {PostRecordPage} from '../pages/post_record/post_record';
-import { SelfEval } from '../pages/self-eval/self-eval';
+import { PostRecordPage } from '../pages/post_record/post_record';
+import { SelfEvalPage } from '../pages/self-eval/self-eval';
 
 
 import { AngularFireModule } from 'angularfire2';
@@ -57,7 +57,7 @@ export function myCustomAudioProviderFactory() {
     CountdownPage,
     RecordPage,
     PostRecordPage,
-    SelfEval
+    SelfEvalPage
   ],
   imports: [
     BrowserModule,
@@ -66,7 +66,6 @@ export function myCustomAudioProviderFactory() {
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     IonicAudioModule.forRoot(myCustomAudioProviderFactory)
-    //IonicAudioModule.forRoot(AudioProvider)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -80,7 +79,7 @@ export function myCustomAudioProviderFactory() {
     CountdownPage,
     RecordPage,
     PostRecordPage,
-    SelfEval
+    SelfEvalPage
   ],
   providers: [
     StatusBar,

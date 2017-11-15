@@ -2,6 +2,7 @@
 import { Component, ViewChild, Injectable} from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, Platform, ViewController } from 'ionic-angular';
 import { AudioProvider, IAudioTrack, ITrackConstraint} from 'ionic-audio';
+import { SelfEvalPage } from '../self-eval/self-eval';
 
 @IonicPage()
 @Component({
@@ -33,13 +34,11 @@ export class PostRecordPage {
   }
 
  playback(){
-
     this.startedplayback = true;
-
   }
 
-  feedbackandscore(){
-    //this.navCtrl.push(FeedbackPage);
+  navselfeval(){
+    this.navCtrl.push(SelfEvalPage, {'responsePaths': this.responsePaths});
   }
 
 }

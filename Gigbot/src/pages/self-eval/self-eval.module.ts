@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { SelfEval } from './self-eval';
+import { SelfEvalPage } from './self-eval';
 
 @NgModule({
   declarations: [
-    SelfEval,
+    SelfEvalPage,
   ],
   imports: [
-    IonicPageModule.forChild(SelfEval),
+    IonicPageModule.forChild(SelfEvalPage),
   ],
 })
 export class SelfEvalPageModule {}

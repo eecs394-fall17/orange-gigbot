@@ -1,124 +1,76 @@
 <ion-header>
   <ion-navbar>
       
-<ion-title><div class=dark-blue-text></div>
-  <!-- question 1 -->
-  <div *ngIf = "step == 1; else steptwoheader">Question 1:<br/>
-    {{qtext1}}
-  </div>
-  <!-- question 2 -->
-  <ng-template #steptwoheader>
-    <div>Question 2:<br/>
-      {{qtext2}}
-    </div>
-  </ng-template>
-  
-</ion-title><ion-buttons end>
-      <!--button ion-button icon-only (click)="navtologin()" color="light">
-        HOME
-      </button-->
+    <ion-title><div class=dark-blue-text>Q BY Q</div>
+      <div>REVIEW</div>
+    </ion-title>
+    <ion-buttons end>
+          <!--button ion-button icon-only (click)="navtologin()" color="light">
+            HOME
+          </button-->
     </ion-buttons>
-  </ion-navbar>
 
+  </ion-navbar>
 </ion-header>
 
-<ion-content padding class=practice-content align="center">
-  <span *ngIf = "step == 3">
-      <img src="../../assets/imgs/GIGBOT_Main.png" alt="Gigbot" width=40%>      
+<ion-content padding class=self-eval-content align="center">
+
+  <span *ngIf = "state == 'done'">
+      <img src="../../assets/imgs/GIGBOT_Main.png" alt="Gigbot" width=50%>      
   </span>
 
+  <h4> 
+    Question {{questionIndex+1}}: {{questionText}}
+  </h4> 
+  <p>
+    PLAY RESPONSE AUDIO
+  </p>
+
 <div>
-  <p>Good answer would contain:</p>
+  <h6>Good answer would contain:</h6>
 </div>
 
-<!--1st question-->
-<!--div *ngIf = "step == 1; else steptwo">11111-->
-<div [ngSwitch]="step">
+  <div *ngIf = "state != 'done'">
 
-  <div *ngSwitchCase="1">
-
-    <h3>Attribute 1</h3>
     <p>
-        {{attrText11}}
+        {{attribute1}}
     </p>
   <ion-item>
-    <ion-range min="0" max="100" [(ngModel)]="attr11" pin="true"><!-- (tap)="slider1()"-->
-      <ion-label range-left>Attributte 1</ion-label>
-      <ion-label range-right>{{ attr11 }}</ion-label>
+    <ion-range min="0" max="100" [(ngModel)]="attribute1Score" pin="true">
+      <ion-label range-left>Failed It!</ion-label>
+      <ion-label range-right>Nailed It!</ion-label>
     </ion-range>
   </ion-item>
 
-  <h3>Attribute 2</h3>  
   <p>
-      {{attrText12}}
+      {{attribute2}}
   </p>
   <ion-item>
-    <ion-range min="0" max="100" [(ngModel)]="attr12" pin="true"><!-- (ionChange)="slider2()"-->
-      <ion-label range-left>Attributte 2</ion-label>
-      <ion-label range-right>{{ attr12 }}</ion-label>
+    <ion-range min="0" max="100" [(ngModel)]="attribute2Score" pin="true">
+      <ion-label range-left>Failed It!</ion-label>
+      <ion-label range-right>Nailed It!</ion-label>
     </ion-range> 
   </ion-item>
-  <h3>Attribute 3</h3>
+
   <p>
-      {{attrText13}}
+      {{attribute3}}
   </p>
   <ion-item>
-    <ion-range min="0" max="100" [(ngModel)]="attr13" pin="true"><!-- (ionChange)="slider3()"-->
-      <ion-label range-left>Attributte 3</ion-label>
-      <ion-label range-right>{{ attr13 }}</ion-label>
-    </ion-range> 
-  </ion-item>
-</div>
-
-
-  <!--/div-->
-
-
-<!--2nd question-->
-<!--ng-template #steptwo-->
-  <div *ngSwitchCase="2">
-    <h3>Attribute 1</h3>
-    <p>
-        {{attrText21}}
-    </p>
-  <ion-item >
-    <ion-range min="0" max="100" [(ngModel)]="attr21" pin="true"><!-- (tap)="slider1()"-->
-      <ion-label range-left>Attributte 1</ion-label>
-      <ion-label range-right>{{ attr21 }}</ion-label>
-    </ion-range>
-  </ion-item>
-  <h3>Attribute 2</h3>
-  <p>
-      {{attrText22}}
-  </p>
-  <ion-item>
-    <ion-range min="0" max="100" [(ngModel)]="attr22" pin="true"><!-- (ionChange)="slider2()"-->
-      <ion-label range-left>Attributte 2</ion-label>
-      <ion-label range-right>{{ attr22 }}</ion-label>
-    </ion-range> 
-  </ion-item>
-  <h3>Attribute 3</h3>
-  <p>
-      {{attrText23}}
-  </p>
-  <ion-item>
-    <ion-range min="0" max="100" [(ngModel)]="attr23" pin="true"><!-- (ionChange)="slider3()"-->
-      <ion-label range-left>Attributte 3</ion-label>
-      <ion-label range-right>{{ attr23 }}</ion-label>
+    <ion-range min="0" max="100" [(ngModel)]="attribute3Score" pin="true">
+      <ion-label range-left>Failed It!</ion-label>
+      <ion-label range-right>Nailed It!</ion-label>
     </ion-range> 
   </ion-item>
 </div>
-<!--/ng-template-->
-<div *ngSwitchDefault>Results
+
+<div *ngIf = "state == 'done'">
+  Results
   Q1: {{score1 | number: 0 }} 
   Q2: {{score2 | number: 0 }}
 </div>
 
-</div>
-<p>
-  <button class=practice-button id=record-audio-button ion-button full (click)="nextpage()">
-    NEXT QUESTION
-  </button>
-</p>
+<button class=self-eval-button id=next-question-button ion-button full (click)="nextquestion()">
+  NEXT QUESTION
+</button>
 
 </ion-content>

@@ -71,7 +71,7 @@ export class RecordPage {
 
   newQuestion() {
     try {
-      this.CurrMedia.stopRecord()
+      //this.CurrMedia.stopRecord()
       this.responses.push(this.currMediaPath);
       this.state = 'ready';
 
@@ -101,7 +101,7 @@ export class RecordPage {
 
   startAudioRecording() {
     try {
-        this.CurrMedia.startRecord();
+        //this.CurrMedia.startRecord();
         this.state = 'recording';
         console.log("success startRecording");
     }
@@ -134,7 +134,7 @@ export class RecordPage {
 
   stopAudioRecording() {
     try {
-      this.CurrMedia.stopRecord();
+      //this.CurrMedia.stopRecord();
       this.responses.push(this.currMediaPath);
       this.state = 'recorded';
       console.log("success stopRecording");
