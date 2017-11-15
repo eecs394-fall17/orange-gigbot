@@ -13,12 +13,12 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class=self-eval-content align="center">
+<ion-content padding class=self-eval-content>
 
   <div *ngIf = "state == 'evaluating'">
-    <h4> 
+    <h5> 
       Question {{dbIndex+1}}: {{questionText}}
-    </h4>
+    </h5>
 
     <audio-track #audio [track]="myRecordings[dbIndex]">
       <ion-item>
@@ -33,7 +33,7 @@
       </ion-item>
     </audio-track>
     <div>
-      <h6>Good answer would contain:</h6>
+      <h6>A good response might contain:</h6>
     </div>
     <p>
         {{attribute1}}
@@ -71,8 +71,17 @@
   </div>
 
   <div *ngIf = "state == 'done'">
-      <img src="../../assets/imgs/GIGBOT_Main.png" alt="Gigbot" width=50%> 
-      RESULTS
+    <img src="../../assets/imgs/GIGBOT_Main.png" alt="Gigbot" width=50%> 
+    <h5>RESULTS</h5>
+    <ol *ngFor="let score of scores">
+        {{ score }}
+    </ol>
+    <p> Your grade for this interview session:</p> 
+    <br>
+    <h5> {{ finalGrade }}</h5>
+    <button class=self-eval-button id=next-question-button ion-button full (click)="navhome()">
+      HOME
+    </button>
   </div>
 
 </ion-content>

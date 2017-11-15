@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { AudioProvider, IAudioTrack, ITrackConstraint} from 'ionic-audio';
+import { MainPage } from '../main/main';
 
 @IonicPage()
 @Component({
@@ -22,6 +23,8 @@ export class SelfEvalPage {
   questions_db_array: any = [];
   questions_array: any = [];
   good_responses_array: any = [];
+  scores: number[] = [];
+  finalGrade: string;
 
   state: string = 'evaluating';
   dbIndex: number = 0;
@@ -72,22 +75,46 @@ export class SelfEvalPage {
   }
 
   nextquestion(){
+    var currScore = (this.attribute1Score + this.attribute2Score + this.attribute3Score) / 3;
+    this.scores.push(currScore);
     if (this.dbIndex < this.questionIndexes.length - 1) {
       this.dbIndex++;
       this.setData();
     } else {
+      this.calculateGrade();
       this.state = 'done';
     }
   }
-  /*
-  get score1(){
-    return (this.attr11 + this.attr12 + this.attr13)/3;
-    //return 51;
-  }
-  get score2(){
-    return (this.attr21 + this.attr22 + this.attr23)/3;
-    //return 62;
-  }
-  */
 
+  calculateGrade() {
+    var sum = 0;
+    for (var i = 0; i < this.scores.length; i++) {
+      sum += this.scores[i];
+    }
+    var avg = sum / this.scores.length;
+    var grade;
+    if (avg < 10) {
+      grade = "C";
+    } else if (avg >= 10 &&  avg < 25) {
+      grade = "C+";
+    } else if (avg >= 25 && avg < 40) {
+      grade = "B-";
+    } else if (avg >= 40 && avg < 55) {
+      grade = "B";
+    } else if (avg >= 55 && avg < 70) {
+      grade = "B+";
+    } else if (avg >= 70 && avg < 85) {
+      grade = "A-";
+    } else if (avg >= 85 && avg < 95) {
+      grade = "A";
+    } else if (avg >= 95) {
+      grade = "A+";
+    }
+    this.finalGrade = grade;
+  }
+
+  navhome() {
+    this.navCtrl.setRoot(MainPage);
+  }
+  
 }
