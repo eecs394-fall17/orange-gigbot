@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-      
+
     <ion-title><div class=dark-blue-text>Q BY Q</div>
       <div>REVIEW</div>
     </ion-title>
@@ -16,7 +16,7 @@
 <ion-content padding class=self-eval-content>
 
   <div *ngIf = "state == 'evaluating'">
-    <h5> 
+    <h5>
       Question {{dbIndex+1}}: {{questionText}}
     </h5>
 
@@ -52,7 +52,7 @@
       <ion-range min="0" max="100" [(ngModel)]="attribute2Score" pin="true">
         <ion-label range-left>Failed It!</ion-label>
         <ion-label range-right>Nailed It!</ion-label>
-      </ion-range> 
+      </ion-range>
     </ion-item>
 
     <p>
@@ -62,7 +62,7 @@
       <ion-range min="0" max="100" [(ngModel)]="attribute3Score" pin="true">
         <ion-label range-left>Failed It!</ion-label>
         <ion-label range-right>Nailed It!</ion-label>
-      </ion-range> 
+      </ion-range>
     </ion-item>
 
     <button class=self-eval-button id=next-question-button ion-button full (click)="nextquestion()">
@@ -71,12 +71,16 @@
   </div>
 
   <div *ngIf = "state == 'done'">
-    <img src="../../assets/imgs/GIGBOT_Main.png" alt="Gigbot" width=50%> 
+    <img src="../../assets/imgs/GIGBOT_Main.png" alt="Gigbot" width=50%>
     <h5>RESULTS</h5>
+
+    <!--
     <ol *ngFor="let score of scores">
         {{ score }}
     </ol>
-    <p> Your grade for this interview session:</p> 
+  -->
+  
+    <p> Your grade for this interview session:</p>
     <br>
     <h5> {{ finalGrade }}</h5>
     <button class=self-eval-button id=next-question-button ion-button full (click)="navhome()">

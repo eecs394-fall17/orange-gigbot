@@ -10,6 +10,7 @@ import { CountdownPage } from '../countdown/countdown';
 
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
 import { PostRecordPage } from '../post_record/post_record';
+import { SelfEvalPage } from '../self-eval/self-eval';
 
 @IonicPage()
 @Component({
@@ -93,7 +94,7 @@ export class RecordPage {
     }
     catch (e) {
       this.showAlert((<Error>e).message)
-    } 
+    }
     this.newQuestionIndex();
     this.question_count++;
   }
@@ -150,7 +151,7 @@ export class RecordPage {
       this.CurrMedia.stopRecord();
       this.state = 'recorded';
       console.log("success stopRecording");
-      this.navCtrl.push(PostRecordPage, {'responsePaths': this.responses, 'questionIndexes': this.question_indexes});
+      this.navCtrl.push(SelfEvalPage, {'responsePaths': this.responses, 'questionIndexes': this.question_indexes});
     }
     catch (e) {
       this.showAlert((<Error>e).message)
