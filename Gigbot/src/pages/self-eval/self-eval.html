@@ -1,26 +1,22 @@
 <ion-header>
   <ion-navbar>
 
-    <ion-title><div class=dark-blue-text>Q BY Q</div>
-      <div>REVIEW</div>
-    </ion-title>
-    <ion-buttons end>
-          <!--button ion-button icon-only (click)="navtologin()" color="light">
-            HOME
-          </button-->
-    </ion-buttons>
-
+    <ion-title textwrap>
+      <div class=dark-blue-text>Q BY Q</div>
+     <div>REVIEW</div>
+        </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding class=self-eval-content>
 
   <div *ngIf = "state == 'evaluating'">
-    <h5>
-      Question {{dbIndex+1}}: {{questionText}}
-    </h5>
 
-    <audio-track #audio [track]="myRecordings[dbIndex]">
+    <h5>
+         Question {{dbIndex+1}}: {{questionText}}
+       </h5>
+       
+    <audio-track class=self-eval-audio #audio [track]="myRecordings[dbIndex]">
       <ion-item>
         <audio-track-play dark item-left [audioTrack]="audio">
           <ion-spinner></ion-spinner>
@@ -32,13 +28,16 @@
         </div>
       </ion-item>
     </audio-track>
+
+    <br>
+
     <div>
       <h6>A good response might contain:</h6>
     </div>
     <p>
         {{attribute1}}
     </p>
-    <ion-item>
+    <ion-item class=self-eval-item>
       <ion-range min="0" max="100" [(ngModel)]="attribute1Score" pin="true">
         <ion-label range-left>Failed It!</ion-label>
         <ion-label range-right>Nailed It!</ion-label>
@@ -48,7 +47,7 @@
     <p>
         {{attribute2}}
     </p>
-    <ion-item>
+    <ion-item class=self-eval-item>
       <ion-range min="0" max="100" [(ngModel)]="attribute2Score" pin="true">
         <ion-label range-left>Failed It!</ion-label>
         <ion-label range-right>Nailed It!</ion-label>
@@ -58,12 +57,14 @@
     <p>
         {{attribute3}}
     </p>
-    <ion-item>
+    <ion-item class=self-eval-item>
       <ion-range min="0" max="100" [(ngModel)]="attribute3Score" pin="true">
         <ion-label range-left>Failed It!</ion-label>
         <ion-label range-right>Nailed It!</ion-label>
       </ion-range>
     </ion-item>
+
+    <br>
 
     <button class=self-eval-button id=next-question-button ion-button full (click)="nextquestion()">
       NEXT QUESTION
@@ -79,7 +80,7 @@
         {{ score }}
     </ol>
   -->
-  
+
     <p> Your grade for this interview session:</p>
     <br>
     <h5> {{ finalGrade }}</h5>
