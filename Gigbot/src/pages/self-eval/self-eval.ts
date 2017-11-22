@@ -7,7 +7,7 @@ import { MainPage } from '../main/main';
 
 @IonicPage()
 @Component({
-  selector: 'self-eval',
+  selector: 'page-self-eval',
   templateUrl: 'self-eval.html',
 })
 export class SelfEvalPage {
@@ -116,5 +116,5 @@ export class SelfEvalPage {
   navhome() {
     this.navCtrl.setRoot(MainPage);
   }
-  
+
 }
