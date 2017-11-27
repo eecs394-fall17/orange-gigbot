@@ -12,7 +12,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class QuestionCardComponent implements OnInit{
   @Input() data: any;
+  @Input() index: number;
   text: string;
+  questionText: string;
 
   constructor() {
     console.log('Hello QuestionCardComponent Component');
@@ -25,7 +27,9 @@ export class QuestionCardComponent implements OnInit{
 
   extractData(){
     if (this.data) {
-      this.text = this.data;
+      this.questionText = this.data.Question;
+      this.index = this.index + 1;
+      this.text = "Q" + this.index + ": " + this.questionText;
     }
   }
 

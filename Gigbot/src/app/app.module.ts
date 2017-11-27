@@ -32,6 +32,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { QuestionCardComponent } from '../components/question-card/question-card';
 import { ComponentsModule } from '../components/components.module';
+import { DisplayQuestionPage } from '../pages/display-question/display-question';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAi43bPQCzb9g2EXzk32oqPuVJwyj_wHhs",
@@ -58,7 +59,8 @@ export function myCustomAudioProviderFactory() {
     CountdownPage,
     RecordPage,
     PostRecordPage,
-    SelfEvalPage
+    SelfEvalPage,
+    DisplayQuestionPage
   ],
   imports: [
     BrowserModule,
@@ -81,7 +83,8 @@ export function myCustomAudioProviderFactory() {
     CountdownPage,
     RecordPage,
     PostRecordPage,
-    SelfEvalPage
+    SelfEvalPage,
+    DisplayQuestionPage
   ],
   providers: [
     StatusBar,

@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
+import { DisplayQuestionPage } from '../display-question/display-question';
 
-import { QuestionCardComponent } from '../../components/question-card/question-card';
+//import { QuestionCardComponent } from '../../components/question-card/question-card';
 
 @IonicPage()
 @Component({
@@ -28,8 +29,9 @@ export class LibraryPage {
     console.log('ionViewDidLoad LibraryPage');
   }
 
-  navToQuestion() {
-    console.log('navToQuestion called');
+  navToQuestion(index) {
+    console.log(index);
+    this.navCtrl.push(DisplayQuestionPage, {'question': this.questions_db_array[index]});
   }
 
 }

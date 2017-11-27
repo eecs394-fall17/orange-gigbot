@@ -10,26 +10,13 @@
 
 <ion-header>
   <ion-navbar>
-    <ion-title><div>Q & A</div><div>LIBRARY</div></ion-title>
+    <ion-title><div class=dark-blue-text>Q & A</div><div>LIBRARY</div></ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding class=library-content>
-  <!--
   <ion-list>
-    <ion-list>
-    <ol>
-      <li *ngFor="let question of questions_array">
-          {{ question }}
-      </li>
-
-    </ol>
-    </ion-list>
-  -->
-  <ion-list>
-   <question-card *ngFor="let question of questions_array" [data]="question" (click)="navToQuestion()"></question-card>
+   <question-card *ngFor="let question of questions_db_array; let i = index" [index]="i" [data]="question" (click)="navToQuestion(i)"></question-card>
   </ion-list>
-
-
 </ion-content>
