@@ -33,13 +33,10 @@ export class PracticePage {
   navcountdownpage() {
     this.navCtrl.push(CountdownPage);
   }
-
-
+  
   navtologin() {
-    this.navCtrl.push(MainPage);
+    this.navCtrl.setRoot(MainPage);
   }
-
-
 
 ionViewDidLoad() {
   console.log('ionViewDidLoad PracticePage');
@@ -47,7 +44,9 @@ ionViewDidLoad() {
 
 
   navrecordpage() {
-    this.navCtrl.push(RecordPage);
+    var questionSource = (<any>document.getElementById("question-select")).value;
+    console.log(questionSource)
+    this.navCtrl.push(RecordPage, {'questionSource': questionSource});
   }
 
 }

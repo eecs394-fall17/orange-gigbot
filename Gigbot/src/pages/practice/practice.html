@@ -2,7 +2,7 @@
   <ion-navbar>
 <ion-title><div class=dark-blue-text>MOCK</div><div>INTERVIEW</div></ion-title>    <ion-buttons end>
       <button ion-button icon-only (click)="navtologin()" color="light">
-        HOME
+        Home
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -20,16 +20,25 @@
 <img src="assets/imgs/GIGBOT_Main.png" alt="Gigbot" width=40%>
 
 <div>
-  <p>Welcome to your recorded mock interview session. Press the button below to begin.</p>
+  <p>Welcome to your recorded mock interview session.
+    Identify your question preference and then press the button below to begin.</p>
+</div>
+<!--
+<div>
+  <p>When you're ready for a new question, tap NEXT QUESTION.</p>
 </div>
 
 <div>
-  <p>When you're ready for a new question, tap NEXT.</p>
+  <p>When you're ready to stop and review, tap END INTERVIEW.</p>
+</div>
+-->
+<div class=question-pref>
+  <select id=question-select>
+      <option value="random">Random Behavioral Questions</option>
+      <option value="favorites">My Favorites</option>
+  </select>
 </div>
 
-<div>
-  <p>When you're ready to stop and review, tap END.</p>
-</div>
 
 <p>
   <button class=practice-button id=record-audio-button ion-button full (click)="navrecordpage()">

@@ -33,6 +33,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { QuestionCardComponent } from '../components/question-card/question-card';
 import { ComponentsModule } from '../components/components.module';
 import { DisplayQuestionPage } from '../pages/display-question/display-question';
+import { QuestionProvider } from '../providers/question/question';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAi43bPQCzb9g2EXzk32oqPuVJwyj_wHhs",
@@ -95,7 +96,8 @@ export function myCustomAudioProviderFactory() {
     Camera,
     CameraPreview,
     IonicAudioModule,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    QuestionProvider
   ],
 
 })

@@ -31,7 +31,7 @@ export class LibraryPage {
 
   navToQuestion(index) {
     console.log(index);
-    this.navCtrl.push(DisplayQuestionPage, {'question': this.questions_db_array[index]});
+    this.navCtrl.push(DisplayQuestionPage, {'question': this.questions_db_array[index], 'index': index});
   }
 
 }

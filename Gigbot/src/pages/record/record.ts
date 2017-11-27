@@ -11,7 +11,9 @@ import { CountdownPage } from '../countdown/countdown';
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
 import { PostRecordPage } from '../post_record/post_record';
 import { SelfEvalPage } from '../self-eval/self-eval';
+import { MainPage } from '../main/main';
 import { AngularFireModule } from 'angularfire2';
+import { QuestionProvider } from '../../providers/question/question';
 
 @IonicPage()
 @Component({
@@ -32,13 +34,16 @@ export class RecordPage {
   responses: string[] = [];
   question_indexes: number[] = [];
   question_count = 1;
+  questionSource: string;
 
   state : String;
   constructor(public navCtrl: NavController, public navParams: NavParams,
   public alertCtrl: AlertController,
   public platform: Platform, db:AngularFireDatabase,
-  private cameraPreview: CameraPreview) {
+  private cameraPreview: CameraPreview, private questionProvider: QuestionProvider) {
+    this.questionSource = this.navParams.get('questionSource');
     this.state = 'ready';
+
     this.questions_db = db.list("/Question-database").valueChanges();
     this.questions_db.subscribe(questions_db => {
       this.questions_db_array = questions_db;
@@ -75,12 +80,33 @@ export class RecordPage {
   }
 
   newQuestionIndex() {
+    if (this.questionSource == 'favorites') {
+      return this.newFavoriteQuestionIndex();
+    }
+    else {
+      return this.newRandomQuestionIndex();
+    }
+  }
+
+  newRandomQuestionIndex() {
     do {
       var newQuestionIndex = Math.floor(Math.random() * this.questions_array.length);
     }
     while (newQuestionIndex == this.questionIndex);
     this.questionIndex = newQuestionIndex;
     console.log(this.questionIndex);
+  }
+
+  newFavoriteQuestionIndex() {
+    var favorites = this.questionProvider.getFavorites();
+    var newQuestionIndex;
+    if (this.question_count-1 < favorites.length) {
+      newQuestionIndex = favorites[this.question_count-1];
+    }
+    else {
+      newQuestionIndex = this.newRandomQuestionIndex();
+    }
+    this.questionIndex = newQuestionIndex;
   }
 
   newQuestion() {
@@ -96,8 +122,8 @@ export class RecordPage {
     catch (e) {
       this.showAlert((<Error>e).message)
     }
-    this.newQuestionIndex();
     this.question_count++;
+    this.newQuestionIndex();
   }
 
   startVideoRecording(){
@@ -166,6 +192,10 @@ export class RecordPage {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  navtologin() {
+    this.navCtrl.setRoot(MainPage);
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { QuestionProvider } from '../../providers/question/question';
 
 /**
  * Generated class for the DisplayQuestionPage page.
@@ -14,14 +15,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'display-question.html',
 })
 export class DisplayQuestionPage {
-
+  index: number;
   question: any;
   questionText: string;
   goodResponseAttributes: string[];
   category: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private questionProvider: QuestionProvider) {
     this.question = navParams.get('question');
+    this.index = navParams.get('index');
     this.questionText = this.question.Question;
     this.category = this.question.Category;
     this.goodResponseAttributes = this.question.GoodResponseAttributes;
@@ -36,6 +38,17 @@ export class DisplayQuestionPage {
 
   addToFavorites() {
     console.log("favorites");
+    this.questionProvider.addToFavorites(this.index);
+    console.log(this.questionProvider.getFavorites());
+    this.showAlert();
+  }
+
+  showAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Question Added To Favorites!',
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
 }
