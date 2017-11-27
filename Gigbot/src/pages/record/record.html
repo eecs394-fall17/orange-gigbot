@@ -1,16 +1,28 @@
 <ion-header>
-
+<!--
   <ion-navbar>
     <ion-title><div class=dark-blue-text>RECORDING</div>
       <div>SESSION</div></ion-title>
   </ion-navbar>
+-->
+
 
 </ion-header>
 
 <ion-content padding class=practice-content>
-
-  <img src="../../assets/imgs/GIGBOT_RedordVideo.png" alt="Gigbot" width=50%>
-  <p>{{ questions_array[questionIndex] }}</p>
+  
+  <div class="question-bubble">
+    <img src='../../assets/imgs/Blue Speech Bubble-02.png' alt="Question Text" width=100%>
+    <div class="question-text">
+      <b>
+      {{ questions_array[questionIndex] }} 
+      </b>
+    </div>
+    
+  </div>
+  <div>
+      <img src="../../assets/imgs/GIGBOT_RedordVideo.png" alt="Gigbot" width=50%>
+  </div>
 
   <div *ngIf = "state == 'ready'">
     <p>

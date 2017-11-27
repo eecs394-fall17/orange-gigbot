@@ -11,6 +11,7 @@ import { CountdownPage } from '../countdown/countdown';
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
 import { PostRecordPage } from '../post_record/post_record';
 import { SelfEvalPage } from '../self-eval/self-eval';
+import { AngularFireModule } from 'angularfire2';
 
 @IonicPage()
 @Component({

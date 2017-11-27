@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 
+import { QuestionCardComponent } from '../../components/question-card/question-card';
+
 @IonicPage()
 @Component({
   selector: 'page-library',
@@ -24,6 +26,10 @@ export class LibraryPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LibraryPage');
+  }
+
+  navToQuestion() {
+    console.log('navToQuestion called');
   }
 
 }

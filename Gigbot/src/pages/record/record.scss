@@ -17,6 +17,19 @@ page-record {
       margin: 0 auto;
   }
 
+  .question-bubble {
+    text-align: center;
+    color: white;
+    position: relative;
+  }
+
+  .question-text {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
   #start-record-button {
       background-color: color($colors, gigbot-green, base);
   }

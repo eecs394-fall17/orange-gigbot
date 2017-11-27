@@ -25,12 +25,13 @@ import { RecordPage } from '../pages/record/record';
 import { PostRecordPage } from '../pages/post_record/post_record';
 import { SelfEvalPage } from '../pages/self-eval/self-eval';
 
-
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireDatabase } from 'angularfire2/database'
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { QuestionCardComponent } from '../components/question-card/question-card';
+import { ComponentsModule } from '../components/components.module';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAi43bPQCzb9g2EXzk32oqPuVJwyj_wHhs",
@@ -65,7 +66,8 @@ export function myCustomAudioProviderFactory() {
     AngularFireModule.initializeApp(firebaseConfig, 'gigbot'),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    IonicAudioModule.forRoot(myCustomAudioProviderFactory)
+    IonicAudioModule.forRoot(myCustomAudioProviderFactory),
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
