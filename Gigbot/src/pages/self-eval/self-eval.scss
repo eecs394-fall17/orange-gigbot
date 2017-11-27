@@ -27,6 +27,21 @@ page-self-eval {
       background-color: transparent;
   }
 
+  .results {
+    background-color: white;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid black;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .grade {
+    font-size: 50px;
+    color: color($colors, gigbot-green, base);
+  }
+
 
     #next-question-button {
         background-color: color($colors, gigbot-blue, base);

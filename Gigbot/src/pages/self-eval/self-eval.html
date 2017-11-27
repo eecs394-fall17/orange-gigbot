@@ -78,17 +78,13 @@
 
   <div *ngIf = "state == 'done'">
     <img src="assets/imgs/GIGBOT_Main.png" alt="Gigbot" width=50%>
-    <h5>RESULTS</h5>
-
-    <!--
-    <ol *ngFor="let score of scores">
-        {{ score }}
-    </ol>
-  -->
-
-    <p> Your grade for this interview session:</p>
+    <div class="results">
+      <h2>RESULTS</h2>
+      <p> Your grade for this interview session:</p>
+      <h1 class="grade"> {{ finalGrade }}</h1>
+      <p> Good job! Keep working hard!</p>
+    </div>
     <br>
-    <h5> {{ finalGrade }}</h5>
     <button class=self-eval-button id=next-question-button ion-button full (click)="navhome()">
       HOME
     </button>
