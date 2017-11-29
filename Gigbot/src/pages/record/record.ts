@@ -24,62 +24,53 @@ import { QuestionProvider } from '../../providers/question/question';
 @Injectable()
 export class RecordPage {
 
-  currMedia: MediaPlugin = null;
-  currMediaIndex: number = 0;
-  currMediaPath = 'response-' + this.currMediaIndex + '.wav';
+  currMediaIndex: number;
+  currMediaPath: string;
   questions_db: Observable<any[]>;
   questions_db_array: any = [];
   questions_array: any = [];
-  questionIndex: number = 0;
-  responses: string[] = [];
+  questionIndex: number;
   question_indexes: number[] = [];
   question_count = 1;
   questionSource: string;
 
+  interviewLength: number;
+
+  currFile: MediaPlugin;
+  responseFiles: any[] = [];
   state : String;
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
   public alertCtrl: AlertController,
   public platform: Platform, db:AngularFireDatabase,
-  private cameraPreview: CameraPreview, private questionProvider: QuestionProvider) {
+  private questionProvider: QuestionProvider) {
     this.questionSource = this.navParams.get('questionSource');
+    if (this.questionSource == 'random') {
+      this.interviewLength = 5;
+    } else {
+      this.interviewLength = this.questionProvider.getFavorites().length;
+    }
     this.state = 'ready';
+    this.questionIndex = 0;
+    this.question_indexes = [];
+    this.currMediaIndex = 0;
+    this.currMediaPath = 'response-' + this.currMediaIndex + '.wav';
+    this.currFile = new MediaPlugin(this.currMediaPath);
 
     this.questions_db = db.list("/Question-database").valueChanges();
     this.questions_db.subscribe(questions_db => {
       this.questions_db_array = questions_db;
       this.questions_array = this.questions_db_array.map(q => q.Question);
-      console.log(this.questions_db_array);
-      console.log(this.questions_array);
-      this.newQuestionIndex();
+      this.questionIndex = this.newQuestionIndex();
+      console.log(this.questionIndex);
     });
-  }
-
-  options = {
-    x: 0,
-    y: 0,
-    width: window.screen.width,
-    height: window.screen.height,
-    camera: this.cameraPreview.CAMERA_DIRECTION.BACK,
-    toBack: false,
-    tapPhoto: true,
-    tapFocus: false,
-    previewDrag: false
-  };
-
-  get CurrMedia(): MediaPlugin {
-    if (this.currMedia == null) {
-      //this.currMediaPath = '../../assets/localaudio/response-' + this.currMediaIndex + '.wav';
-      this.currMediaPath = 'response-' + this.currMediaIndex + '.wav';
-      this.currMedia = new MediaPlugin(this.currMediaPath);
-    }
-    return this.currMedia;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PracticePage');
   }
 
-  newQuestionIndex() {
+  newQuestionIndex(): number {
     if (this.questionSource == 'favorites') {
       return this.newFavoriteQuestionIndex();
     }
@@ -88,16 +79,14 @@ export class RecordPage {
     }
   }
 
-  newRandomQuestionIndex() {
+  newRandomQuestionIndex(): number {
     do {
       var newQuestionIndex = Math.floor(Math.random() * this.questions_array.length);
-    }
-    while (newQuestionIndex == this.questionIndex);
-    this.questionIndex = newQuestionIndex;
-    console.log(this.questionIndex);
+    } while (newQuestionIndex == this.questionIndex);
+    return newQuestionIndex;
   }
 
-  newFavoriteQuestionIndex() {
+  newFavoriteQuestionIndex(): number {
     var favorites = this.questionProvider.getFavorites();
     var newQuestionIndex;
     if (this.question_count-1 < favorites.length) {
@@ -106,44 +95,28 @@ export class RecordPage {
     else {
       newQuestionIndex = this.newRandomQuestionIndex();
     }
-    this.questionIndex = newQuestionIndex;
+    return newQuestionIndex;
   }
 
   newQuestion() {
     try {
-      this.CurrMedia.stopRecord()
-      this.state = 'ready';
-
+      this.stopAudioRecording();
       this.currMediaIndex++;
       this.currMediaPath = 'response-' + this.currMediaIndex + '.wav';
-      //this.currMediaPath = '../../assets/localaudio/response-' + this.currMediaIndex + '.wav';
-      this.currMedia =  new MediaPlugin(this.currMediaPath);
+      this.currFile = new MediaPlugin(this.currMediaPath);
     }
     catch (e) {
       this.showAlert((<Error>e).message)
     }
     this.question_count++;
-    this.newQuestionIndex();
-  }
-
-  startVideoRecording(){
-    console.log('StartVideoRecording');
-    this.cameraPreview.startCamera(this.options).then(
-    (res) => {
-      console.log(res)
-    },
-    (err) => {
-      console.log(err)
-    });;
-
+    this.questionIndex = this.newQuestionIndex();
+    console.log(this.questionIndex);
   }
 
   startAudioRecording() {
     try {
-      this.CurrMedia.startRecord();
+      this.currFile.startRecord();
       this.state = 'recording';
-      this.responses.push(this.currMediaPath);
-      this.question_indexes.push(this.questionIndex);
       console.log("success startRecording");
     }
     catch (e) {
@@ -153,7 +126,7 @@ export class RecordPage {
 
   pauseAudioRecording() {
     try {
-    this.CurrMedia.pauseRecord();
+    this.currFile.pauseRecord();
     this.state = 'paused';
     console.log("success pauseRecording");
   }
@@ -164,7 +137,7 @@ export class RecordPage {
 
   resumeAudioRecording() {
     try {
-      this.CurrMedia.resumeRecord();
+      this.currFile.resumeRecord();
       this.state = 'recording';
       console.log("success resumeRecording");
     }
@@ -175,14 +148,19 @@ export class RecordPage {
 
   stopAudioRecording() {
     try {
-      this.CurrMedia.stopRecord();
-      this.state = 'recorded';
-      console.log("success stopRecording");
-      this.navCtrl.push(SelfEvalPage, {'responsePaths': this.responses, 'questionIndexes': this.question_indexes});
+      this.question_indexes.push(this.questionIndex);
+      this.currFile.stopRecord();
+      this.responseFiles.push(this.currFile);
+      this.state = 'ready';
+    } catch (e) {
+      this.showAlert((<Error>e).message); 
     }
-    catch (e) {
-      this.showAlert((<Error>e).message)
-    }
+
+  }
+
+  endInterview() {
+    this.stopAudioRecording();
+    this.navCtrl.push(SelfEvalPage, {'questionIndexes': this.question_indexes, 'responseFiles': this.responseFiles});
   }
 
   showAlert(message) {

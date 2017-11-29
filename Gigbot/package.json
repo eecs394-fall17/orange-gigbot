@@ -24,6 +24,7 @@
     "@ionic-native/camera-preview": "^4.3.3",
     "@ionic-native/core": "4.3.2",
     "@ionic-native/file": "^4.3.2",
+    "@ionic-native/file-transfer": "^4.4.2",
     "@ionic-native/media": "^4.3.2",
     "@ionic-native/media-capture": "^4.3.3",
     "@ionic-native/splash-screen": "4.3.2",
@@ -38,6 +39,7 @@
     "cordova-plugin-console": "^1.1.0",
     "cordova-plugin-device": "^1.1.6",
     "cordova-plugin-file": "^4.3.3",
+    "cordova-plugin-file-transfer": "^1.7.0",
     "cordova-plugin-ionic": "^1.1.9",
     "cordova-plugin-ionic-webview": "^1.1.16",
     "cordova-plugin-media": "^3.0.1",
@@ -88,11 +90,9 @@
         "CAMERA_USAGE_DESCRIPTION": " ",
         "PHOTOLIBRARY_USAGE_DESCRIPTION": " "
       },
-      "cordova-plugin-camera-preview": {}
-    },
-    "platforms": [
-      "ios"
-    ]
+      "cordova-plugin-camera-preview": {},
+      "cordova-plugin-file-transfer": {}
+    }
   },
   "platforms": [
     "ios"

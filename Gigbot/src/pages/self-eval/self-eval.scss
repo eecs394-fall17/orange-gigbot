@@ -42,9 +42,67 @@ page-self-eval {
     color: color($colors, gigbot-green, base);
   }
 
-
     #next-question-button {
         background-color: color($colors, gigbot-blue, base);
     }
+
+    .question-content {
+        background-color: color($colors, gigbot-blue, base);
+        color: white;
+        border-radius: 10px;
+        border: 2px solid white;
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+    }
+    
+    .good-response-content {
+        background-color: white;
+        text-align: left;
+        border-radius: 10px;
+        border: 2px solid black;
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .question-button {
+        width: 80%;
+        height: 30px;
+        border: 2px solid white;
+        border-radius: 50px;
+        outline-color: white;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin: 0 auto;
+    }
+
+    .playback-button {
+        width: 100px;
+        height: 100px;
+        color: color($colors, gigbot-dark-gray, base);
+      }
+
+    #play-button {
+        background: url("../assets/imgs/play.png") no-repeat;
+        background-size: cover;
+    }
+
+    #pause-button {
+        background: url("../assets/imgs/pause.png") no-repeat;
+        background-size: cover;
+    }
+
+    .red {
+        color: color($colors, gigbot-red, base);
+    }
+
+    .blue {
+        color: color($colors, gigbot-blue, base);
+    }
+
 
 }

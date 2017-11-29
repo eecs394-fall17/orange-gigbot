@@ -17,10 +17,12 @@
 
   <div *ngIf = "state == 'evaluating'">
 
-    <h5>
-         Question {{dbIndex+1}}: {{questionText}}
-       </h5>
-       
+    <div class="question-content">
+         <b>Question {{currIndex+1}}: </b>
+         <br>
+         {{questionText}}
+    </div>
+       <!--
     <audio-track class=self-eval-audio #audio [track]="myRecordings[dbIndex]">
       <ion-item>
         <audio-track-play dark item-left [audioTrack]="audio">
@@ -33,41 +35,60 @@
         </div>
       </ion-item>
     </audio-track>
+  -->
+
+  <div *ngIf = "audioState != 'playing'">
+      <button ion-button id="play-button" class="playback-button" (click)="playFile()">
+        </button>
+    </div>
+
+    <div *ngIf = "audioState == 'playing'">
+      <button ion-button id="pause-button" class="playback-button" (click)="pauseFile()">
+        </button>
+    </div>
 
     <br>
 
-    <div>
-      <h6>A good response might contain:</h6>
+    <div class="good-response-content">
+      <div>
+        <h4><b>Good responses would contain:</b></h4>
+      </div>
+
+      <h5><b>Attribute 1</b></h5>
+      <p>
+          {{attribute1}}
+      </p>
+      <ion-item class=self-eval-item>
+        <ion-range min="0" max="100" [(ngModel)]="attribute1Score" pin="true">
+          <ion-label range-left class="red">Failed It!</ion-label>
+          <ion-label range-right class="blue">Nailed It!</ion-label>
+        </ion-range>
+      </ion-item>
+      <br>
+      <h5><b>Attribute 2</b></h5>
+      <p>
+          {{attribute2}}
+      </p>
+      <ion-item class=self-eval-item>
+        <ion-range min="0" max="100" [(ngModel)]="attribute2Score" pin="true">
+            <ion-label range-left class="red">Failed It!</ion-label>
+            <ion-label range-right class="blue">Nailed It!</ion-label>
+        </ion-range>
+      </ion-item>
+
+      <br>
+      <h5><b>Attribute 3</b></h5>
+      <p>
+          {{attribute3}}
+      </p>
+      <ion-item class=self-eval-item>
+        <ion-range min="0" max="100" [(ngModel)]="attribute3Score" pin="true">
+            <ion-label range-left class="red">Failed It!</ion-label>
+            <ion-label range-right class="blue">Nailed It!</ion-label>
+        </ion-range>
+      </ion-item>
+
     </div>
-    <p>
-        {{attribute1}}
-    </p>
-    <ion-item class=self-eval-item>
-      <ion-range min="0" max="100" [(ngModel)]="attribute1Score" pin="true">
-        <ion-label range-left>Failed It!</ion-label>
-        <ion-label range-right>Nailed It!</ion-label>
-      </ion-range>
-    </ion-item>
-
-    <p>
-        {{attribute2}}
-    </p>
-    <ion-item class=self-eval-item>
-      <ion-range min="0" max="100" [(ngModel)]="attribute2Score" pin="true">
-        <ion-label range-left>Failed It!</ion-label>
-        <ion-label range-right>Nailed It!</ion-label>
-      </ion-range>
-    </ion-item>
-
-    <p>
-        {{attribute3}}
-    </p>
-    <ion-item class=self-eval-item>
-      <ion-range min="0" max="100" [(ngModel)]="attribute3Score" pin="true">
-        <ion-label range-left>Failed It!</ion-label>
-        <ion-label range-right>Nailed It!</ion-label>
-      </ion-range>
-    </ion-item>
 
     <br>
 
