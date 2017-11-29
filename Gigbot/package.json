@@ -89,7 +89,10 @@
         "PHOTOLIBRARY_USAGE_DESCRIPTION": " "
       },
       "cordova-plugin-camera-preview": {}
-    }
+    },
+    "platforms": [
+      "ios"
+    ]
   },
   "platforms": [
     "ios"
