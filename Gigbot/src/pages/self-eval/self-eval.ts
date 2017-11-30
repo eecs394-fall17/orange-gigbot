@@ -4,6 +4,7 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { AudioProvider, IAudioTrack, ITrackConstraint} from 'ionic-audio';
 import { MainPage } from '../main/main';
+import { Media, MediaObject } from '@ionic-native/media';
 
 @IonicPage()
 @Component({
@@ -17,15 +18,13 @@ export class SelfEvalPage {
   startedplayback:boolean;
   questionIndexes: number[];
   allRecordings: any = [];
-  currFile: any = null;
+  currFile: MediaObject = null;
   responseFiles: any[];
   state: string = 'evaluating';
   audioState: string = 'not-playing'
   currIndex: number = 0;
 
-  currPosition: number;
-  currDuration: number;
-  startMillis: number;
+  audioStatus: any;
 
   questions_db: Observable<any[]>;
   questions_db_array: any = [];
@@ -53,9 +52,9 @@ export class SelfEvalPage {
       this.good_responses_array = this.questions_db_array.map(q => q.GoodResponseAttributes);
       this.setData();
     });
-    //setInterval(() =>{
-     // this.checkAudio();
-    //}, 300);
+    setInterval(() =>{
+      this.checkAudio();
+    }, 1000);
   }
 
   ionViewDidLoad() {
@@ -68,9 +67,8 @@ export class SelfEvalPage {
         this.currFile.play();
       } else if (this.currIndex < this.responseFiles.length) {
         this.currFile = this.responseFiles[this.currIndex];
-        this.currDuration = this.currFile.getDuration(); // this is always -1. sad
+        this.currFile.onStatusUpdate.subscribe(status => this.audioStatus = status);
         this.currFile.play();
-        this.startMillis = new Date().getMilliseconds();
       }
       this.audioState = 'playing';
     } catch (e) {
@@ -90,16 +88,9 @@ export class SelfEvalPage {
   }
 
   checkAudio() {
-    try {
-      if (this.currFile != null) {
-        var currTime = new Date().getMilliseconds();
-        if (currTime-this.startMillis > this.currDuration) {
-          this.currFile.stop();
-          this.audioState = 'not-playing';
-        }
-      }
-    } catch (e) {
-      this.showAlert((<Error>e).message);
+    if (this.audioStatus == 4) {
+      this.currFile.stop();
+      this.audioState = 'not-playing';
     }
   }
 
