@@ -16,6 +16,11 @@ page-practice {
         margin: 0 auto;
     }
 
+    .input{
+      text-align: left;
+      display: inline-flex;
+    }
+
     #record-audio-button {
         background-color: color($colors, gigbot-red, base);
     }
@@ -25,6 +30,10 @@ page-practice {
     }
     #record-page-button{
           background-color: color($colors, gigbot-red, base);
+    }
+
+    .question-pref {
+        text-align: center;
     }
 
 }

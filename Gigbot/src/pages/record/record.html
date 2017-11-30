@@ -1,16 +1,31 @@
 <ion-header>
-
-  <ion-navbar>
+  <ion-navbar hideBackButton>
     <ion-title><div class=dark-blue-text>RECORDING</div>
       <div>SESSION</div></ion-title>
-  </ion-navbar>
+      <ion-buttons end>
+          <button ion-button icon-only (click)="navtologin()" color="light">
+            Home
+          </button>
+        </ion-buttons>
+    </ion-navbar>
+
 
 </ion-header>
 
 <ion-content padding class=practice-content>
 
-  <img src="../../assets/imgs/GIGBOT_RedordVideo.png" alt="Gigbot" width=50%>
-  <p>{{ questions_array[questionIndex] }}</p>
+  <div class="question-bubble">
+    <img src='assets/imgs/Blue_Speech_Bubble-02.png' alt="Question Text" width=100%>
+    <div class="question-text">
+      <b>
+      {{ questions_array[questionIndex] }}
+      </b>
+    </div>
+
+  </div>
+  <div>
+      <img src="assets/imgs/GIGBOT_RedordVideo.png" alt="Gigbot" width=50%>
+  </div>
 
   <div *ngIf = "state == 'ready'">
     <p>
@@ -21,13 +36,13 @@
 
   <div *ngIf = "state == 'recording' || state == 'paused'">
     <p>
-      <button  class=practice-button id=stop-record-button ion-button full (click)="stopAudioRecording()" [disabled]="state == 'paused'">
+      <button  class=practice-button id=stop-record-button ion-button full (click)="endInterview()" [disabled]="state == 'paused'">
         END INTERVIEW</button>
     </p>
   </div>
 
   <p>
-      <button  class=practice-button id=new-button ion-button full (click)="newQuestion()" [disabled]="state == 'ready' || question_count >= 3">
+      <button  class=practice-button id=new-button ion-button full (click)="newQuestion()" [disabled]="state == 'ready' || question_count >= interviewLength">
         NEXT QUESTION
       </button>
   </p>

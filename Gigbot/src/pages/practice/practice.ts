@@ -1,17 +1,9 @@
 import { Component, ViewChild} from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, Platform, ViewController } from 'ionic-angular';
 import { MainPage } from '../main/main';
-import { MediaPlugin, MediaCapture, Camera} from 'ionic-native';
-import { Media, MediaObject} from '@ionic-native/media';
-import { File } from '@ionic-native/file';
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
-import { CountdownPage } from '../countdown/countdown';
 import { RecordPage } from '../record/record';
-import { PostRecordPage } from '../post_record/post_record';
-
-import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
+import { QuestionProvider } from '../../providers/question/question';
 
 @IonicPage()
 @Component({
@@ -24,22 +16,14 @@ export class PracticePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
   public alertCtrl: AlertController,
-  public platform: Platform, db:AngularFireDatabase,
-  private cameraPreview: CameraPreview) {
+  public platform: Platform,
+  private questionProvider: QuestionProvider) {
 
   }
-
-
-  navcountdownpage() {
-    this.navCtrl.push(CountdownPage);
-  }
-
-
+  
   navtologin() {
-    this.navCtrl.push(MainPage);
+    this.navCtrl.setRoot(MainPage);
   }
-
-
 
 ionViewDidLoad() {
   console.log('ionViewDidLoad PracticePage');
@@ -47,7 +31,24 @@ ionViewDidLoad() {
 
 
   navrecordpage() {
-    this.navCtrl.push(RecordPage);
+    var questionSource = 'random';
+    if ((<any>document.getElementById("favorites")).checked) {
+      questionSource = 'favorites';
+    } 
+    console.log(questionSource)
+    if (questionSource == 'favorites' && this.questionProvider.getFavorites().length == 0) {
+      this.showAlert();
+    } else {
+      this.navCtrl.push(RecordPage, {'questionSource': questionSource});
+    }
   }
 
+  showAlert() {
+    let alert = this.alertCtrl.create({
+      title: "You selected to receive your favorite questions in your interview but you haven't favorited and questions.",
+      subTitle: "Please favorite some questions in the Question Library and try again!",
+      buttons: ['OK']
+    });
+    alert.present();
+  }
 }

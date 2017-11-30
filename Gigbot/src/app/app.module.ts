@@ -25,12 +25,15 @@ import { RecordPage } from '../pages/record/record';
 import { PostRecordPage } from '../pages/post_record/post_record';
 import { SelfEvalPage } from '../pages/self-eval/self-eval';
 
-
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireDatabase } from 'angularfire2/database'
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { QuestionCardComponent } from '../components/question-card/question-card';
+import { ComponentsModule } from '../components/components.module';
+import { DisplayQuestionPage } from '../pages/display-question/display-question';
+import { QuestionProvider } from '../providers/question/question';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAi43bPQCzb9g2EXzk32oqPuVJwyj_wHhs",
@@ -57,7 +60,8 @@ export function myCustomAudioProviderFactory() {
     CountdownPage,
     RecordPage,
     PostRecordPage,
-    SelfEvalPage
+    SelfEvalPage,
+    DisplayQuestionPage
   ],
   imports: [
     BrowserModule,
@@ -65,7 +69,8 @@ export function myCustomAudioProviderFactory() {
     AngularFireModule.initializeApp(firebaseConfig, 'gigbot'),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    IonicAudioModule.forRoot(myCustomAudioProviderFactory)
+    IonicAudioModule.forRoot(myCustomAudioProviderFactory),
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -79,7 +84,8 @@ export function myCustomAudioProviderFactory() {
     CountdownPage,
     RecordPage,
     PostRecordPage,
-    SelfEvalPage
+    SelfEvalPage,
+    DisplayQuestionPage
   ],
   providers: [
     StatusBar,
@@ -90,7 +96,8 @@ export function myCustomAudioProviderFactory() {
     Camera,
     CameraPreview,
     IonicAudioModule,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    QuestionProvider
   ],
 
 })
