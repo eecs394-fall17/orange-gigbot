@@ -76,7 +76,7 @@ export class SelfEvalPage {
     }
   }
 
-  stopFile() {
+  pauseFile() {
     try {
       if (this.currFile != null) {
         this.currFile.pause();

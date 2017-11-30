@@ -18,9 +18,11 @@
   <div *ngIf = "state == 'evaluating'">
 
     <div class="question-content">
+      <h4>
          <b>Question {{currIndex+1}}: </b>
          <br>
          {{questionText}}
+      </h4>
     </div>
        <!--
     <audio-track class=self-eval-audio #audio [track]="myRecordings[dbIndex]">
