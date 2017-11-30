@@ -36,13 +36,13 @@
 
   <div *ngIf = "state == 'recording' || state == 'paused'">
     <p>
-      <button  class=practice-button id=stop-record-button ion-button full (click)="stopAudioRecording()" [disabled]="state == 'paused'">
+      <button  class=practice-button id=stop-record-button ion-button full (click)="endInterview()" [disabled]="state == 'paused'">
         END INTERVIEW</button>
     </p>
   </div>
 
   <p>
-      <button  class=practice-button id=new-button ion-button full (click)="newQuestion()" [disabled]="state == 'ready' || question_count >= 5">
+      <button  class=practice-button id=new-button ion-button full (click)="newQuestion()" [disabled]="state == 'ready' || question_count >= interviewLength">
         NEXT QUESTION
       </button>
   </p>
