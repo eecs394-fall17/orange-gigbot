@@ -36,14 +36,16 @@ export class RecordPage {
 
   interviewLength: number;
 
-  currFile: MediaPlugin;
+  //currFile: MediaPlugin;
+  currFile: MediaObject;
   responseFiles: any[] = [];
   state : String;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
   public alertCtrl: AlertController,
   public platform: Platform, db:AngularFireDatabase,
-  private questionProvider: QuestionProvider) {
+  private questionProvider: QuestionProvider,
+  private media: Media) {
     this.questionSource = this.navParams.get('questionSource');
     if (this.questionSource == 'random') {
       this.interviewLength = 5;
@@ -55,7 +57,8 @@ export class RecordPage {
     this.question_indexes = [];
     this.currMediaIndex = 0;
     this.currMediaPath = 'response-' + this.currMediaIndex + '.wav';
-    this.currFile = new MediaPlugin(this.currMediaPath);
+    //this.currFile = new MediaPlugin(this.currMediaPath);
+    this.currFile = this.media.create(this.currMediaPath);
 
     this.questions_db = db.list("/Question-database").valueChanges();
     this.questions_db.subscribe(questions_db => {
@@ -103,7 +106,8 @@ export class RecordPage {
       this.stopAudioRecording();
       this.currMediaIndex++;
       this.currMediaPath = 'response-' + this.currMediaIndex + '.wav';
-      this.currFile = new MediaPlugin(this.currMediaPath);
+      //this.currFile = new MediaPlugin(this.currMediaPath);
+      this.currFile = this.media.create(this.currMediaPath);
     }
     catch (e) {
       this.showAlert((<Error>e).message)
@@ -115,7 +119,7 @@ export class RecordPage {
 
   startAudioRecording() {
     try {
-      //this.currFile.startRecord();
+      this.currFile.startRecord();
       this.state = 'recording';
       console.log("success startRecording");
     }
@@ -149,7 +153,7 @@ export class RecordPage {
   stopAudioRecording() {
     try {
       this.question_indexes.push(this.questionIndex);
-      //this.currFile.stopRecord();
+      this.currFile.stopRecord();
       this.responseFiles.push(this.currFile);
       this.state = 'ready';
     } catch (e) {
