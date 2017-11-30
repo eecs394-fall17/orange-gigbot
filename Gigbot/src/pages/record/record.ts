@@ -115,7 +115,7 @@ export class RecordPage {
 
   startAudioRecording() {
     try {
-      this.currFile.startRecord();
+      //this.currFile.startRecord();
       this.state = 'recording';
       console.log("success startRecording");
     }
@@ -149,7 +149,7 @@ export class RecordPage {
   stopAudioRecording() {
     try {
       this.question_indexes.push(this.questionIndex);
-      this.currFile.stopRecord();
+      //this.currFile.stopRecord();
       this.responseFiles.push(this.currFile);
       this.state = 'ready';
     } catch (e) {

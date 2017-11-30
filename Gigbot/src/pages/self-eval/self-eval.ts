@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController, Content } from 'ionic-angular';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { AudioProvider, IAudioTrack, ITrackConstraint} from 'ionic-audio';
@@ -11,6 +11,8 @@ import { MainPage } from '../main/main';
   templateUrl: 'self-eval.html',
 })
 export class SelfEvalPage {
+
+  @ViewChild(Content) content: Content;
 
   startedplayback:boolean;
   questionIndexes: number[];
@@ -37,9 +39,9 @@ export class SelfEvalPage {
   attribute2: string = "2nd good attribute";
   attribute3: string = "3rd good attribute";
 
-  attribute1Score: number = 50;
-  attribute2Score: number = 50;
-  attribute3Score: number = 50;
+  attribute1Score: number;
+  attribute2Score: number;
+  attribute3Score: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, db:AngularFireDatabase, public alertCtrl: AlertController) {
     this.questionIndexes = this.navParams.get('questionIndexes');
@@ -107,6 +109,9 @@ export class SelfEvalPage {
     this.attribute1 = this.good_responses_array[curr][0];
     this.attribute2 = this.good_responses_array[curr][1];
     this.attribute3 = this.good_responses_array[curr][2];
+    this.attribute1Score = 50;
+    this.attribute2Score = 50;
+    this.attribute3Score = 50;
   }
 
   nextquestion(){
@@ -121,6 +126,11 @@ export class SelfEvalPage {
       this.calculateGrade();
       this.state = 'done';
     }
+    this.content.scrollToTop();
+  }
+
+  onLastQuestion() {
+    return this.currIndex == this.questionIndexes.length - 1;
   }
 
   calculateGrade() {
