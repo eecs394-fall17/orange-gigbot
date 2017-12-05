@@ -44,7 +44,7 @@ First screen, Home `'src/pages/home/'`
 
 After login it will be redirect to the Main template.
 
-Main Screen `'src/pages/main/main.html'`
+Main Screen `'src/pages/main/'`
  Add buttons:
   - "Resume Helper".
   - "Search GIGBOT Network".
