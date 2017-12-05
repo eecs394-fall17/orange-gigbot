@@ -24,3 +24,22 @@ $ ionic cordova run ios
 
 Substitute ios for android if not on a Mac.
 
+### TODO ###
+
+Home Screen `'src/pages/home/'`
+ - Link login with LinkedIn.
+ - Add button and template "SIGN UP".
+ - allow navigate into the apps only registered users.
+ - "Create / Edit Profile" button.
+
+Main Screen `'src/pages/main/main.html'`
+ Add button:
+  - Resume Helper.
+  - Search GIGBOT Network.
+
+QA Library `'src/pages/library/'`
+  - Mark selected questions on screen.
+  - Add selected question only once.
+
+Record Mock Interview `'src/pages/record/record/'`
+ - Make buttons bigger (UX).
