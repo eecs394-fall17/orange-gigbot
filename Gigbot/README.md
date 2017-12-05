@@ -1,5 +1,10 @@
 This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
 
+You can start cloning the repo:
+```bash
+git clone https://github.com/eecs394-fall17/orange-gigbot.git
+```
+
 ## How to use this template
 
 *This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
@@ -23,6 +28,11 @@ $ ionic cordova run ios
 ```
 
 Substitute ios for android if not on a Mac.
+
+Test the code:
+```bash
+ionic serve
+```
 
 ### TODO ###
 
