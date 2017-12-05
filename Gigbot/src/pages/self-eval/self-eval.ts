@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController, Content } from 'ionic-angular';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { AudioProvider, IAudioTrack, ITrackConstraint} from 'ionic-audio';
 import { MainPage } from '../main/main';
+import { Media, MediaObject } from '@ionic-native/media';
 
 @IonicPage()
 @Component({
@@ -12,18 +13,18 @@ import { MainPage } from '../main/main';
 })
 export class SelfEvalPage {
 
+  @ViewChild(Content) content: Content;
+
   startedplayback:boolean;
   questionIndexes: number[];
   allRecordings: any = [];
-  currFile: any = null;
+  currFile: MediaObject = null;
   responseFiles: any[];
   state: string = 'evaluating';
   audioState: string = 'not-playing'
   currIndex: number = 0;
 
-  currPosition: number;
-  currDuration: number;
-  startMillis: number;
+  audioStatus: any;
 
   questions_db: Observable<any[]>;
   questions_db_array: any = [];
@@ -37,9 +38,9 @@ export class SelfEvalPage {
   attribute2: string = "2nd good attribute";
   attribute3: string = "3rd good attribute";
 
-  attribute1Score: number = 50;
-  attribute2Score: number = 50;
-  attribute3Score: number = 50;
+  attribute1Score: number;
+  attribute2Score: number;
+  attribute3Score: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, db:AngularFireDatabase, public alertCtrl: AlertController) {
     this.questionIndexes = this.navParams.get('questionIndexes');
@@ -51,9 +52,9 @@ export class SelfEvalPage {
       this.good_responses_array = this.questions_db_array.map(q => q.GoodResponseAttributes);
       this.setData();
     });
-    //setInterval(() =>{
-     // this.checkAudio();
-    //}, 300);
+    setInterval(() =>{
+      this.checkAudio();
+    }, 1000);
   }
 
   ionViewDidLoad() {
@@ -66,9 +67,8 @@ export class SelfEvalPage {
         this.currFile.play();
       } else if (this.currIndex < this.responseFiles.length) {
         this.currFile = this.responseFiles[this.currIndex];
-        this.currDuration = this.currFile.getDuration(); // this is always -1. sad
+        this.currFile.onStatusUpdate.subscribe(status => this.audioStatus = status);
         this.currFile.play();
-        this.startMillis = new Date().getMilliseconds();
       }
       this.audioState = 'playing';
     } catch (e) {
@@ -76,7 +76,7 @@ export class SelfEvalPage {
     }
   }
 
-  stopFile() {
+  pauseFile() {
     try {
       if (this.currFile != null) {
         this.currFile.pause();
@@ -88,16 +88,9 @@ export class SelfEvalPage {
   }
 
   checkAudio() {
-    try {
-      if (this.currFile != null) {
-        var currTime = new Date().getMilliseconds();
-        if (currTime-this.startMillis > this.currDuration) {
-          this.currFile.stop();
-          this.audioState = 'not-playing';
-        }
-      }
-    } catch (e) {
-      this.showAlert((<Error>e).message);
+    if (this.audioStatus == 4) {
+      this.currFile.stop();
+      this.audioState = 'not-playing';
     }
   }
 
@@ -107,6 +100,9 @@ export class SelfEvalPage {
     this.attribute1 = this.good_responses_array[curr][0];
     this.attribute2 = this.good_responses_array[curr][1];
     this.attribute3 = this.good_responses_array[curr][2];
+    this.attribute1Score = 50;
+    this.attribute2Score = 50;
+    this.attribute3Score = 50;
   }
 
   nextquestion(){
@@ -121,6 +117,11 @@ export class SelfEvalPage {
       this.calculateGrade();
       this.state = 'done';
     }
+    this.content.scrollToTop();
+  }
+
+  onLastQuestion() {
+    return this.currIndex == this.questionIndexes.length - 1;
   }
 
   calculateGrade() {

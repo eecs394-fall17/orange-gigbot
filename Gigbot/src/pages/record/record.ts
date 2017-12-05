@@ -1,15 +1,10 @@
 import { Component, ViewChild} from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, Platform, ViewController } from 'ionic-angular';
-import { MediaPlugin, MediaCapture, Camera} from 'ionic-native';
 import { Media, MediaObject} from '@ionic-native/media';
 import { File } from '@ionic-native/file';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
-import { CountdownPage } from '../countdown/countdown';
-
-import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
-import { PostRecordPage } from '../post_record/post_record';
 import { SelfEvalPage } from '../self-eval/self-eval';
 import { MainPage } from '../main/main';
 import { AngularFireModule } from 'angularfire2';
@@ -36,14 +31,15 @@ export class RecordPage {
 
   interviewLength: number;
 
-  currFile: MediaPlugin;
+  currFile: MediaObject;
   responseFiles: any[] = [];
   state : String;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
   public alertCtrl: AlertController,
   public platform: Platform, db:AngularFireDatabase,
-  private questionProvider: QuestionProvider) {
+  private questionProvider: QuestionProvider,
+  private media: Media) {
     this.questionSource = this.navParams.get('questionSource');
     if (this.questionSource == 'random') {
       this.interviewLength = 5;
@@ -55,7 +51,7 @@ export class RecordPage {
     this.question_indexes = [];
     this.currMediaIndex = 0;
     this.currMediaPath = 'response-' + this.currMediaIndex + '.wav';
-    this.currFile = new MediaPlugin(this.currMediaPath);
+    this.currFile = this.media.create(this.currMediaPath);
 
     this.questions_db = db.list("/Question-database").valueChanges();
     this.questions_db.subscribe(questions_db => {
@@ -103,7 +99,7 @@ export class RecordPage {
       this.stopAudioRecording();
       this.currMediaIndex++;
       this.currMediaPath = 'response-' + this.currMediaIndex + '.wav';
-      this.currFile = new MediaPlugin(this.currMediaPath);
+      this.currFile = this.media.create(this.currMediaPath);
     }
     catch (e) {
       this.showAlert((<Error>e).message)

@@ -77,6 +77,8 @@ page-self-eval {
         outline-color: white;
         margin-top: 10px;
         margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
         margin: 0 auto;
     }
 
@@ -98,10 +100,16 @@ page-self-eval {
 
     .red {
         color: color($colors, gigbot-red, base);
+        font-size: 12px;
     }
 
     .blue {
         color: color($colors, gigbot-blue, base);
+        font-size: 12px;
+    }
+
+    .wide {
+        width: 100%;
     }
 
 
