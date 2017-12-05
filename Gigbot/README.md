@@ -29,27 +29,31 @@ $ ionic cordova run ios
 
 Substitute ios for android if not on a Mac.
 
-Test the code:
+Run the code:
 ```bash
 ionic serve
 ```
+Test into your browser with the follow URL `http://<server-ip>:8100`
 
 ### TODO ###
 
-Home Screen `'src/pages/home/'`
- - Link login with LinkedIn.
- - Add button and template "SIGN UP".
- - allow navigate into the apps only registered users.
- - "Create / Edit Profile" button.
+First screen, Home `'src/pages/home/'`
+ - Add the button to log in with the account in LinkedIn.
+ - Add button and template "SIGN UP" to create a new user.
+ - Restrict to navigate only registered users into the apps.
+
+After login it will be redirect to the Main template.
 
 Main Screen `'src/pages/main/main.html'`
- Add button:
-  - Resume Helper.
-  - Search GIGBOT Network.
+ Add buttons:
+  - "Resume Helper".
+  - "Search GIGBOT Network".
+  - "Create / Edit Profile".
 
 QA Library `'src/pages/library/'`
   - Mark selected questions on screen.
-  - Add selected question only once.
+  - To fix, allow selected question only once.
 
 Record Mock Interview `'src/pages/record/record/'`
  - Make buttons bigger (UX).
+ - Limit the questions to test. Now, you can record more than the questions added into the favorite category.
