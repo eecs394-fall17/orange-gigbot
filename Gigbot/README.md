@@ -1,26 +1,40 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+# GIGBOT
 
-## How to use this template
+GIGBOT is a smart, on-demand interview preparation resource. Gigbot allows one to browse a selective Q&A library and record mock interview Q&A sessions with GIGBOT to receive feedback and suggestions.
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
+## Getting Started:
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
+- [Download the installer](https://nodejs.org/en/) for Node.js 6 or greater.
+- Install the Ionic CLI globally: `npm install -g ionic cordova`
+- Clone this repository : `git clone https://github.com/eecs394-fall17/orange-gigbot.git`
+- Navigate to the project root : `cd Gigbot`
+- Run `npm install` at the project root.
 
-### With the Ionic CLI:
+*Note: You may need to add "sudo" in front of any global commands to install utilities.*
 
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+## Platform Constraints:
 
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myBlank blank
-```
+This app requires the use of the native device's audio recording feature. GIGBOT is developed for mobile applications only. GIGBOT can deploy in browser, but does not have an audio recording function.
 
-Then, to run it, cd into `myBlank` and run:
+All deployment was done through Ionic View; deployment directly onto iOS or Android devices has not yet been tested.
 
-```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
-```
+### Deployment:
 
-Substitute ios for android if not on a Mac.
+  - Browser: run `ionic serve`
 
+  - Android:
+    ```bash
+    $ ionic cordova platform add android
+    $ ionic cordova run android
+    ```
+
+  - iOS:
+  ```bash
+  $ ionic cordova platform add ios
+  $ ionic cordova run ios
+  ```
+
+  - Ionic View:
+   - Create an [IonicView account](https://ionicframework.com/products/view).
+   - Select "New App"
+   - Follow the instructions regarding linking Ionic Pro to your app.
