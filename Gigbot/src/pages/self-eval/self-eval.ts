@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController, Content } from 'i
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { MainPage } from '../main/main';
-import { MediaObject } from '@ionic-native/media';
+import { Media, MediaObject } from '@ionic-native/media';
 
 @IonicPage()
 @Component({
