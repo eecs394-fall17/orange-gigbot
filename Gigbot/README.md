@@ -14,7 +14,7 @@ GIGBOT is a smart, on-demand interview preparation resource. GIGBOT allows one t
 
 ## Configure Firebase:
 
-GIGBOT reads questions from a Firebase realtime database. Use the following instructions to setup GIGBOT to read from your own database.
+GIGBOT reads its mock interview questions from a Firebase realtime database. Use the following instructions to setup GIGBOT to read from your own database.
 
 - [Setup a Firebase account](https://firebase.google.com/) and create a new project.
 - From the Firebase console, click "Add Firebase to your Web App".
@@ -39,7 +39,7 @@ Question-database
 
 This app requires the use of the native device's audio recording feature. GIGBOT is developed for mobile applications only. GIGBOT can deploy in browser, but does not have an audio recording function.
 
-All deployment was done through Ionic View; deployment directly onto iOS or Android devices has not yet been tested.
+All deployment was done through [Ionic View](https://ionicframework.com/products/view); deployment directly onto iOS or Android devices has not yet been tested.
 
 ## Deployment:
 
