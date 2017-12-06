@@ -20,7 +20,7 @@ All deployment was done through Ionic View; deployment directly onto iOS or Andr
 
 ## Deployment:
 
-  - Browser: run `ionic serve`
+  - Browser: run `ionic serve` at the project root
 
   - Android:
     ```bash
