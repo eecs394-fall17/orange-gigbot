@@ -1,59 +1,42 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+# GIGBOT
 
-You can start cloning the repo:
-```bash
-git clone https://github.com/eecs394-fall17/orange-gigbot.git
-```
+GIGBOT is a smart, on-demand interview preparation resource. GIGBOT allows one to browse a selective Q&A library and record mock interview Q&A sessions with GIGBOT to receive feedback and suggestions.
 
-## How to use this template
+## Getting Started:
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
+- [Download the installer](https://nodejs.org/en/) for Node.js 6 or greater.
+- Install the Ionic CLI globally: `npm install -g ionic cordova`
+- Clone this repository: `git clone https://github.com/eecs394-fall17/orange-gigbot.git`
+- Navigate to the project root: `cd Gigbot`
+- Run `npm install` at the project root.
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
+*Note: You may need to add "sudo" in front of any global commands to install utilities.*
 
-### With the Ionic CLI:
+## Platform Constraints:
 
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+This app requires the use of the native device's audio recording feature. GIGBOT is developed for mobile applications only. GIGBOT can deploy in browser, but does not have an audio recording function.
 
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myBlank blank
-```
+All deployment was done through Ionic View; deployment directly onto iOS or Android devices has not yet been tested.
 
-Then, to run it, cd into `myBlank` and run:
+## Deployment:
 
-```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
-```
+  - Browser: run `ionic serve` at the project root
 
-Substitute ios for android if not on a Mac.
 
-Run the code:
-```bash
-ionic serve
-```
-Test into your browser with the follow URL `http://<server-ip>:8100`
+  - Android:
+    ```bash
+    $ ionic cordova platform add android
+    $ ionic cordova run android
+    ```
 
-### TODO ###
+  - iOS:
+    ```bash
+    $ ionic cordova platform add ios
+    $ ionic cordova run ios
+    ```
 
-First screen, Home `'src/pages/home/'`
- - Add the button to log in with the account in LinkedIn.
- - Add button and template "SIGN UP" to create a new user.
- - Restrict to navigate only registered users into the apps.
-
-After login it will be redirect to the Main template.
-
-Main Screen `'src/pages/main/'`
- Add buttons:
-  - "Resume Helper".
-  - "Search GIGBOT Network".
-  - "Create / Edit Profile".
-
-QA Library `'src/pages/library/'`
-  - Mark selected questions on screen.
-  - To fix, allow selected question only once.
-
-Record Mock Interview `'src/pages/record/record/'`
- - Make buttons bigger (UX).
- - Limit the questions to test. Now, you can record more than the questions added into the favorite category.
+  - Ionic View:
+  
+    - Create an [IonicView account](https://ionicframework.com/products/view).
+    - Select "New App"
+    - Follow the instructions regarding linking Ionic Pro to your app.
