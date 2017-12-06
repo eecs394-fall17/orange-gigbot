@@ -35,6 +35,6 @@ All deployment was done through Ionic View; deployment directly onto iOS or Andr
   ```
 
   - Ionic View:
-   - Create an [IonicView account](https://ionicframework.com/products/view).
-   - Select "New App"
-   - Follow the instructions regarding linking Ionic Pro to your app.
+    - Create an [IonicView account](https://ionicframework.com/products/view).
+    - Select "New App"
+    - Follow the instructions regarding linking Ionic Pro to your app.
