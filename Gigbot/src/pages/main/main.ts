@@ -1,15 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-/**
- * Generated class for the MainPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-import { ChatPage } from '../chat/chat';
 import { LibraryPage } from '../library/library';
 import { PracticePage } from '../practice/practice';
-import { NetworkPage } from '../network/network';
 import { HomePage } from '../home/home'; 
 
 //
@@ -27,17 +19,11 @@ export class MainPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad MainPage');
   }
-  navchatpage(){
-    this.navCtrl.push(ChatPage);
-  }
   navlibrarypage(){
       this.navCtrl.push(LibraryPage);
   }
   navpracticepage(){
       this.navCtrl.push(PracticePage);
-  }
-  navnetworkpage(){
-      this.navCtrl.push(NetworkPage);
   }
   logout(){
     this.navCtrl.push(HomePage);

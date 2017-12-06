@@ -1,5 +1,5 @@
-import { Component, ViewChild} from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, Platform, ViewController } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController, Platform } from 'ionic-angular';
 import { MainPage } from '../main/main';
 import { Injectable } from '@angular/core';
 import { RecordPage } from '../record/record';

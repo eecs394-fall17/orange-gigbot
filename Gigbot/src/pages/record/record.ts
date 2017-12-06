@@ -1,13 +1,11 @@
-import { Component, ViewChild} from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, Platform, ViewController } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController, Platform } from 'ionic-angular';
 import { Media, MediaObject} from '@ionic-native/media';
-import { File } from '@ionic-native/file';
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { SelfEvalPage } from '../self-eval/self-eval';
 import { MainPage } from '../main/main';
-import { AngularFireModule } from 'angularfire2';
 import { QuestionProvider } from '../../providers/question/question';
 
 @IonicPage()

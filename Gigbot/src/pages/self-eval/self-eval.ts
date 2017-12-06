@@ -1,10 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, Content } from 'ionic-angular';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
-import { AudioProvider, IAudioTrack, ITrackConstraint} from 'ionic-audio';
 import { MainPage } from '../main/main';
-import { Media, MediaObject } from '@ionic-native/media';
+import { MediaObject } from '@ionic-native/media';
 
 @IonicPage()
 @Component({

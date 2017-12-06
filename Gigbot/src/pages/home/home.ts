@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, Platform, ViewController } from 'ionic-angular';
+import { NavController, AlertController, Platform } from 'ionic-angular';
 import { MainPage } from '../main/main';
-import { MediaPlugin } from 'ionic-native';
-import { Media, MediaObject} from '@ionic-native/media';
-import { File } from '@ionic-native/file';
 import { Injectable } from '@angular/core';
 
 @Component({

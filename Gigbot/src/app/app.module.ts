@@ -3,32 +3,25 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { Media, MediaObject} from '@ionic-native/media';
+import { Media } from '@ionic-native/media';
 import { File } from '@ionic-native/file';
-import { MediaPlugin } from 'ionic-native';
-import { MediaFile, CaptureVideoOptions, CaptureError} from 'ionic-native';
 import{ MediaCapture} from'ionic-native';
 import { Camera } from '@ionic-native/camera';
-import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
+import { CameraPreview } from '@ionic-native/camera-preview';
 
-import { IonicAudioModule, AudioProvider, WebAudioProvider, CordovaMediaProvider, defaultAudioProviderFactory } from 'ionic-audio';
+import { IonicAudioModule, WebAudioProvider, CordovaMediaProvider } from 'ionic-audio';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ChatPage } from '../pages/chat/chat';
 import { MainPage } from '../pages/main/main';
 import { LibraryPage } from '../pages/library/library';
-import { NetworkPage } from '../pages/network/network';
 import { PracticePage } from '../pages/practice/practice';
 import { RecordPage } from '../pages/record/record';
 import { SelfEvalPage } from '../pages/self-eval/self-eval';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireDatabase } from 'angularfire2/database'
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { QuestionCardComponent } from '../components/question-card/question-card';
 import { ComponentsModule } from '../components/components.module';
 import { DisplayQuestionPage } from '../pages/display-question/display-question';
 import { QuestionProvider } from '../providers/question/question';
@@ -50,10 +43,8 @@ export function myCustomAudioProviderFactory() {
   declarations: [
     MyApp,
     HomePage,
-    ChatPage,
     MainPage,
     LibraryPage,
-    NetworkPage,
     PracticePage,
     RecordPage,
     SelfEvalPage,
@@ -72,10 +63,8 @@ export function myCustomAudioProviderFactory() {
   entryComponents: [
     MyApp,
     HomePage,
-    ChatPage,
     MainPage,
     LibraryPage,
-    NetworkPage,
     PracticePage,
     RecordPage,
     SelfEvalPage,

@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { DisplayQuestionPage } from '../display-question/display-question';
 
-//import { QuestionCardComponent } from '../../components/question-card/question-card';
 
 @IonicPage()
 @Component({
