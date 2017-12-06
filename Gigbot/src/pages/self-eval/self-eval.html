@@ -60,7 +60,7 @@
           {{attribute1}}
       </p>
       <ion-item class=self-eval-item>
-        <ion-range min="0" max="100" [(ngModel)]="attribute1Score" pin="true">
+        <ion-range class="wide" min="0" max="100" [(ngModel)]="attribute1Score" pin="true">
           <ion-label range-left class="red">Failed It!</ion-label>
           <ion-label range-right class="blue">Nailed It!</ion-label>
         </ion-range>
@@ -93,9 +93,17 @@
 
     <br>
 
-    <button class=self-eval-button id=next-question-button ion-button full (click)="nextquestion()">
-      NEXT QUESTION
-    </button>
+    <div *ngIf = "!onLastQuestion()">
+      <button class=self-eval-button id=next-question-button ion-button full (click)="nextquestion()">
+        NEXT QUESTION
+      </button>
+    </div>
+
+    <div *ngIf = "onLastQuestion()">
+      <button class=self-eval-button id=next-question-button ion-button full (click)="nextquestion()">
+        GET RESULTS
+      </button>
+    </div>
   </div>
 
   <div *ngIf = "state == 'done'">
